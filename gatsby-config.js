@@ -36,12 +36,24 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    // Remark系
     {
-      resolve: "gatsby-source-contentful",
+      resolve: `gatsby-transformer-remark`,
       options: {
-        spaceId: process.env.CF_SPACE_ID,
-        accessToken: process.env.CF_ACCESS_TOKEN,
-      },
+
+      }
+
     },
+    {
+      // BLOG記事ソース
+      resolve: "gatsby-source-microcms",
+      options: {
+        apiKey: process.env.MS_X_API_KEY,
+        serviceId: process.env.MS_SERVICE_ID,
+        apis: [{
+          endpoint: 'articles',
+        }]
+      }
+    }
   ],
 }

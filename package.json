@@ -13,6 +13,8 @@
     "gatsby-plugin-sharp": "^2.8.0",
     "gatsby-source-contentful": "^4.2.1",
     "gatsby-source-filesystem": "^2.5.0",
+    "gatsby-source-microcms": "^1.0.1",
+    "gatsby-transformer-remark": "^2.12.0",
     "gatsby-transformer-sharp": "^2.6.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
