@@ -9,6 +9,7 @@ module.exports = {
     title: `HaryoiroTechBlog`,
     description: ``,
     author: `@gatsbyjs`,
+    charset: `utf-8`,
   },
   flags: {
     PRESERVE_WEBPACK_CACHE: true,
@@ -36,13 +37,45 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // Remark系
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-
+        plugins: [
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              maxWidth: 590,
+              linkImagesToOriginal: false,
+              withWebp: true,
+              loading: "lazy",
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              maxWidth: 590,
+              linkImagesToOriginal: false,
+              withWebp: true,
+              loading: "lazy",
+            },
+          },
+        ],
+      },
+    },
+    // BLOG記事ソース Contentful
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        spaceId: process.env.CF_SPACE_ID,
+        accessToken: process.env.CF_ACCESS_TOKEN,
       }
-
     },
     {
       // BLOG記事ソース

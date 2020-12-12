@@ -1,36 +1,36 @@
 import React from "react"
 import { graphql } from "gatsby"
+import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
+import { MDXProvider } from "@mdx-js/react"
+
 
 import Layout from "../components/layout"
 
-const ArticlePost = props => {
-    const post = props.data.microcmsArticles
+const ArticlePost = ({ data }) => {
+    const articleData = data.contentfulArticles
 
     return (
-        <Layout>
-          <div>
-            <h2>{post.title}</h2>
-            <h3>原文：{post.title_origin}</h3>
-            <br />
-            <p
-              dangerouslySetInnerHTML={{
-                __html: `${post.body}`,
-              }}
-            ></p>
-          </div>
-        </Layout>
+      <Layout>
+        <MDXProvider>
+          <h1>{articleData.title}</h1>
+          <article>
+            <MDXRenderer>{articleData.body.childMdx.body}</MDXRenderer>
+          </article>
+        </MDXProvider>
+      </Layout>
       )
 }
 
 export const query = graphql`
- query($id: String!) {
-   microcmsArticles(id: { eq: $id }) {
-     title
-     title_origin
-     body
-     body
-   }
- }
+{
+  contentfulArticles {
+    body {
+      childMdx {
+        body
+      }
+    }
+  }
+}
 `
 
 export default ArticlePost

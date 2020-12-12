@@ -6,23 +6,16 @@ import SEO from "../components/seo"
 
 
 const Articles = ({ data }) => {
-  return data.allMicrocmsArticles.edges.map(edge => {
+  return data.articles.edges.map(edge => {
     const articles = edge.node
-    console.log(edge)
+    console.log(articles.title)
     return (
       <div key={articles.id}>
         <div>
-          <Link to={`/article/${articles.title}`}>
+          <Link to={`/article/${encodeURI(articles.title)}`}>
             <h2>{articles.title}</h2>
           </Link>
-          <p>{articles.features}</p>
-        </div>
-        <div>
-          {articles.category.map(category => (
-            <div key={category.id}>
-              <span>{category.name}</span>
-            </div>
-          ))}
+          {/* <p>{articles.features}</p> */}
         </div>
         <hr />
       </div>
@@ -32,7 +25,7 @@ const Articles = ({ data }) => {
 
 
 const IndexPage = () => {
-  const data = useStaticQuery(query)
+  const data = useStaticQuery(getAllArticles)
   return (
     <Layout>
       <SEO title="Articles" />
@@ -41,25 +34,23 @@ const IndexPage = () => {
   )
 }
 
-const query = graphql`
- {
-    allMicrocmsArticles(
-     sort: { fields: [createdAt], order: DESC }
-   ) {
-     edges {
-       node {
-         id
-         title
-         title_origin
-         category {
-           id
-           name
-         }
-         body
-         features
-       }
-     }
-   }
- }
+const getAllArticles = graphql`
+query getAllArticles {
+  articles: allContentfulArticles(
+    sort: {
+      order: DESC,
+      fields: [createdAt]
+    }) {
+    edges {
+      node {
+        id
+        tags
+        title
+        createdAt
+      }
+    }
+  }
+}
 `
+
 export default IndexPage

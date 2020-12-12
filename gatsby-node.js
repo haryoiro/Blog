@@ -1,38 +1,39 @@
 const path = require("path")
 
-exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions
-    const result = await graphql(
-        `
-          {
-             allMicrocmsArticles {
-              edges {
-                node {
-                  id
-                  title
-                  title_origin
-                  category {
-                     id
-                     name
-                  }
-                  body
-                  features
-                }
-              }
-            }
+const getArticles = `
+query getArticles {
+  allContentfulArticles {
+    edges {
+      node {
+        body {
+          child: childMdx {
+            text: excerpt
           }
-        `
-      )
-
-    if (result.errors) {
-        throw result.errors
+        }
+        id
+        createdAt
+        title
+        tags
+      }
     }
- 
-    result.data.allMicrocmsArticles.edges.forEach(edge => {
-        const subDir = '/article/'+edge.node.title
+  }
+}
+`
+
+
+exports.createPages = async ({ graphql, actions }) => {
+  
+    const { createPage } = actions
+    const result = await graphql(getArticles)
+
+    console.log(result)
+    
+    if (result.error) {throw result.error}
+
+    result.data.allContentfulArticles.edges.forEach(edge => {
+        const subDir = `/article/${edge.node.title}`
         createPage({
-            //path: `/patients/${edge.node.id}`,
-            path: `${subDir}`,
+            path: subDir,
             component: path.resolve(
                 "./src/templates/article.js"
             ),
@@ -40,6 +41,22 @@ exports.createPages = async ({ graphql, actions }) => {
             id: edge.node.id,
             },
         })
-   
-    })
+    
+    }) 
 }
+
+
+// query MyQuery {
+//   contentfulArticles {
+//     id
+//     features
+//     title
+//     tags
+//     createdAt
+//     body: childContentfulArticlesBodyTextNode {
+//       child: childMdx {
+//         text: excerpt
+//       }
+//     }
+//   }
+// }

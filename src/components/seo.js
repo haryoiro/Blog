@@ -37,6 +37,10 @@ function SEO({ description, lang, meta, title }) {
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
+          name: `charSet`,
+          content: 'utf-8',
+        },
+        {
           name: `description`,
           content: metaDescription,
         },
@@ -69,7 +73,10 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+      className = "Application"
+    >
+      <meta charSet="utf-8" />
+    </Helmet>
   )
 }
 
