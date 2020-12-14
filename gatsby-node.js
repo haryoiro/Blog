@@ -1,62 +1,42 @@
-const path = require("path")
-
-const getArticles = `
-query getArticles {
-  allContentfulArticles {
-    edges {
-      node {
-        body {
-          child: childMdx {
-            text: excerpt
-          }
-        }
-        id
-        createdAt
-        title
-        tags
-      }
-    }
-  }
-}
-`
-
+const path = require('path')
 
 exports.createPages = async ({ graphql, actions }) => {
-  
-    const { createPage } = actions
-    const result = await graphql(getArticles)
+  const { createPage } = actions
+  const result = await graphql(`
+  {
+    allContentfulArticles {
+      edges {
+        node {
+          body {
+            child: childMdx {
+              text: excerpt
+            }
+          }
+          id
+          createdAt
+          title
+          tags
+          slug
+        }
+      }
+    }
+  }`)
 
-    console.log(result)
-    
-    if (result.error) {throw result.error}
+  if (result.error) { throw result.error }
 
-    result.data.allContentfulArticles.edges.forEach(edge => {
-        const subDir = `/article/${edge.node.title}`
-        createPage({
-            path: subDir,
-            component: path.resolve(
-                "./src/templates/article.js"
-            ),
-            context: {
-            id: edge.node.id,
-            },
-        })
-    
-    }) 
+  const posts = result.data.allContentfulArticles.edges
+  console.log(posts)
+  posts.forEach((edge) => {
+    const subDir = `/article/${edge.node.slug}`
+    createPage({
+      path: subDir,
+      component: path.resolve(
+        './src/templates/article.tsx',
+      ),
+      context: {
+        slug: edge.node.slug,
+        id: edge.node.id,
+      },
+    })
+  })
 }
-
-
-// query MyQuery {
-//   contentfulArticles {
-//     id
-//     features
-//     title
-//     tags
-//     createdAt
-//     body: childContentfulArticlesBodyTextNode {
-//       child: childMdx {
-//         text: excerpt
-//       }
-//     }
-//   }
-// }

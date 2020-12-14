@@ -1,69 +1,82 @@
-const dotenv = require('dotenv')
-
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable global-require */
 if (process.env.ENVIRONMENT !== 'production') {
-  dotenv.config()
+  require('dotenv').config()
 }
 
 module.exports = {
   siteMetadata: {
-    title: `HaryoiroTechBlog`,
-    description: ``,
-    author: `@gatsbyjs`,
-    charset: `utf-8`,
+    title: 'haryoiro/blog',
+    description: '',
+    author: '@haryoiro',
+    charset: 'utf-8',
   },
   flags: {
     PRESERVE_WEBPACK_CACHE: true,
+    FAST_DEV: true,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
+        name: 'images',
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        name: 'haryoiro-tech-blog',
+        short_name: 'haryoblog',
+        start_url: '/',
+        background_color: '#663399',
+        theme_color: '#663399',
+        display: 'minimal-ui',
+        icon: 'src/images/gatsby-icon.png',
       },
     },
+    // 'gatsby-plugin-offline',
+    // 'gatsby-plugin-typescript',
+    // 'gatsby-plugin-typescript-checker',
+    // CodeGenerator
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-plugin-graphql-codegen',
+      options: {
+        fileName: 'types/graphql-types.d.ts',
+      },
+    },
+    // Linter
+    'gatsby-plugin-eslint',
+    {
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images-contentful`,
+            resolve: 'gatsby-remark-images-contentful',
             options: {
               maxWidth: 590,
               linkImagesToOriginal: false,
               withWebp: true,
-              loading: "lazy",
+              loading: 'lazy',
             },
           },
         ],
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: 'gatsby-plugin-mdx',
       options: {
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images-contentful`,
+            resolve: 'gatsby-remark-images-contentful',
             options: {
               maxWidth: 590,
               linkImagesToOriginal: false,
               withWebp: true,
-              loading: "lazy",
+              loading: 'lazy',
             },
           },
         ],
@@ -71,22 +84,11 @@ module.exports = {
     },
     // BLOG記事ソース Contentful
     {
-      resolve: "gatsby-source-contentful",
+      resolve: 'gatsby-source-contentful',
       options: {
         spaceId: process.env.CF_SPACE_ID,
         accessToken: process.env.CF_ACCESS_TOKEN,
-      }
+      },
     },
-    {
-      // BLOG記事ソース
-      resolve: "gatsby-source-microcms",
-      options: {
-        apiKey: process.env.MS_X_API_KEY,
-        serviceId: process.env.MS_SERVICE_ID,
-        apis: [{
-          endpoint: 'articles',
-        }]
-      }
-    }
   ],
 }
