@@ -12,6 +12,7 @@ import { MDXProvider } from '@mdx-js/react'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import MDComponent from '../components/mdcomponents'
 
 // type declarations
 import { ArticlePostQuery } from '../../types/graphql-types'
@@ -20,24 +21,17 @@ type Props = {
   data: ArticlePostQuery
 }
 
-// MDX Custom Components
-const components = {
-  h1: props => <h1 style={{color: "tomato"}} {...props} />,
-  h2: props => <h2 style={{color: "limegreen"}} {...props} />,
-}
-
 // 
 const ArticlePost: React.FC<Props> = ({ data }) => {
-  const articleData = data.articles
-  // console.log(articleData)
+  const { articles } = data
 
   return (
     <Layout>
-      <SEO title={articleData.title} />
+      <SEO title={articles?.title} />
       <MDXProvider components={components}>
-        <h1>{articleData.title}</h1>
-        <article>
-          <MDXRenderer>{articleData.body.child.body}</MDXRenderer>
+        <h2 id='article-title'>{articles?.title}</h2>
+        <article id='article-body'>
+          <MDXRenderer>{articles?.body?.child?.body}</MDXRenderer>
         </article>
       </MDXProvider>
     </Layout>
@@ -54,7 +48,7 @@ export const query = graphql`
       title
       features
       tags
-      createdAt
+      createdAt(fromNow: true)
       body: childContentfulArticlesBodyTextNode {
         child: childMdx {
           body
