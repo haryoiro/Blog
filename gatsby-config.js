@@ -13,9 +13,13 @@ module.exports = {
   },
   flags: {
     PRESERVE_WEBPACK_CACHE: true,
-    FAST_DEV: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+    FAST_REFRESH: true,
+    LAZY_IMAGES: true,
   },
   plugins: [
+    // Dev Only
+    'gatsby-plugin-remove-fingerprints',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
@@ -39,13 +43,24 @@ module.exports = {
       },
     },
     // 'gatsby-plugin-offline',
-    // 'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-plugin-typescript',
+      options: {
+        isTSX: true,
+        jsxPragma: 'jsx',
+        allExtensions: true,
+      },
+    },
     // 'gatsby-plugin-typescript-checker',
     // CodeGenerator
     {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
         fileName: 'types/graphql-types.d.ts',
+        documentsPath: [
+          './src/**/*.{ts, tsx}',
+        ],
+        codegenDelay: 1000,
       },
     },
     // Linter
