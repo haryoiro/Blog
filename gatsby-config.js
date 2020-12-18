@@ -6,9 +6,9 @@ if (process.env.ENVIRONMENT !== 'production') {
 
 module.exports = {
   siteMetadata: {
-    title: 'haryoiro/blog',
+    title: 'CloudGazelle::Blog',
     description: '',
-    author: '@haryoiro',
+    author: 'Haryoiro',
     charset: 'utf-8',
   },
   flags: {
@@ -30,18 +30,19 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: 'haryoiro-tech-blog',
-        short_name: 'haryoblog',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png',
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-manifest',
+    //   options: {
+    //     name: 'haryoiro-tech-blog',
+    //     short_name: 'haryoblog',
+    //     start_url: '/',
+    //     background_color: '#663399',
+    //     theme_color: '#663399',
+    //     display: 'minimal-ui',
+    //     icon: 'src/images/gatsby-icon.png',
+    //   },
+    // },
+    // 'gatsby-plugin-sass',
     // 'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-typescript',
