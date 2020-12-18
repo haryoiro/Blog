@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from '../components/Layout'
+import SEO from '../components/SEO'
 
 import { AllArticlesQuery } from '../../types/graphql-types'
 
@@ -10,59 +10,59 @@ type Props = {
   data: AllArticlesQuery
 }
 
-const Articles: React.FC<Props> = ({ data }) => {
-  console.log(data)
-  return (
-    <>{
-      data.articles.edges.map((edge) => {
-      const articles = edge.node
-      return (
-        <div key={articles.id}>
-          <div>
-            <h5>posted at {articles.createdAt}</h5>
-            <Link to={`/article/${articles.slug}`}>
-              <h2>{articles.title}</h2>
-            </Link>
-            <p>{articles.features}</p>
-          </div>
-        </div>
-      )
-    })
-    }
-  </>)
-}
 
-const ArticlesPage = () => {
-  const data = useStaticQuery(query)
+const ArticlesListPage = () => {
+  const { allArticles: { articles } } = useStaticQuery<AllArticlesQuery>(query)
 
   return (
     <Layout>
-      <SEO title="Articles" />
-      <Articles data={data} />
+      <SEO 
+        title="All articles"
+        type="website"
+      />
+      {
+        articles.map(({ article: { id, updatedAt, slug, title } }) => (
+          <div key={id}>
+
+            <h5>{updatedAt}</h5>
+            <Link to={`/blog/${slug}`}>
+              <h2>{title}</h2>
+            </Link>
+
+            <Link to={`/blog/${slug}`}>続きを読む</Link>
+
+          </div>
+        )
+        )
+      }
     </Layout>
   )
 }
 
-export default ArticlesPage
+
+export default ArticlesListPage
 
 export const query = graphql`
-  query AllArticles {
-    articles: allContentfulArticles(
-      sort: { 
-        order: DESC, 
-        fields: [createdAt]
-      }
-    ) {
-      edges {
-        node {
-          id
-          tags
-          title
-          slug
-          createdAt(fromNow: true)
-          features
+query AllArticles {
+	allArticles: allContentfulArticles(sort: {
+    fields: updatedAt,
+    order: DESC
+  }) {
+    articles: edges {
+      article: node {
+        id
+        title
+        tags
+        slug
+        updatedAt(fromNow: true)
+        body {
+          childMdx {
+            excerpt(pruneLength: 154)
+          }
         }
       }
     }
   }
+}
+
 `
