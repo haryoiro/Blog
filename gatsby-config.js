@@ -6,7 +6,7 @@ if (process.env.ENVIRONMENT !== 'production') {
 
 module.exports = {
   siteMetadata: {
-    title: 'CloudGazelle::Blog',
+    title: 'CloudGazelle',
     description: '',
     author: 'Haryoiro',
     charset: 'utf-8',
@@ -33,8 +33,8 @@ module.exports = {
     // {
     //   resolve: 'gatsby-plugin-manifest',
     //   options: {
-    //     name: 'haryoiro-tech-blog',
-    //     short_name: 'haryoblog',
+    //     name: 'CloudGazelle::',
+    //     short_name: 'CloudGazzle',
     //     start_url: '/',
     //     background_color: '#663399',
     //     theme_color: '#663399',
