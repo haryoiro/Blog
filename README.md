@@ -5,6 +5,12 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/haryoiro/ssg-blog-example)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
+
+
+<h3 align="left">Languages and Tools:</h3>
+<p align="left"> <a href="https://www.gatsbyjs.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/gatsbyjs/gatsbyjs-icon.svg" alt="gatsby" width="40" height="40"/> </a> <a href="https://www.typescriptlang.org/" target="_blank"> <img src="https://devicons.github.io/devicon/devicon.git/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/> </a> </p>
+
+
 # 技術スタック
 SSG     :  GatsbyJS
 
