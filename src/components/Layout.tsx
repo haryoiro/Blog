@@ -12,7 +12,6 @@ import useSiteMetadata from './SiteMetadata'
 
 import Header from './Header'
 import Footer from './Footer'
-import './layout.css'
 
 export type LayoutProps = {
   children: React.ReactNode
