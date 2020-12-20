@@ -1,6 +1,8 @@
 name: Build Blog and Deploy to Netlify
 
 on:
+  repository_dispatch:
+    types: [build]
   push:
     branches:
       - master
