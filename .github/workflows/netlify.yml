@@ -11,17 +11,26 @@ jobs:
   build:
     runs-on: "ubuntu-18.04"
     steps:
+      - name: Checkout master branch
       - uses: action/checkout@v2
+        with:
+          path: master
+      
+      - name: Setup Node.js
       - uses: action/setup-node@v1
         with:
           node-version: '14.x'
 
+      - name: Install Dependencies
       - run: npm install
+      
+      - name: Build
       - run: npm run build
         env:
           CF_SPACE_ID: ${{ secrets.CF_SPACE_ID }}
           CF_ACCESS_TOKEN: ${{ secrets.CF_ACCESS_TOKEN }}
 
+      - name: Deploy to Netlify
       - uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
