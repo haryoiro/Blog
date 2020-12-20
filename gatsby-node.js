@@ -9,15 +9,6 @@ exports.createPages = async ({ graphql, actions }) => {
     allContentfulArticles {
       edges {
         node {
-          body {
-            child: childMdx {
-              text: excerpt
-            }
-          }
-          id
-          createdAt
-          title
-          tags
           slug
         }
       }
@@ -33,7 +24,6 @@ exports.createPages = async ({ graphql, actions }) => {
       component: blogPostTemplate,
       context: {
         slug: edge.node.slug,
-        id: edge.node.id,
       },
     })
   })
