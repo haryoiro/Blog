@@ -52,7 +52,6 @@ query AllArticles {
       article: node {
         id
         title
-        tags
         slug
         updatedAt(fromNow: true)
         body {
