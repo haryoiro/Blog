@@ -18,9 +18,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-
-      - name: Install Dependencies
-        run: npm install
+      
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            node-
+      
+      - name: npm ci
+        run: npm ci
       
       - name: Build
         run: npm run build
