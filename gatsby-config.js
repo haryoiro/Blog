@@ -30,20 +30,8 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    // {
-    //   resolve: 'gatsby-plugin-manifest',
-    //   options: {
-    //     name: 'CloudGazelle::',
-    //     short_name: 'CloudGazzle',
-    //     start_url: '/',
-    //     background_color: '#663399',
-    //     theme_color: '#663399',
-    //     display: 'minimal-ui',
-    //     icon: 'src/images/gatsby-icon.png',
-    //   },
-    // },
-    // 'gatsby-plugin-sass',
-    // 'gatsby-plugin-offline',
+    'gatsby-plugin-sass',
+
     {
       resolve: 'gatsby-plugin-typescript',
       options: {
@@ -66,22 +54,6 @@ module.exports = {
     },
     // Linter
     'gatsby-plugin-eslint',
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-images-contentful',
-            options: {
-              maxWidth: 590,
-              linkImagesToOriginal: false,
-              withWebp: true,
-              loading: 'lazy',
-            },
-          },
-        ],
-      },
-    },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
