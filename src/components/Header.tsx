@@ -21,7 +21,7 @@ const Header: React.FC = () => {
       >
         <h1 style={{ margin: 0 }}>
           <Link
-            to="/blog/1"
+            to="/blog"
             style={{
               color: 'white',
               textDecoration: 'none',

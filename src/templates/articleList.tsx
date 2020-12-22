@@ -13,8 +13,6 @@ export type Props = {
 const ArticleList: React.FC<Props> = ({ data, pageContext }) => {
   const articles = data.allContentfulArticles.edges
 
-  console.log(pageContext)
-
   return (
     <Layout>
       <SEO title='Articles' type="article" />

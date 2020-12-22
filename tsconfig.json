@@ -7,9 +7,7 @@
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-
     "newLine": "lf",
-    
     "typeRoots": ["/types/"],
     "types": [
       "node",
