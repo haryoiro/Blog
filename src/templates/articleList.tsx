@@ -5,7 +5,7 @@ import SEO from '../components/SEO'
 
 import { ArticleListQuery } from '../../types/graphql-types'
 
-type Props = {
+export type Props = {
   data: ArticleListQuery,
   pageContext: any
 }

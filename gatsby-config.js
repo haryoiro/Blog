@@ -1,7 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable global-require */
+const dotenv = require('dotenv')
+
 if (process.env.ENVIRONMENT !== 'production') {
-  require('dotenv').config()
+  dotenv.config()
 }
 
 module.exports = {
@@ -18,29 +18,6 @@ module.exports = {
     LAZY_IMAGES: true,
   },
   plugins: [
-    // Dev Only
-    'gatsby-plugin-remove-fingerprints',
-    'gatsby-plugin-react-helmet',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: `${__dirname}/src/images`,
-      },
-    },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-sass',
-
-    {
-      resolve: 'gatsby-plugin-typescript',
-      options: {
-        isTSX: true,
-        jsxPragma: 'jsx',
-        allExtensions: true,
-      },
-    },
-    // 'gatsby-plugin-typescript-checker',
     // CodeGenerator
     {
       resolve: 'gatsby-plugin-graphql-codegen',
@@ -52,6 +29,39 @@ module.exports = {
         codegenDelay: 1000,
       },
     },
+    'gatsby-plugin-remove-fingerprints',
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/images`,
+      },
+    },
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    // {
+    //   resolve: 'gatsby-plugin-manifest',
+    //   options: {
+    //     name: 'CloudGazelle::',
+    //     short_name: 'CloudGazzle',
+    //     start_url: '/',
+    //     background_color: '#663399',
+    //     theme_color: '#663399',
+    //     display: 'minimal-ui',
+    //     icon: 'src/images/gatsby-icon.png',
+    //   },
+    // },
+    'gatsby-plugin-sass',
+    {
+      resolve: 'gatsby-plugin-typescript',
+      options: {
+        isTSX: true,
+        jsxPragma: 'jsx',
+        allExtensions: true,
+      },
+    },
+    'gatsby-plugin-typescript-checker',
     // Linter
     'gatsby-plugin-eslint',
     {

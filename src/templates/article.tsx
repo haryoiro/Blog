@@ -17,7 +17,7 @@ import MDComponents from '../components/MDXComponents'
 // type declarations
 import { ArticleBySlugQuery } from '../../types/graphql-types'
 
-type Props = {
+export type Props = {
   data: ArticleBySlugQuery
 }
 
@@ -41,7 +41,7 @@ const ArticlePost: React.FC<Props> = ({ data }) => {
 
 export default ArticlePost
 
-export const query = graphql`
+export const ArticleBySlug = graphql`
 query ArticleBySlug($slug: String!) {
   article: contentfulArticles(slug: {eq: $slug}) {
     slug

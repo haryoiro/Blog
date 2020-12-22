@@ -494,13 +494,7 @@ export type ContentfulArticlesFieldsEnum =
   | 'tags___id'
   | 'tags___node_locale'
   | 'tags___title'
-  | 'tags___color'
   | 'tags___slug'
-  | 'tags___spaceId'
-  | 'tags___createdAt'
-  | 'tags___updatedAt'
-  | 'tags___sys___type'
-  | 'tags___sys___revision'
   | 'tags___articles'
   | 'tags___articles___contentful_id'
   | 'tags___articles___id'
@@ -521,12 +515,12 @@ export type ContentfulArticlesFieldsEnum =
   | 'tags___articles___tags___id'
   | 'tags___articles___tags___node_locale'
   | 'tags___articles___tags___title'
-  | 'tags___articles___tags___color'
   | 'tags___articles___tags___slug'
+  | 'tags___articles___tags___articles'
   | 'tags___articles___tags___spaceId'
   | 'tags___articles___tags___createdAt'
   | 'tags___articles___tags___updatedAt'
-  | 'tags___articles___tags___articles'
+  | 'tags___articles___tags___color'
   | 'tags___articles___tags___children'
   | 'tags___articles___parent___id'
   | 'tags___articles___parent___children'
@@ -544,6 +538,12 @@ export type ContentfulArticlesFieldsEnum =
   | 'tags___articles___childContentfulArticlesBodyTextNode___id'
   | 'tags___articles___childContentfulArticlesBodyTextNode___children'
   | 'tags___articles___childContentfulArticlesBodyTextNode___body'
+  | 'tags___spaceId'
+  | 'tags___createdAt'
+  | 'tags___updatedAt'
+  | 'tags___sys___type'
+  | 'tags___sys___revision'
+  | 'tags___color'
   | 'tags___parent___id'
   | 'tags___parent___parent___id'
   | 'tags___parent___parent___children'
@@ -1451,13 +1451,13 @@ export type ContentfulTags = ContentfulReference & ContentfulEntry & Node & {
   id: Scalars['ID'];
   node_locale: Scalars['String'];
   title?: Maybe<Scalars['String']>;
-  color?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
+  articles?: Maybe<Array<Maybe<ContentfulArticles>>>;
   spaceId?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
   sys?: Maybe<ContentfulTagsSys>;
-  articles?: Maybe<Array<Maybe<ContentfulArticles>>>;
+  color?: Maybe<Scalars['String']>;
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
@@ -1511,16 +1511,7 @@ export type ContentfulTagsFieldsEnum =
   | 'id'
   | 'node_locale'
   | 'title'
-  | 'color'
   | 'slug'
-  | 'spaceId'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'sys___type'
-  | 'sys___revision'
-  | 'sys___contentType___sys___type'
-  | 'sys___contentType___sys___linkType'
-  | 'sys___contentType___sys___id'
   | 'articles'
   | 'articles___contentful_id'
   | 'articles___id'
@@ -1576,13 +1567,7 @@ export type ContentfulTagsFieldsEnum =
   | 'articles___tags___id'
   | 'articles___tags___node_locale'
   | 'articles___tags___title'
-  | 'articles___tags___color'
   | 'articles___tags___slug'
-  | 'articles___tags___spaceId'
-  | 'articles___tags___createdAt'
-  | 'articles___tags___updatedAt'
-  | 'articles___tags___sys___type'
-  | 'articles___tags___sys___revision'
   | 'articles___tags___articles'
   | 'articles___tags___articles___contentful_id'
   | 'articles___tags___articles___id'
@@ -1595,6 +1580,12 @@ export type ContentfulTagsFieldsEnum =
   | 'articles___tags___articles___updatedAt'
   | 'articles___tags___articles___tags'
   | 'articles___tags___articles___children'
+  | 'articles___tags___spaceId'
+  | 'articles___tags___createdAt'
+  | 'articles___tags___updatedAt'
+  | 'articles___tags___sys___type'
+  | 'articles___tags___sys___revision'
+  | 'articles___tags___color'
   | 'articles___tags___parent___id'
   | 'articles___tags___parent___children'
   | 'articles___tags___children'
@@ -1683,6 +1674,15 @@ export type ContentfulTagsFieldsEnum =
   | 'articles___childContentfulArticlesBodyTextNode___childMdx___timeToRead'
   | 'articles___childContentfulArticlesBodyTextNode___childMdx___id'
   | 'articles___childContentfulArticlesBodyTextNode___childMdx___children'
+  | 'spaceId'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'sys___type'
+  | 'sys___revision'
+  | 'sys___contentType___sys___type'
+  | 'sys___contentType___sys___linkType'
+  | 'sys___contentType___sys___id'
+  | 'color'
   | 'parent___id'
   | 'parent___parent___id'
   | 'parent___parent___parent___id'
@@ -1774,13 +1774,13 @@ export type ContentfulTagsFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
-  color?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
+  articles?: Maybe<ContentfulArticlesFilterListInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulTagsSysFilterInput>;
-  articles?: Maybe<ContentfulArticlesFilterListInput>;
+  color?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
@@ -4038,13 +4038,13 @@ export type QueryContentfulTagsArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
-  color?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
+  articles?: Maybe<ContentfulArticlesFilterListInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulTagsSysFilterInput>;
-  articles?: Maybe<ContentfulArticlesFilterListInput>;
+  color?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
@@ -4520,19 +4520,19 @@ export type SitePageConnectionGroupArgs = {
 };
 
 export type SitePageContext = {
+  slug?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   skip?: Maybe<Scalars['Int']>;
   numPages?: Maybe<Scalars['Int']>;
   currentPage?: Maybe<Scalars['Int']>;
-  slug?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>;
   limit?: Maybe<IntQueryOperatorInput>;
   skip?: Maybe<IntQueryOperatorInput>;
   numPages?: Maybe<IntQueryOperatorInput>;
   currentPage?: Maybe<IntQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -4634,11 +4634,11 @@ export type SitePageFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
+  | 'context___slug'
   | 'context___limit'
   | 'context___skip'
   | 'context___numPages'
   | 'context___currentPage'
-  | 'context___slug'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -4686,18 +4686,27 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___plugins___name'
   | 'pluginCreator___pluginOptions___plugins___version'
   | 'pluginCreator___pluginOptions___plugins___pluginFilepath'
+  | 'pluginCreator___pluginOptions___fileName'
+  | 'pluginCreator___pluginOptions___documentsPath'
+  | 'pluginCreator___pluginOptions___codegenDelay'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___base64Width'
   | 'pluginCreator___pluginOptions___stripMetadata'
   | 'pluginCreator___pluginOptions___defaultQuality'
   | 'pluginCreator___pluginOptions___failOnError'
+  | 'pluginCreator___pluginOptions___indentedSyntax'
+  | 'pluginCreator___pluginOptions___indentType'
+  | 'pluginCreator___pluginOptions___indentWidth'
+  | 'pluginCreator___pluginOptions___linefeed'
+  | 'pluginCreator___pluginOptions___omitSourceMapUrl'
+  | 'pluginCreator___pluginOptions___precision'
+  | 'pluginCreator___pluginOptions___sourceComments'
+  | 'pluginCreator___pluginOptions___sourceMapContents'
+  | 'pluginCreator___pluginOptions___sourceMapEmbed'
   | 'pluginCreator___pluginOptions___isTSX'
   | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___pluginOptions___allExtensions'
-  | 'pluginCreator___pluginOptions___fileName'
-  | 'pluginCreator___pluginOptions___documentsPath'
-  | 'pluginCreator___pluginOptions___codegenDelay'
   | 'pluginCreator___pluginOptions___maxWidth'
   | 'pluginCreator___pluginOptions___linkImagesToOriginal'
   | 'pluginCreator___pluginOptions___withWebp'
@@ -4913,18 +4922,27 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___plugins___pluginOptions___withWebp'
   | 'pluginOptions___plugins___pluginOptions___loading'
   | 'pluginOptions___plugins___pluginFilepath'
+  | 'pluginOptions___fileName'
+  | 'pluginOptions___documentsPath'
+  | 'pluginOptions___codegenDelay'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
   | 'pluginOptions___base64Width'
   | 'pluginOptions___stripMetadata'
   | 'pluginOptions___defaultQuality'
   | 'pluginOptions___failOnError'
+  | 'pluginOptions___indentedSyntax'
+  | 'pluginOptions___indentType'
+  | 'pluginOptions___indentWidth'
+  | 'pluginOptions___linefeed'
+  | 'pluginOptions___omitSourceMapUrl'
+  | 'pluginOptions___precision'
+  | 'pluginOptions___sourceComments'
+  | 'pluginOptions___sourceMapContents'
+  | 'pluginOptions___sourceMapEmbed'
   | 'pluginOptions___isTSX'
   | 'pluginOptions___jsxPragma'
   | 'pluginOptions___allExtensions'
-  | 'pluginOptions___fileName'
-  | 'pluginOptions___documentsPath'
-  | 'pluginOptions___codegenDelay'
   | 'pluginOptions___maxWidth'
   | 'pluginOptions___linkImagesToOriginal'
   | 'pluginOptions___withWebp'
@@ -5061,18 +5079,27 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 
 export type SitePluginPluginOptions = {
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
+  fileName?: Maybe<Scalars['String']>;
+  documentsPath?: Maybe<Array<Maybe<Scalars['String']>>>;
+  codegenDelay?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   base64Width?: Maybe<Scalars['Int']>;
   stripMetadata?: Maybe<Scalars['Boolean']>;
   defaultQuality?: Maybe<Scalars['Int']>;
   failOnError?: Maybe<Scalars['Boolean']>;
+  indentedSyntax?: Maybe<Scalars['Boolean']>;
+  indentType?: Maybe<Scalars['String']>;
+  indentWidth?: Maybe<Scalars['Int']>;
+  linefeed?: Maybe<Scalars['String']>;
+  omitSourceMapUrl?: Maybe<Scalars['Boolean']>;
+  precision?: Maybe<Scalars['Int']>;
+  sourceComments?: Maybe<Scalars['Boolean']>;
+  sourceMapContents?: Maybe<Scalars['Boolean']>;
+  sourceMapEmbed?: Maybe<Scalars['Boolean']>;
   isTSX?: Maybe<Scalars['Boolean']>;
   jsxPragma?: Maybe<Scalars['String']>;
   allExtensions?: Maybe<Scalars['Boolean']>;
-  fileName?: Maybe<Scalars['String']>;
-  documentsPath?: Maybe<Array<Maybe<Scalars['String']>>>;
-  codegenDelay?: Maybe<Scalars['Int']>;
   maxWidth?: Maybe<Scalars['Int']>;
   linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
   withWebp?: Maybe<Scalars['Boolean']>;
@@ -5095,18 +5122,27 @@ export type SitePluginPluginOptions = {
 
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
+  fileName?: Maybe<StringQueryOperatorInput>;
+  documentsPath?: Maybe<StringQueryOperatorInput>;
+  codegenDelay?: Maybe<IntQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   base64Width?: Maybe<IntQueryOperatorInput>;
   stripMetadata?: Maybe<BooleanQueryOperatorInput>;
   defaultQuality?: Maybe<IntQueryOperatorInput>;
   failOnError?: Maybe<BooleanQueryOperatorInput>;
+  indentedSyntax?: Maybe<BooleanQueryOperatorInput>;
+  indentType?: Maybe<StringQueryOperatorInput>;
+  indentWidth?: Maybe<IntQueryOperatorInput>;
+  linefeed?: Maybe<StringQueryOperatorInput>;
+  omitSourceMapUrl?: Maybe<BooleanQueryOperatorInput>;
+  precision?: Maybe<IntQueryOperatorInput>;
+  sourceComments?: Maybe<BooleanQueryOperatorInput>;
+  sourceMapContents?: Maybe<BooleanQueryOperatorInput>;
+  sourceMapEmbed?: Maybe<BooleanQueryOperatorInput>;
   isTSX?: Maybe<BooleanQueryOperatorInput>;
   jsxPragma?: Maybe<StringQueryOperatorInput>;
   allExtensions?: Maybe<BooleanQueryOperatorInput>;
-  fileName?: Maybe<StringQueryOperatorInput>;
-  documentsPath?: Maybe<StringQueryOperatorInput>;
-  codegenDelay?: Maybe<IntQueryOperatorInput>;
   maxWidth?: Maybe<IntQueryOperatorInput>;
   linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
   withWebp?: Maybe<BooleanQueryOperatorInput>;
@@ -5263,11 +5299,6 @@ export type AllArticlesQuery = { allArticles: { articles: Array<{ article: (
         Pick<ContentfulArticles, 'id' | 'title' | 'slug' | 'updatedAt'>
         & { body?: Maybe<{ childMdx?: Maybe<Pick<Mdx, 'excerpt'>> }> }
       ) }> } };
-
-export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Unnamed_3_Query = { site?: Maybe<Pick<Site, 'buildTime'>> };
 
 export type ArticleBySlugQueryVariables = Exact<{
   slug: Scalars['String'];

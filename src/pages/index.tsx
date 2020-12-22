@@ -1,13 +1,11 @@
 import React from 'react'
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 
-import { AllArticlesQuery } from '../../types/graphql-types'
 
 const ArticlesListPage = () => {
-  const { allArticles: { articles } } = useStaticQuery<AllArticlesQuery>(query)
 
   return (
     <Layout>
@@ -15,21 +13,7 @@ const ArticlesListPage = () => {
         title="All articles"
         type="website"
       />
-      {
-        articles.map(({ article: { id, updatedAt, slug, title } }) => (
-          <div key={id}>
-
-            <h5>{updatedAt}</h5>
-            <Link to={`/blog/${slug}`}>
-              <h2>{title}</h2>
-            </Link>
-
-            <Link to={`/blog/${slug}`}>続きを読む</Link>
-
-          </div>
-        )
-        )
-      }
+      <Link to='/blog/'>HOME</Link>
     </Layout>
   )
 }
