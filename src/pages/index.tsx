@@ -6,11 +6,6 @@ import SEO from '../components/SEO'
 
 import { AllArticlesQuery } from '../../types/graphql-types'
 
-type Props = {
-  data: AllArticlesQuery
-}
-
-
 const ArticlesListPage = () => {
   const { allArticles: { articles } } = useStaticQuery<AllArticlesQuery>(query)
 

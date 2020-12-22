@@ -494,13 +494,13 @@ export type ContentfulArticlesFieldsEnum =
   | 'tags___id'
   | 'tags___node_locale'
   | 'tags___title'
+  | 'tags___color'
   | 'tags___slug'
   | 'tags___spaceId'
   | 'tags___createdAt'
   | 'tags___updatedAt'
   | 'tags___sys___type'
   | 'tags___sys___revision'
-  | 'tags___color'
   | 'tags___articles'
   | 'tags___articles___contentful_id'
   | 'tags___articles___id'
@@ -521,11 +521,11 @@ export type ContentfulArticlesFieldsEnum =
   | 'tags___articles___tags___id'
   | 'tags___articles___tags___node_locale'
   | 'tags___articles___tags___title'
+  | 'tags___articles___tags___color'
   | 'tags___articles___tags___slug'
   | 'tags___articles___tags___spaceId'
   | 'tags___articles___tags___createdAt'
   | 'tags___articles___tags___updatedAt'
-  | 'tags___articles___tags___color'
   | 'tags___articles___tags___articles'
   | 'tags___articles___tags___children'
   | 'tags___articles___parent___id'
@@ -1451,12 +1451,12 @@ export type ContentfulTags = ContentfulReference & ContentfulEntry & Node & {
   id: Scalars['ID'];
   node_locale: Scalars['String'];
   title?: Maybe<Scalars['String']>;
+  color?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   spaceId?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
   sys?: Maybe<ContentfulTagsSys>;
-  color?: Maybe<Scalars['String']>;
   articles?: Maybe<Array<Maybe<ContentfulArticles>>>;
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -1511,6 +1511,7 @@ export type ContentfulTagsFieldsEnum =
   | 'id'
   | 'node_locale'
   | 'title'
+  | 'color'
   | 'slug'
   | 'spaceId'
   | 'createdAt'
@@ -1520,7 +1521,6 @@ export type ContentfulTagsFieldsEnum =
   | 'sys___contentType___sys___type'
   | 'sys___contentType___sys___linkType'
   | 'sys___contentType___sys___id'
-  | 'color'
   | 'articles'
   | 'articles___contentful_id'
   | 'articles___id'
@@ -1576,13 +1576,13 @@ export type ContentfulTagsFieldsEnum =
   | 'articles___tags___id'
   | 'articles___tags___node_locale'
   | 'articles___tags___title'
+  | 'articles___tags___color'
   | 'articles___tags___slug'
   | 'articles___tags___spaceId'
   | 'articles___tags___createdAt'
   | 'articles___tags___updatedAt'
   | 'articles___tags___sys___type'
   | 'articles___tags___sys___revision'
-  | 'articles___tags___color'
   | 'articles___tags___articles'
   | 'articles___tags___articles___contentful_id'
   | 'articles___tags___articles___id'
@@ -1774,12 +1774,12 @@ export type ContentfulTagsFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
+  color?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulTagsSysFilterInput>;
-  color?: Maybe<StringQueryOperatorInput>;
   articles?: Maybe<ContentfulArticlesFilterListInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -4038,12 +4038,12 @@ export type QueryContentfulTagsArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
+  color?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulTagsSysFilterInput>;
-  color?: Maybe<StringQueryOperatorInput>;
   articles?: Maybe<ContentfulArticlesFilterListInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -4520,10 +4520,18 @@ export type SitePageConnectionGroupArgs = {
 };
 
 export type SitePageContext = {
+  limit?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  numPages?: Maybe<Scalars['Int']>;
+  currentPage?: Maybe<Scalars['Int']>;
   slug?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextFilterInput = {
+  limit?: Maybe<IntQueryOperatorInput>;
+  skip?: Maybe<IntQueryOperatorInput>;
+  numPages?: Maybe<IntQueryOperatorInput>;
+  currentPage?: Maybe<IntQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -4626,6 +4634,10 @@ export type SitePageFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
+  | 'context___limit'
+  | 'context___skip'
+  | 'context___numPages'
+  | 'context___currentPage'
   | 'context___slug'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
@@ -5262,10 +5274,21 @@ export type ArticleBySlugQueryVariables = Exact<{
 }>;
 
 
-export type ArticleBySlugQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'author'>> }>, article?: Maybe<(
+export type ArticleBySlugQuery = { article?: Maybe<(
     Pick<ContentfulArticles, 'slug' | 'title' | 'createdAt' | 'updatedAt'>
     & { node?: Maybe<{ childMdx?: Maybe<Pick<Mdx, 'body'>> }> }
   )> };
+
+export type ArticleListQueryVariables = Exact<{
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+}>;
+
+
+export type ArticleListQuery = { allContentfulArticles: { edges: Array<{ node: (
+        Pick<ContentfulArticles, 'id' | 'title' | 'slug' | 'updatedAt' | 'createdAt'>
+        & { body?: Maybe<{ childMdx?: Maybe<Pick<Mdx, 'excerpt'>> }> }
+      ) }> } };
 
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

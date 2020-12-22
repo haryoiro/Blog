@@ -23,12 +23,8 @@ type Props = {
 
 // 
 const ArticlePost: React.FC<Props> = ({ data }) => {
-  const { article: {
-    title,
-    node: { childMdx: { 
-      body
-    } }
-  }} = data
+  const title = data.article?.title
+  const body = data.article?.node?.childMdx?.body
 
   return (
     <Layout>
@@ -36,7 +32,7 @@ const ArticlePost: React.FC<Props> = ({ data }) => {
       <MDXProvider components={MDComponents}>
         <h2 id='article-title'>{title}</h2>
         <article id='article-body'>
-          <MDXRenderer>{body}</MDXRenderer>
+          <MDXRenderer>{body || ''}</MDXRenderer>
         </article>
       </MDXProvider>
     </Layout>
@@ -47,22 +43,16 @@ export default ArticlePost
 
 export const query = graphql`
 query ArticleBySlug($slug: String!) {
-  site {
-    siteMetadata {
-      title
-      author
-    }
-  }
   article: contentfulArticles(slug: {eq: $slug}) {
     slug
     title
-
-    createdAt(formatString: "MMMM/DD/YY HH:MM")
     node: childContentfulArticlesBodyTextNode {
       childMdx {
         body
       }
     }
+
+    createdAt(formatString: "MMMM/DD/YY HH:MM")
     updatedAt(fromNow: true)
   }
 }

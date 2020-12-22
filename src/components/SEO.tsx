@@ -11,7 +11,7 @@ import useSiteMetadata from './SiteMetadata'
 
 type Props = {
   type: 'website' | 'article'
-  title?: string
+  title: string | null | undefined
 }
 
 export const SEO: React.FC<Props> = ({
