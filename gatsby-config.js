@@ -1,7 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable global-require */
+const dotenv = require('dotenv')
+
 if (process.env.ENVIRONMENT !== 'production') {
-  require('dotenv').config()
+  dotenv.config()
 }
 
 module.exports = {
@@ -18,7 +18,17 @@ module.exports = {
     LAZY_IMAGES: true,
   },
   plugins: [
-    // Dev Only
+    // CodeGenerator
+    {
+      resolve: 'gatsby-plugin-graphql-codegen',
+      options: {
+        fileName: 'types/graphql-types.d.ts',
+        documentsPath: [
+          './src/**/*.{ts, tsx}',
+        ],
+        codegenDelay: 1000,
+      },
+    },
     'gatsby-plugin-remove-fingerprints',
     'gatsby-plugin-react-helmet',
     {
@@ -42,7 +52,7 @@ module.exports = {
     //     icon: 'src/images/gatsby-icon.png',
     //   },
     // },
-    // 'gatsby-plugin-sass',
+    'gatsby-plugin-sass',
     // 'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-typescript',
@@ -52,18 +62,7 @@ module.exports = {
         allExtensions: true,
       },
     },
-    // 'gatsby-plugin-typescript-checker',
-    // CodeGenerator
-    {
-      resolve: 'gatsby-plugin-graphql-codegen',
-      options: {
-        fileName: 'types/graphql-types.d.ts',
-        documentsPath: [
-          './src/**/*.{ts, tsx}',
-        ],
-        codegenDelay: 1000,
-      },
-    },
+    'gatsby-plugin-typescript-checker',
     // Linter
     'gatsby-plugin-eslint',
     {
