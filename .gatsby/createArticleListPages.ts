@@ -39,7 +39,7 @@ const createArticleListPages: GatsbyNode["createPages"] = async ({
   }
 
   // すべての記事
-  const posts = result?.data?.allContentfulArticles.edges
+  const posts = result.data.allContentfulArticles.edges
   if (!posts) {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return;

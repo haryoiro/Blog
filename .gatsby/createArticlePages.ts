@@ -31,7 +31,7 @@ query CreateArticlePages {
     return;
   }
 
-  const posts = result?.data?.allContentfulArticles.edges
+  const posts = result.data.allContentfulArticles.edges
 
   posts?.forEach(({ node: { slug } }) => {
     createPage({
