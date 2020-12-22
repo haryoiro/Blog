@@ -46,13 +46,13 @@ query ArticleBySlug($slug: String!) {
   article: contentfulArticles(slug: {eq: $slug}) {
     slug
     title
-
-    createdAt(formatString: "MMMM/DD/YY HH:MM")
     node: childContentfulArticlesBodyTextNode {
       childMdx {
         body
       }
     }
+
+    createdAt(formatString: "MMMM/DD/YY HH:MM")
     updatedAt(fromNow: true)
   }
 }
