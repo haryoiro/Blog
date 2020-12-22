@@ -31,9 +31,13 @@ query CreateArticlePages {
     return;
   }
 
-  const posts = result?.data?.allContentfulArticles.edges
+  const posts = result.data.allContentfulArticles.edges
+  if (!posts) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return;
+  }
 
-  posts?.forEach(({ node: { slug } }) => {
+  posts.forEach(({ node: { slug } }) => {
     createPage({
       path: `/blog/${slug}`,
       component: path.resolve('src/templates/article.tsx'),
