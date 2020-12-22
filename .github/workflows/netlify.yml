@@ -1,4 +1,4 @@
-name: Build Blog and Deploy to Netlify
+name: Build
 
 on:
   repository_dispatch:
