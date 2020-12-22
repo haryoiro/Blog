@@ -53,7 +53,6 @@ module.exports = {
     //   },
     // },
     'gatsby-plugin-sass',
-    // 'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-typescript',
       options: {
@@ -65,22 +64,6 @@ module.exports = {
     'gatsby-plugin-typescript-checker',
     // Linter
     'gatsby-plugin-eslint',
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-images-contentful',
-            options: {
-              maxWidth: 590,
-              linkImagesToOriginal: false,
-              withWebp: true,
-              loading: 'lazy',
-            },
-          },
-        ],
-      },
-    },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
