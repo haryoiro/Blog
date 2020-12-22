@@ -7,6 +7,7 @@
 
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import Gtag from './Gtag'
 import useSiteMetadata from './SiteMetadata'
 
 type Props = {
@@ -22,6 +23,7 @@ export const SEO: React.FC<Props> = ({
 
   const siteName = siteMetadata.title
   const description = siteMetadata.description
+  const siteUrl = siteMetadata.siteUrl
 
   const metaTitle = title
     ? `${title} | ${siteName}`
@@ -50,8 +52,8 @@ export const SEO: React.FC<Props> = ({
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={siteName} />
 
-
-      {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+      <Gtag />
+      <link rel="canonical" href={siteUrl} />
     </Helmet>
   )
 }

@@ -9,6 +9,7 @@ module.exports = {
     title: 'CloudGazelle',
     description: '',
     author: 'Haryoiro',
+    siteUrl: 'https://cloudgazelle.netlify.app/',
     charset: 'utf-8',
   },
   flags: {

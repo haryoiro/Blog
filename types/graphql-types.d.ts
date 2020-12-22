@@ -3929,6 +3929,7 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___author'
+  | 'siteMetadata___siteUrl'
   | 'siteMetadata___charset'
   | 'flags___PRESERVE_WEBPACK_CACHE'
   | 'flags___PRESERVE_FILE_DOWNLOAD_CACHE'
@@ -4743,6 +4744,7 @@ export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
+  siteUrl?: Maybe<Scalars['String']>;
   charset?: Maybe<Scalars['String']>;
 };
 
@@ -4750,6 +4752,7 @@ export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
+  siteUrl?: Maybe<StringQueryOperatorInput>;
   charset?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -4797,7 +4800,7 @@ export type Unnamed_2_Query = { placeholderImage?: Maybe<{ childImageSharp?: May
 export type Site_Metadata_QueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Site_Metadata_QueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
+export type Site_Metadata_QueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'siteUrl'>> }> };
 
 export type CreateArticleListPagesQueryVariables = Exact<{ [key: string]: never; }>;
 
