@@ -19,15 +19,17 @@ module.exports = {
     LAZY_IMAGES: true,
   },
   plugins: [
-    // CodeGenerator
+    'gatsby-plugin-sass',
+    'gatsby-plugin-postcss',
     {
-      resolve: 'gatsby-plugin-graphql-codegen',
+      resolve: 'gatsby-plugin-purgecss',
       options: {
-        fileName: 'types/graphql-types.d.ts',
-        documentsPath: [
-          './src/**/*.{ts, tsx}',
-        ],
-        codegenDelay: 1000,
+        printRejected: true, // Print removed selectors and processed file names
+      // develop: true, // Enable while using `gatsby develop`
+      // whitelist: ['whitelist'], // Don't remove this selector
+      // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
+      // purgeOnly : ['components/', '/main.css', 'bootstrap/'],
+      // // Purge only these files/folders
       },
     },
     'gatsby-plugin-remove-fingerprints',
@@ -41,7 +43,6 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-sass',
     {
       resolve: 'gatsby-plugin-typescript',
       options: {
@@ -69,12 +70,23 @@ module.exports = {
         ],
       },
     },
-    // BLOG記事ソース Contentful
     {
+    // BLOG記事ソース Contentful
       resolve: 'gatsby-source-contentful',
       options: {
         spaceId: process.env.CF_SPACE_ID,
         accessToken: process.env.CF_ACCESS_TOKEN,
+      },
+    },
+    {
+      // CodeGenerator
+      resolve: 'gatsby-plugin-graphql-codegen',
+      options: {
+        fileName: 'types/graphql-types.d.ts',
+        documentsPath: [
+          './src/**/*.{ts, tsx}',
+        ],
+        codegenDelay: 1000,
       },
     },
   ],
