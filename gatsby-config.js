@@ -41,18 +41,6 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    // {
-    //   resolve: 'gatsby-plugin-manifest',
-    //   options: {
-    //     name: 'CloudGazelle::',
-    //     short_name: 'CloudGazzle',
-    //     start_url: '/',
-    //     background_color: '#663399',
-    //     theme_color: '#663399',
-    //     display: 'minimal-ui',
-    //     icon: 'src/images/gatsby-icon.png',
-    //   },
-    // },
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-plugin-typescript',
