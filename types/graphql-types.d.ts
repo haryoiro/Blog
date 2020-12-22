@@ -5285,7 +5285,10 @@ export type ArticleListQueryVariables = Exact<{
 }>;
 
 
-export type ArticleListQuery = { allContentfulArticles: { edges: Array<{ node: Pick<ContentfulArticles, 'id' | 'title' | 'slug' | 'updatedAt' | 'createdAt'> }> } };
+export type ArticleListQuery = { allContentfulArticles: { edges: Array<{ node: (
+        Pick<ContentfulArticles, 'id' | 'title' | 'slug' | 'updatedAt' | 'createdAt'>
+        & { body?: Maybe<{ childMdx?: Maybe<Pick<Mdx, 'excerpt'>> }> }
+      ) }> } };
 
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
