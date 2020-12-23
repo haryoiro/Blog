@@ -7,7 +7,7 @@
 
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import Gtag from './Gtag'
+
 import useSiteMetadata from './SiteMetadata'
 
 type Props = {
