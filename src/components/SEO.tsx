@@ -51,8 +51,15 @@ export const SEO: React.FC<Props> = ({
       {/* <meta property="og:url" content="/" /> */}
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={siteName} />
-
-      <Gtag />
+      <script async src='https://www.googletagmanager.com/gtag/js?id=G-VMYZ7W9W96'></script>
+      <script>
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VMYZ7W9W96');
+      `}
+      </script>
       <link rel="canonical" href={siteUrl} />
     </Helmet>
   )

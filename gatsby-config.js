@@ -1,4 +1,7 @@
 const dotenv = require('dotenv')
+const sass = require('sass')
+const autoprefixer = require('autoprefixer')
+const cssnano = require('cssnano')
 
 if (process.env.ENVIRONMENT !== 'production') {
   dotenv.config()
@@ -19,17 +22,16 @@ module.exports = {
     LAZY_IMAGES: true,
   },
   plugins: [
-    'gatsby-plugin-sass',
-    'gatsby-plugin-postcss',
     {
-      resolve: 'gatsby-plugin-purgecss',
+      resolve: 'gatsby-plugin-sass',
       options: {
-        printRejected: true, // Print removed selectors and processed file names
-      // develop: true, // Enable while using `gatsby develop`
-      // whitelist: ['whitelist'], // Don't remove this selector
-      // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
-      // purgeOnly : ['components/', '/main.css', 'bootstrap/'],
-      // // Purge only these files/folders
+        implementation: sass,
+        sassRuleTest: /\.scss$/,
+        sassRuleModulesTest: /\.module\.scss$/,
+        postCssPlugins: [
+          autoprefixer({ grid: 'autoplace' }),
+          cssnano({ preset: 'default' }),
+        ],
       },
     },
     'gatsby-plugin-remove-fingerprints',
@@ -53,7 +55,6 @@ module.exports = {
     },
     'gatsby-plugin-typescript-checker',
     // Linter
-    'gatsby-plugin-eslint',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -86,7 +87,6 @@ module.exports = {
         documentsPath: [
           './src/**/*.{ts, tsx}',
         ],
-        codegenDelay: 1000,
       },
     },
   ],
