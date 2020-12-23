@@ -87,7 +87,6 @@ module.exports = {
         documentsPath: [
           './src/**/*.{ts, tsx}',
         ],
-        codegenDelay: 1000,
       },
     },
   ],

@@ -4301,7 +4301,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___useNameForId'
   | 'pluginCreator___pluginOptions___fileName'
   | 'pluginCreator___pluginOptions___documentsPath'
-  | 'pluginCreator___pluginOptions___codegenDelay'
   | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
@@ -4528,7 +4527,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___useNameForId'
   | 'pluginOptions___fileName'
   | 'pluginOptions___documentsPath'
-  | 'pluginOptions___codegenDelay'
   | 'pluginOptions___pathCheck'
   | 'nodeAPIs'
   | 'browserAPIs'
@@ -4676,7 +4674,6 @@ export type SitePluginPluginOptions = {
   useNameForId?: Maybe<Scalars['Boolean']>;
   fileName?: Maybe<Scalars['String']>;
   documentsPath?: Maybe<Array<Maybe<Scalars['String']>>>;
-  codegenDelay?: Maybe<Scalars['Int']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
@@ -4715,7 +4712,6 @@ export type SitePluginPluginOptionsFilterInput = {
   useNameForId?: Maybe<BooleanQueryOperatorInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   documentsPath?: Maybe<StringQueryOperatorInput>;
-  codegenDelay?: Maybe<IntQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
 
