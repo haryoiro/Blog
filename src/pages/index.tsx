@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import 'sanitize.css'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
