@@ -55,12 +55,6 @@ module.exports = {
     },
     'gatsby-plugin-typescript-checker',
     // Linter
-    // {
-    //   resolve: 'gatsby-plugin-eslint',
-    //   options: {
-    //     test: /\.ts$|\.tsx$|\.js$|\.jsx$/,
-    //   },
-    // },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
