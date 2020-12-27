@@ -4,11 +4,24 @@
         './font',
         './mixin';
 
-body {
-    background-color: white;
+// @import '../components/ArticleList/ArticleList.scss';
+
+html, body {
+    background-color: $bg-light;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, a, p{
     font-family: "YakuHanJPs_Noto", "Hiragino Sans" sans-serif;
     font-feature-settings: "palt";
-}
-h1 {
-    font-family: 'Montserrat';
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    background-color: inherit;
+    font-weight: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    text-align: inherit;
 }

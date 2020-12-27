@@ -1,0 +1,32 @@
+@import "../../styles/mixin", "../../styles/variable";
+
+.nav {
+  display: flex;
+  max-width: 1160px;
+  margin: auto;
+  box-sizing: border-box;
+  &-wrapper {
+    padding: 0em 4rem;
+    justify-content: left;
+    @include mq(sm) {
+      padding: 0em 2rem;
+    }
+    @include mq(md) {
+      padding: 0em 4rem;
+    }
+    @include mq(lg) {
+      padding: 0em 4rem;
+    }
+    .logo {
+      font-family: 'Montserrat';
+      color: $bg-white;
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+    }
+    .git {
+      padding: 0em 4rem;
+      color: $bg-white;
+    }
+  }
+}

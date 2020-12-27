@@ -10,12 +10,12 @@ import { Helmet } from 'react-helmet'
 
 import useSiteMetadata from './SiteMetadata'
 
-type Props = {
+export type SEOProps = {
   type: 'website' | 'article'
   title: string | null | undefined
 }
 
-export const SEO: React.FC<Props> = ({
+export const SEO: React.FC<SEOProps> = ({
   type,
   title,
 }) => {
@@ -26,7 +26,7 @@ export const SEO: React.FC<Props> = ({
   const siteUrl = siteMetadata.siteUrl
 
   const metaTitle = title
-    ? `${title} | ${siteName}`
+    ? `${siteName} | ${title}`
     : siteName
 
   return (

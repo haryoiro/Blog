@@ -10,8 +10,7 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
-import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import Layout from '../components/Layout/Layout'
 import MDComponents from '../components/MDXComponents'
 
 // type declarations
@@ -22,13 +21,12 @@ export type Props = {
 }
 
 // 
-const ArticlePost: React.FC<Props> = ({ data }) => {
+const ArticlePostTemplate: React.FC<Props> = ({ data }) => {
   const title = data.article?.title
   const body = data.article?.node?.childMdx?.body
 
   return (
-    <Layout>
-      <SEO title={title} type="article" />
+    <Layout title={title} type="article" >
       <MDXProvider components={MDComponents}>
         <h2 id='article-title'>{title}</h2>
         <article id='article-body'>
@@ -39,7 +37,7 @@ const ArticlePost: React.FC<Props> = ({ data }) => {
   )
 }
 
-export default ArticlePost
+export default ArticlePostTemplate
 
 export const ArticleBySlug = graphql`
 query ArticleBySlug($slug: String!) {

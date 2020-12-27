@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import Layout from '../components/Layout/Layout'
+import Article from '../components/ArticleList/ArticleList'
 
 import { ArticleListQuery } from '../../types/graphql-types'
 
@@ -10,34 +10,21 @@ export type Props = {
   pageContext: any
 }
 
-const ArticleList: React.FC<Props> = ({ data, pageContext }) => {
+const ArticleListTemplate: React.FC<Props> = ({ data, pageContext }) => {
   const articles = data.allContentfulArticles.edges
 
   return (
-    <Layout>
-      <SEO title='Articles' type="article" />
-      <div>
+    <Layout title="記事一覧" type="website">
       {
-        articles.map(({ node: { updatedAt, slug, title } }) => (
-          <div key={slug}>
-
-            <h5>{updatedAt}</h5>
-            <Link to={`/blog/${slug}`}>
-              <h2>{title}</h2>
-            </Link>
-
-            <Link to={`/blog/${slug}`}>続きを読む</Link>
-
-          </div>
-        )
-        )
+        articles.map(({ node: { createdAt, slug, title } }) => (
+          <Article id={slug} title={title} slug={slug} date={createdAt} />
+        ))
       }
-      </div>
     </Layout>
   )
 }
 
-export default ArticleList
+export default ArticleListTemplate
 
 export const articleListQuery = graphql`
 query ArticleList($skip: Int!, $limit: Int!) {
@@ -51,7 +38,7 @@ query ArticleList($skip: Int!, $limit: Int!) {
         title
         slug
         updatedAt(fromNow: true)
-        createdAt(formatString: "MMMM/DD/YY HH:MM")
+        createdAt(formatString: "MMMM DD, YY")
         body {
           childMdx {
             excerpt(pruneLength: 154)
