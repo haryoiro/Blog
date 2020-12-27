@@ -84,9 +84,15 @@ module.exports = {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
         fileName: 'types/graphql-types.d.ts',
-        documentsPath: [
-          './src/**/*.{ts, tsx}',
-        ],
+
+        // Codegenはとても重いので以下の場合のみtrueにすること
+        //   - 新たなプラグインを追加した。
+        //   - 新たなクエリを追加した。
+        //   - 既存のクエリを編集した。
+
+        codegen: false,
+
+        documentsPath: ['./src/**/*.{ts, tsx}'],
       },
     },
   ],
