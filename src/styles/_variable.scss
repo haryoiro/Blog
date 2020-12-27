@@ -1,0 +1,38 @@
+// =============================
+// colors
+// =============================
+$bg-white: hsl(0, 0%, 100%);
+$bg-black: hsl(0, 0%, 4%);
+$bg-light: #f6f6f6;
+$bg-dark:  hsl(0, 0%, 21%);
+$sub-gray: #999;
+
+$prime: #0092B5;
+$second: #9400FF;
+
+$summer_days: #ECAA61;
+$hearty_orange: #B44B34;
+$grand_view: #6B927F;
+$black_bean: #403330;
+$green_bay: #2e6864;
+
+$sky: #7CDBD5;
+$bright_coral: #F53240;
+$golden: #F9BED2;
+$aquamarine: #02C8A7;
+
+// =============================
+// Shadow
+// =============================
+$low-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+$high-shadow: rgba(0, 0, 0, 0.1) 0px 7px 20px;
+
+
+// =============================
+// Some Long
+// =============================
+$content_padding_horizontal: 2em;
+$content_padding_vertical: 4rem;
+
+$radius: 0.33rem;
+$padding: $content_padding_horizontal $content_padding_vertical;

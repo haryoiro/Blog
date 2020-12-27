@@ -1,18 +1,12 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import 'sanitize.css'
 
-import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import Layout from '../components/Layout/Layout'
 
 const ArticlesListPage = () => {
 
   return (
-    <Layout>
-      <SEO 
-        title="All articles"
-        type="website"
-      />
+    <Layout title="TOP" type="article">
       <Link to='/blog'>HOME</Link>
     </Layout>
   )
