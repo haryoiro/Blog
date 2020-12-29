@@ -16,8 +16,8 @@ const ArticleListTemplate: React.FC<Props> = ({ data, pageContext }) => {
   return (
     <Layout title="記事一覧" type="website">
       {
-        articles.map(({ node: { createdAt, slug, title } }) => (
-          <Article id={slug} title={title} slug={slug} date={createdAt} />
+        articles.map(({ node: { updatedAt, createdAt, slug, title, body } }) => (
+          <Article id={slug} title={title} slug={slug} createdAt={createdAt} body={body} updatedAt={updatedAt} />
         ))
       }
     </Layout>
@@ -41,7 +41,7 @@ query ArticleList($skip: Int!, $limit: Int!) {
         createdAt(formatString: "MMMM DD, YY")
         body {
           childMdx {
-            excerpt(pruneLength: 154)
+            excerpt(pruneLength: 64)
           }
         }
       }

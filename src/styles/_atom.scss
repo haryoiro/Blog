@@ -1,0 +1,22 @@
+
+.shadow {
+  box-shadow: $low-shadow;
+}
+.card {
+  &-anim {
+    box-shadow: $low-shadow;
+    transition: box-shadow 0.1s ease;
+    &:hover {
+      box-shadow: $low-shadow;
+    }
+    &:active {
+      box-shadow: $low-shadow;
+    }
+  }
+
+  border: $card-border;
+  
+  border-radius: $radius;
+  padding: 0 $content_padding_vertical / 2;
+  background-color: $bg-white;
+}

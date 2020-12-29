@@ -1,6 +1,12 @@
 import { Link } from 'gatsby'
 import React from 'react'
 
+import {
+  GrHistory as UpdatedAtIcon,
+  GrCalendar as CreatedAtIcon,
+} from 'react-icons/gr'
+import { FiChevronsRight } from "react-icons/fi";
+
 import './ArticleList.scss'
 
 const tagsmock = [
@@ -13,8 +19,6 @@ const tagsmock = [
     slug: 'typescript',
   }
 ]
-
-
 
 // =================================================================
 // title
@@ -37,11 +41,13 @@ const Title: React.FC<TitleProps> = ({ className, title, slug }) => (
 // Time
 type TimeProps = {
   className: string,
-  date: string  | null | undefined,
+  updatedAt: string  | null | undefined,
+  createdAt: string | null | undefined,
 }
-const PublicationDate: React.FC<TimeProps> = ({ className, date }) => (
+const PublicationDate: React.FC<TimeProps> = ({ className, updatedAt, createdAt }) => (
   <span className={className}>
-    <time>{date}</time>
+    <span className="in-icon"><CreatedAtIcon width="16px" height="16px" /><time>{createdAt}</time></span>
+    <span className="in-icon"><UpdatedAtIcon width="16px" height="16px" /><time>{updatedAt}</time></span>
   </span>
 )
 
@@ -72,44 +78,46 @@ const Tags: React.FC<TagsProps> = ({ className, data }) => (
 // Article
 type ArticleProps = {
   id: string  | null | undefined,
-  date: string | null | undefined,
+  createdAt: string | null | undefined,
+  updatedAt: string | null | undefined,
   slug: string  | null | undefined,
   title: string  | null | undefined,
   tags?: Array<TagsProps>  | null | undefined,
   category?: string  | null | undefined,
+  body: any
 }
-const Article: React.FC<ArticleProps> = ({ id, date, slug, title, tags, category }) => (
-  <article className="article card-anim card" id={`post-${id}`} >
+const Article: React.FC<ArticleProps> = ({ id, createdAt, updatedAt, slug, title, tags, category, body: {childMdx: { excerpt }} }) => (
+  <article className="article card" key={`post-${id}`} >
     <div className="article-wrapper">
       <div className="article-body">
 
-        {/* Category */}
-        {/* <Link 
-          className="category"
-          to={`/category/${category}`}>
-            {category || 'React'}
-        </Link> */}
         <Title 
           className="article-title"
           title={title}
           slug={slug}
         />
+        <Tags 
+          className="article-tags" 
+          data={tagsmock} 
+        />
+        <hr className="split"/>
+        <p className="article-main">
+          {excerpt}
+        </p>
         <div className="article-descriptions">
-
-          <div>
-            <PublicationDate className="article-publication-date" date={date} />
-            <Tags className="article-tags" data={tagsmock} />
-          </div>
-
+          <PublicationDate 
+            className="article-publication-date"
+            createdAt={createdAt}
+            updatedAt={updatedAt}
+          />
           {/* Readmore */}
           <Link to={`/blog/${slug}`}>
-            <strong className="read-more">
+            <span className="read-more grad">
               続きを読む
-            </strong>
+              <FiChevronsRight />
+            </span>
           </Link>
-
         </div>
-
       </div>
     </div>
   </article>
