@@ -4,9 +4,9 @@ type SvgProps = {
   role?: string,
   viewBox?: string,
   title?: string,
-  width: string,
-  height: string,
-  className: string,
+  width?: string,
+  height?: string,
+  className?: string,
   path: {
     d: string
   }
