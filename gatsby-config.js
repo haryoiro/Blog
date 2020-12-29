@@ -10,7 +10,7 @@ if (process.env.ENVIRONMENT !== 'production') {
 module.exports = {
   siteMetadata: {
     title: 'CloudGazelle',
-    description: 'フロントエンドとか気になった技術とかやる',
+    description: 'フロントエンドとか気になった技術とか',
     author: 'Haryoiro',
     siteUrl: 'https://cloudgazelle.netlify.app/',
     githubId: 'haryoiro',
