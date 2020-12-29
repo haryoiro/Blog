@@ -22,6 +22,10 @@
     
     margin: 0 auto;
     transition: padding 0.05s ease;
+    @include mq(xs) {
+      display: block;
+      padding: $content_padding_horizontal 0;
+    }
     @include mq(sm) {
       display: block;
       padding: $content_padding_horizontal 0;
@@ -39,6 +43,11 @@
       flex: 1;
       max-width: 735px;
       margin: 2rem 2rem;
+      @include mq(xs) {
+        display: block;
+        max-width: 100%;
+        margin: 0;
+      }
       @include mq(sm) {
         display: block;
         max-width: 100%;
@@ -46,8 +55,6 @@
       }
       @include mq(md) {
         display: block;
-        max-width: 735px;
-        padding: 2rem 2rem;
       }
       @include mq(lg) {
         display: flex;
@@ -58,21 +65,29 @@
       }
     }
     .sidebar {
-      margin: 1rem 0;
-      @include mq(sm) {
+      @include mq(xs) {
         display: block;
         max-width: 100vh;
         width: 100vh;
+        margin: 0.5rem;
+      }
+      @include mq(sm) {
+        display: block;
+        max-width: 100vw;
+        width: 100vw;
+        margin: 0.5rem;
       }
       @include mq(md) {
-        margin: 0 20px;
+        display: flex;
+        margin-left: 1rem;
+        max-width: 260px;
+        height: 100%;
       }
       @include mq(lg) {
         display: flex;
         max-width: 260px;
         width: 260px;
         height: 100%;
-        margin: 0 20px;
       }
     }
   }

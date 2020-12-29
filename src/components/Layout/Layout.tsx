@@ -1,14 +1,8 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from 'react'
 
 import Header from '../Header/Header'
-import Footer from '../Footer'
+import Sidebar from '../SideBar/SideBar'
+import Footer from '../Footer/Footer'
 import SEO, { SEOProps } from '../SEO'
 
 import 'sanitize.css'
@@ -39,7 +33,7 @@ const Layout: React.FC<LayoutProps> = ({ title, type, sub, children }) => {
           {children}
         </main>
         <div className="sidebar">
-          {sub || <div className="card"></div>}
+          {sub || <Sidebar />}
         </div>
       </div>
       <Footer />
