@@ -8,8 +8,7 @@ import { ArticleListQuery } from '../../types/graphql-types'
 export type Props = {
   data: ArticleListQuery,
 }
-
-const ArticleListTemplate: React.FC<Props> = ({ data }) => {
+;const ArticleListTemplate: React.FC<Props> = ({ data }) => {
   const articles = data.allMdx.edges
 
   return (
@@ -35,7 +34,7 @@ const ArticleListTemplate: React.FC<Props> = ({ data }) => {
       }
     </Layout>
   )
-}
+};
 
 export default ArticleListTemplate
 
@@ -86,4 +85,4 @@ query ArticleList($skip: Int!, $limit: Int!) {
   }
 }
 
-`
+`;

@@ -28,7 +28,7 @@ type TitleProps = {
   className: string,
   title: string | null | undefined,
   slug: string | null | undefined,
-}
+};
 const Title: React.FC<TitleProps> = ({ className, title, slug }) => (
   <Link to={`/blog/${slug}`}>
     <h2 className={className}>
@@ -43,7 +43,7 @@ type TimeProps = {
   className: string,
   updatedAt: string | null | undefined,
   createdAt: string | null | undefined,
-}
+};
 const PublicationDate: React.FC<TimeProps> = ({ className, updatedAt, createdAt }) => (
   <span className={className}>
     <span className="in-icon">
@@ -65,7 +65,7 @@ type TagsProps = {
     slug: string,
     title: string,
   }>
-}
+};
 const Tags: React.FC<TagsProps> = ({ className, data }) => (
   <span className={className}>
     {
@@ -90,7 +90,7 @@ type ArticleProps = CreateArticleListPagesQuery & {
   tags?: Array<TagsProps> | null | undefined,
   category?: string | null | undefined,
   body?: any
-}
+};
 
 const Article: React.FC<ArticleProps> = ({
   id,

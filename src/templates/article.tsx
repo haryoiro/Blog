@@ -18,7 +18,7 @@ import { ArticleBySlugQuery } from '../../types/graphql-types'
 
 export type Props = {
   data: ArticleBySlugQuery
-}
+};
 
 //
 const ArticlePostTemplate: React.FC<Props> = ({ data }) => {
@@ -29,12 +29,12 @@ const ArticlePostTemplate: React.FC<Props> = ({ data }) => {
       <MDXProvider components={MDComponents}>
         <h2 className="article-title">{title}</h2>
         <article className="article-body">
-          <MDXRenderer>{''}</MDXRenderer>
+          <MDXRenderer />
         </article>
       </MDXProvider>
     </Layout>
   )
-}
+};
 
 export default ArticlePostTemplate
 

@@ -3,11 +3,11 @@
 /**
  * PageCreator from gatsby-node.js
  * generate ArticleList Page
- * 
+ *
  * path: /blog/[n]
  */
 import path from 'path'
-import { GatsbyNode } from "gatsby"
+import { GatsbyNode } from 'gatsby';
 
 // @ts-ignore
 import { CreateArticleListPagesQuery } from '../../types/graphql-types'
@@ -17,15 +17,15 @@ type Articles = {
     edges: any
   },
   allContentfulArticles: {
-    edges: Array<{ 
+    edges: Array<{
       node: {
         slug: string
       }
     }>
   }
-}
+};
 
-const createArticleListPages: GatsbyNode["createPages"] = async ({
+const createArticleListPages: GatsbyNode['createPages'] = async ({
   graphql,
   actions: { createPage },
   reporter,
@@ -44,15 +44,15 @@ const createArticleListPages: GatsbyNode["createPages"] = async ({
     }
   }`).then((result) => {
   if (result.errors || !result.data) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return;
+    reporter.panicOnBuild('Error while running GraphQL query.')
+    return
   }
 
   // すべての記事
   const posts = result.data.allMdx.edges
   if (!posts) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return;
+    reporter.panicOnBuild('Error while running GraphQL query.')
+    return
   }
 
   // 一覧ページで表示する記事の本数
@@ -75,7 +75,7 @@ const createArticleListPages: GatsbyNode["createPages"] = async ({
         currentPage: i + 1,
       },
     })
-  })
+  });
 })
 
 module.exports = createArticleListPages
