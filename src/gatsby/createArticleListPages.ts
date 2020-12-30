@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 /**
  * PageCreator from gatsby-node.js
  * generate ArticleList Page
@@ -7,7 +9,13 @@
 import path from 'path'
 import { GatsbyNode } from "gatsby"
 
+// @ts-ignore
+import { CreateArticleListPagesQuery } from '../../types/graphql-types'
+
 type Articles = {
+  allMdx: {
+    edges: any
+  },
   allContentfulArticles: {
     edges: Array<{ 
       node: {
@@ -21,14 +29,16 @@ const createArticleListPages: GatsbyNode["createPages"] = async ({
   graphql,
   actions: { createPage },
   reporter,
-}) => graphql<Articles>(`
+}) => graphql<Articles | CreateArticleListPagesQuery>(`
   query CreateArticleListPages {
-    allContentfulArticles(
-      limit: 1000,
-      sort: {fields: createdAt, order: DESC}) {
+    allMdx(
+      limit: 1000
+    ) {
       edges {
         node {
-          slug
+          frontmatter {
+            slug
+          }
         }
       }
     }
@@ -39,7 +49,7 @@ const createArticleListPages: GatsbyNode["createPages"] = async ({
   }
 
   // すべての記事
-  const posts = result.data.allContentfulArticles.edges
+  const posts = result.data.allMdx.edges
   if (!posts) {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return;
@@ -69,3 +79,13 @@ const createArticleListPages: GatsbyNode["createPages"] = async ({
 })
 
 module.exports = createArticleListPages
+
+// allContentfulArticles(
+//   limit: 1000,
+//   sort: {fields: createdAt, order: DESC}) {
+//   edges {
+//     node {
+//       slug
+//     }
+//   }
+// }

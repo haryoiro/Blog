@@ -7,7 +7,10 @@
     "semi-style": ["error", "first"],
     "no-extra-semi": "error",
     "no-unexpected-multiline": "error",
-    "no-unreachable": "error"
+    "no-unreachable": "error",
+    "react/jsx-filename-extension": [1, { 
+      "extensions": [".js", ".jsx", ".ts", ".tsx"] 
+    }]
   },
   "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"]
 }

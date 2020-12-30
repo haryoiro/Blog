@@ -2,10 +2,12 @@ import path from 'path'
 import { GatsbyNode } from "gatsby"
 
 type Articles = {
-  allContentfulArticles: {
+  allMdx: {
     edges: Array<{ 
       node: {
-        slug: string
+        frontmatter: { 
+          slug: string | null | undefined,
+        }
       }
     }>
   }
@@ -17,10 +19,12 @@ const createArticlePages: GatsbyNode["createPages"] = async ({
   reporter,
 }) => graphql<Articles>(`
 query CreateArticlePages {
-  allContentfulArticles {
+  allMdx {
     edges {
       node {
-        slug
+        frontmatter {
+          slug
+        }
       }
     }
   }
@@ -31,13 +35,13 @@ query CreateArticlePages {
     return;
   }
 
-  const posts = result.data.allContentfulArticles.edges
+  const posts = result.data.allMdx.edges
   if (!posts) {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
     return;
   }
 
-  posts.forEach(({ node: { slug } }) => {
+  posts.forEach(({ node: { frontmatter: { slug }} }) => {
     createPage({
       path: `/blog/${slug}`,
       component: path.resolve('src/templates/article.tsx'),
