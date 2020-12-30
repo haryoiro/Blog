@@ -98,7 +98,7 @@ const Article: React.FC<ArticleProps> = ({
   updatedAt,
   slug,
   title,
-  body: { childMdx: { excerpt } },
+  body,
 }) => (
   <article className="article card" key={`post-${id}`}>
     <div className="article-wrapper">
@@ -115,7 +115,7 @@ const Article: React.FC<ArticleProps> = ({
         />
         <hr className="split" />
         <p className="article-main">
-          {excerpt}
+          {body}
         </p>
         <div className="article-descriptions">
           <PublicationDate

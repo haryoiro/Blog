@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout/Layout'
@@ -13,27 +10,26 @@ export type Props = {
 }
 
 const ArticleListTemplate: React.FC<Props> = ({ data }) => {
-  const articles = data.allContentfulArticles.edges
-  const mdxes = data.allMdx.edges
-  
+  const articles = data.allMdx.edges
+
   return (
     <Layout title="記事一覧" type="website">
       {
-        /* eslint-disable-next-line react/prop-types */
         articles.map(({
           node: {
-            /* @ts-ignore */
-            updatedAt, createdAt, slug, title, body,
+            frontmatter,
+            parent,
+            excerpt,
           },
         }) => (
           /* @ts-ignore */
           <Article
-            id={slug}
-            title={title}
-            slug={slug}
-            createdAt={createdAt}
-            body={body}
-            updatedAt={updatedAt}
+            id={frontmatter?.slug}
+            title={frontmatter?.title || 'none'}
+            slug={frontmatter?.slug || 'none'}
+            createdAt={parent?.birthTime || 'none'}
+            body={excerpt}
+            updatedAt={parent?.changeTime || 'none'}
           />
         ))
       }
@@ -50,7 +46,7 @@ query ArticleList($skip: Int!, $limit: Int!) {
       frontmatter: {title: {nin: ""}}}, 
       skip: $skip, 
       limit: $limit, 
-      sort: {fields: frontmatter___slug, order: DESC}
+      sort: {fields: frontmatter___date, order: DESC}
   ) {
     edges {
       node {
@@ -65,7 +61,7 @@ query ArticleList($skip: Int!, $limit: Int!) {
             changeTime
           }
         }
-        excerpt(truncate: true, pruneLength: 64)
+        excerpt(pruneLength: 64)
       }
     }
   }
@@ -91,22 +87,3 @@ query ArticleList($skip: Int!, $limit: Int!) {
 }
 
 `
-// AllMdx(
-//   limit: $limit,
-//   skip: $skip
-// ) {
-//   edges: {
-//     node: {
-//       frontmatter {
-//         slug
-//         title
-//       }
-//       parent {
-//         ... on File {
-//           createdAt: birthTime(formatString: "MMMM/DD/YY HH:MM")
-//           uppdatedAt: changeTime(fromNow: true)
-//         }
-//       }
-//     }
-//   }
-// }

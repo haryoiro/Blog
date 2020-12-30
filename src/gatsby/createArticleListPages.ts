@@ -79,13 +79,3 @@ const createArticleListPages: GatsbyNode["createPages"] = async ({
 })
 
 module.exports = createArticleListPages
-
-// allContentfulArticles(
-//   limit: 1000,
-//   sort: {fields: createdAt, order: DESC}) {
-//   edges {
-//     node {
-//       slug
-//     }
-//   }
-// }
