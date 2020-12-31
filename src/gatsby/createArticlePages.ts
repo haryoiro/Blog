@@ -1,50 +1,56 @@
 import path from 'path'
-import { GatsbyNode } from "gatsby"
+import { GatsbyNode } from 'gatsby'
 
 type Articles = {
-  allContentfulArticles: {
-    edges: Array<{ 
+  allMdx: {
+    edges: Array<{
       node: {
-        slug: string
+        frontmatter: {
+          slug: string | null | undefined,
+        }
       }
     }>
   }
-}
+};
 
-const createArticlePages: GatsbyNode["createPages"] = async ({
+const createArticlePages: GatsbyNode['createPages'] = async ({
   graphql,
   actions: { createPage },
   reporter,
 }) => graphql<Articles>(`
 query CreateArticlePages {
-  allContentfulArticles {
+  allMdx {
     edges {
       node {
-        slug
+        frontmatter {
+          slug
+        }
       }
     }
   }
-}`).then(result => {
+}`).then((result) => {
   // Handle errors
   if (result.errors || !result.data) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return;
+    reporter.panicOnBuild('Error while running GraphQL query.')
+    return
   }
 
-  const posts = result.data.allContentfulArticles.edges
+  const posts = result.data.allMdx.edges
   if (!posts) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return;
+    reporter.panicOnBuild('Error while running GraphQL query.')
+    return
   }
 
-  posts.forEach(({ node: { slug } }) => {
-    createPage({
-      path: `/blog/${slug}`,
-      component: path.resolve('src/templates/article.tsx'),
-      context: {
-        slug: slug,
-      },
-    })
+  posts.forEach(({ node: { frontmatter: { slug } } }) => {
+    if (slug) {
+      createPage({
+        path: `/blog/${slug}`,
+        component: path.resolve('src/templates/article.tsx'),
+        context: {
+          slug,
+        },
+      })
+    }
   })
 })
 

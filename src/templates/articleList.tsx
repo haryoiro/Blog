@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/no-unused-prop-types */
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout/Layout'
 import Article from '../components/ArticleList/ArticleList'
 
@@ -7,18 +9,31 @@ import { ArticleListQuery } from '../../types/graphql-types'
 
 export type Props = {
   data: ArticleListQuery,
-  pageContext: any
 }
-
-const ArticleListTemplate: React.FC<Props> = ({ data, pageContext }) => {
-  const articles = data.allContentfulArticles.edges
+const ArticleListTemplate: React.FC<Props> = ({ data }) => {
+  const articles = data.allMdx.edges
 
   return (
     <Layout title="記事一覧" type="website">
       {
-        articles.map(({ node: { updatedAt, createdAt, slug, title, body } }) => (
-          <Article id={slug} title={title} slug={slug} createdAt={createdAt} body={body} updatedAt={updatedAt} />
-        ))
+        articles.map(({ node }: { node: any }): React.ReactElement => {
+          const {
+            frontmatter,
+            parent,
+            excerpt,
+          } = node
+          return (
+            <Article
+              key={frontmatter?.slug}
+              id={frontmatter?.slug}
+              title={frontmatter?.title}
+              slug={frontmatter?.slug}
+              createdAt={parent?.birthTime}
+              updatedAt={parent?.changeTime}
+              body={excerpt}
+            />
+          )
+        })
       }
     </Layout>
   )
@@ -28,25 +43,29 @@ export default ArticleListTemplate
 
 export const articleListQuery = graphql`
 query ArticleList($skip: Int!, $limit: Int!) {
-  allContentfulArticles(
-    limit: $limit,
-    skip: $skip,
-    sort: {fields: createdAt, order: DESC}) {
+  allMdx(
+    filter: {
+      frontmatter: {title: {nin: ""}}}, 
+      skip: $skip, 
+      limit: $limit, 
+      sort: {fields: frontmatter___date, order: DESC}
+  ) {
     edges {
       node {
-        id
-        title
-        slug
-        updatedAt(fromNow: true)
-        createdAt(formatString: "MMMM DD, YY")
-        body {
-          childMdx {
-            excerpt(pruneLength: 64)
+        frontmatter {
+          slug
+          title
+        }
+        parent {
+          ... on File {
+            name
+            birthTime
+            changeTime
           }
         }
+        excerpt(pruneLength: 64)
       }
     }
   }
 }
-
 `
