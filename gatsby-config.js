@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const dotenv = require('dotenv')
 const sass = require('sass')
 const autoprefixer = require('autoprefixer')
@@ -10,7 +11,7 @@ if (process.env.ENVIRONMENT !== 'production') {
 module.exports = {
   siteMetadata: {
     title: 'CloudGazelle',
-    description: 'フロントエンドとか気になった技術とかやる',
+    description: 'フロントエンドとか気になった技術とか',
     author: 'Haryoiro',
     siteUrl: 'https://cloudgazelle.netlify.app/',
     githubId: 'haryoiro',
@@ -38,15 +39,6 @@ module.exports = {
     'gatsby-plugin-remove-fingerprints',
     'gatsby-plugin-react-helmet',
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: `${__dirname}/src/images`,
-      },
-    },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    {
       resolve: 'gatsby-plugin-typescript',
       options: {
         isTSX: true,
@@ -55,23 +47,30 @@ module.exports = {
       },
     },
     'gatsby-plugin-typescript-checker',
-    // Linter
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'blog',
+        path: `${__dirname}/contents/blog`,
+      },
+    },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
+        extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
-          {
-            resolve: 'gatsby-remark-images-contentful',
-            options: {
-              maxWidth: 590,
-              linkImagesToOriginal: false,
-              withWebp: true,
-              loading: 'lazy',
-            },
-          },
+          'gatsby-transformer-remark',
         ],
       },
     },
+    'gatsby-plugin-sharp',
     {
     // BLOG記事ソース Contentful
       resolve: 'gatsby-source-contentful',
@@ -80,6 +79,7 @@ module.exports = {
         accessToken: process.env.CF_ACCESS_TOKEN,
       },
     },
+    'gatsby-transformer-sharp',
     {
       // CodeGenerator
       resolve: 'gatsby-plugin-graphql-codegen',

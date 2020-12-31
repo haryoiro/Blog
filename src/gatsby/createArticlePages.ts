@@ -1,48 +1,58 @@
 import path from 'path'
-import { GatsbyNode } from "gatsby"
+import { GatsbyNode } from 'gatsby'
+
+import { CreateArticleListPagesQuery } from '../../types/graphql-types'
 
 type Articles = {
-  allContentfulArticles: {
-    edges: Array<{ 
+  allMdx: {
+    edges: Array<{
       node: {
-        slug: string
+        frontmatter: {
+          slug: string | null | undefined,
+        }
       }
     }>
   }
 }
 
-const createArticlePages: GatsbyNode["createPages"] = async ({
+const createArticlePages: GatsbyNode['createPages'] = async ({
   graphql,
   actions: { createPage },
   reporter,
-}) => graphql<Articles>(`
+}) => graphql<Articles | CreateArticleListPagesQuery>(`
 query CreateArticlePages {
-  allContentfulArticles {
+  allMdx {
     edges {
       node {
-        slug
+        frontmatter {
+          slug
+        }
       }
     }
   }
-}`).then(result => {
+}`).then((result) => {
   // Handle errors
   if (result.errors || !result.data) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return;
+    reporter.panicOnBuild('Error while running GraphQL query.')
+    return
   }
 
-  const posts = result.data.allContentfulArticles.edges
+  const posts = result.data.allMdx.edges
   if (!posts) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return;
+    reporter.panicOnBuild('Error while running GraphQL query.')
+    return
   }
 
-  posts.forEach(({ node: { slug } }) => {
+  posts.forEach(({ node }) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { slug }: any = node.frontmatter
+
+    if (!slug) return
     createPage({
       path: `/blog/${slug}`,
       component: path.resolve('src/templates/article.tsx'),
       context: {
-        slug: slug,
+        slug,
       },
     })
   })

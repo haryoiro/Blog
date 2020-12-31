@@ -8,14 +8,14 @@ const SideBar: React.FC = () => {
     author,
     description,
   } = useSiteMetadata()
-  
+
   return (
-  <div className="sidebar">
-    <div>
-      <strong>{author}</strong>
-      <p>{description}</p>
+    <div className="sidebar card">
+      <div>
+        <strong>{author}</strong>
+        <p>{description}</p>
+      </div>
     </div>
-  </div>
   )
 }
 

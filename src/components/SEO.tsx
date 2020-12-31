@@ -1,34 +1,25 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
-import React from 'react'
+import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 
 import useSiteMetadata from './SiteMetadata'
 
-// @ts-ignore
 import woff from '../fonts/Montserrat/montserrat-v15-latin-700.woff'
-// @ts-ignore
 import woff2 from '../fonts/Montserrat/montserrat-v15-latin-700.woff2'
 
 export type SEOProps = {
   type: 'website' | 'article'
   title: string | null | undefined
 }
-
-export const SEO: React.FC<SEOProps> = ({
+export const SEO: FC<SEOProps> = ({
   type,
   title,
 }) => {
   const siteMetadata = useSiteMetadata()
-
+  const {
+    description,
+    siteUrl,
+  } = siteMetadata
   const siteName = siteMetadata.title
-  const description = siteMetadata.description
-  const siteUrl = siteMetadata.siteUrl
 
   const metaTitle = title
     ? `${siteName} | ${title}`
@@ -43,10 +34,8 @@ export const SEO: React.FC<SEOProps> = ({
 
       <title>{metaTitle}</title>
 
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-
       <meta name="application-name" content={siteName} />
-      <meta name="author" content="Haryoiro" /> 
+      <meta name="author" content="Haryoiro" />
       <meta name="description" content={description} />
       <meta name="theme-color" content="#fff" />
 
@@ -56,9 +45,9 @@ export const SEO: React.FC<SEOProps> = ({
       {/* <meta property="og:url" content="/" /> */}
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={siteName} />
-      <script async src='https://www.googletagmanager.com/gtag/js?id=G-VMYZ7W9W96'></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-VMYZ7W9W96" />
       <script>
-      {`
+        {`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -66,16 +55,20 @@ export const SEO: React.FC<SEOProps> = ({
       `}
       </script>
       <link rel="canonical" href={siteUrl} />
-      <link rel="preload"
-            as="font"
-            href={woff2}
-            type="font/woff2"
-            crossOrigin="anonymous" />
-      <link rel="preload"
-            as="font"
-            href={woff}
-            type="font/woff"
-            crossOrigin="anonymous" />
+      <link
+        rel="preload"
+        as="font"
+        href={woff2}
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        as="font"
+        href={woff}
+        type="font/woff"
+        crossOrigin="anonymous"
+      />
     </Helmet>
   )
 }
