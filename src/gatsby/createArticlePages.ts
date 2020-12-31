@@ -44,16 +44,17 @@ query CreateArticlePages {
   }
 
   posts.forEach(({ node }) => {
-    const slug = node.frontmatter?.slug
-    if (slug) {
-      createPage({
-        path: `/blog/${slug}`,
-        component: path.resolve('src/templates/article.tsx'),
-        context: {
-          slug,
-        },
-      })
-    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { slug }: any = node.frontmatter
+
+    if (!slug) return
+    createPage({
+      path: `/blog/${slug}`,
+      component: path.resolve('src/templates/article.tsx'),
+      context: {
+        slug,
+      },
+    })
   })
 })
 
