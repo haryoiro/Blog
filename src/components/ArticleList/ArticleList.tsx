@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Link } from 'gatsby'
 import React from 'react'
 
@@ -70,7 +69,7 @@ const Tags: React.FC<TagsProps> = ({ className, data }) => (
   <span className={className}>
     {
     data.map(({ title }) => (
-      <Link className="tag" to="/blog">
+      <Link className="tag" to="/blog" key={title}>
         #
         {title}
       </Link>
@@ -81,7 +80,7 @@ const Tags: React.FC<TagsProps> = ({ className, data }) => (
 
 // =================================================================
 // Article
-type ArticleProps = CreateArticleListPagesQuery & {
+type ArticleProps = {
   id?: string | null | undefined,
   createdAt?: string | null | undefined,
   updatedAt?: string | null | undefined,
@@ -89,8 +88,8 @@ type ArticleProps = CreateArticleListPagesQuery & {
   title?: string | null | undefined,
   tags?: Array<TagsProps> | null | undefined,
   category?: string | null | undefined,
-  body?: any
-};
+  body?: string | null | undefined
+}
 
 const Article: React.FC<ArticleProps> = ({
   id,

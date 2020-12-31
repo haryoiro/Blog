@@ -8,7 +8,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop -p 4000",
-    "lint": "eslint ./src --fix",
+    "lint": "eslint ./src/**/*.tsx --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "nodemon develop",
     "serve": "gatsby serve -p 4000",

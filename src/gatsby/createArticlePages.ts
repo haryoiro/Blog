@@ -1,5 +1,5 @@
 import path from 'path'
-import { GatsbyNode } from 'gatsby';
+import { GatsbyNode } from 'gatsby'
 
 type Articles = {
   allMdx: {
@@ -42,14 +42,16 @@ query CreateArticlePages {
   }
 
   posts.forEach(({ node: { frontmatter: { slug } } }) => {
-    createPage({
-      path: `/blog/${slug}`,
-      component: path.resolve('src/templates/article.tsx'),
-      context: {
-        slug,
-      },
-    })
-  });
+    if (slug) {
+      createPage({
+        path: `/blog/${slug}`,
+        component: path.resolve('src/templates/article.tsx'),
+        context: {
+          slug,
+        },
+      })
+    }
+  })
 })
 
-module.exports = createArticlePages;
+module.exports = createArticlePages

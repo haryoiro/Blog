@@ -13,51 +13,38 @@ import { MDXProvider } from '@mdx-js/react'
 import Layout from '../components/Layout/Layout'
 import MDComponents from '../components/MDXComponents'
 
-// @ts-ignore
 import { ArticleBySlugQuery } from '../../types/graphql-types'
 
 export type Props = {
   data: ArticleBySlugQuery
-};
+}
 
-//
-const ArticlePostTemplate: React.FC<Props> = ({ data }) => {
-  const title = data.mdx?.frontmatter?.title
-
+const ArticlePostTemplate: React.FC<Props> = ({
+  data: { mdx },
+}) => {
+  const title = mdx?.frontmatter?.title
   return (
     <Layout title={title} type="article">
       <MDXProvider components={MDComponents}>
         <h2 className="article-title">{title}</h2>
         <article className="article-body">
-          <MDXRenderer />
+          <MDXRenderer>{mdx?.body || ' '}</MDXRenderer>
         </article>
       </MDXProvider>
     </Layout>
   )
-};
+}
 
 export default ArticlePostTemplate
 
 export const ArticleBySlug = graphql`
-query ArticleBySlug($slug: String!) {
-  article: contentfulArticles(slug: {eq: $slug}) {
-    slug
-    title
-    node: childContentfulArticlesBodyTextNode {
-      childMdx {
-        body
-      }
-    }
-
-    createdAt(formatString: "MMMM/DD/YY HH:MM")
-    updatedAt(fromNow: true)
-  }
+query ArticleBySlug($slug: String) {
   mdx(frontmatter: {slug: {eq: $slug}}) {
     frontmatter {
       slug
       title
     }
-    body: excerpt(truncate: true, pruneLength: 64)
+    body
     parent {
       ... on File {
         createdAt: birthTime(formatString: "MMMM/DD/YY HH:MM")
@@ -68,3 +55,16 @@ query ArticleBySlug($slug: String!) {
 }
 
 `
+
+// article: contentfulArticles(slug: {eq: $slug}) {
+//   slug
+//   title
+//   node: childContentfulArticlesBodyTextNode {
+//     childMdx {
+//       body
+//     }
+//   }
+
+//   createdAt(formatString: "MMMM/DD/YY HH:MM")
+//   updatedAt(fromNow: true)
+// }

@@ -7,7 +7,7 @@
  * path: /blog/[n]
  */
 import path from 'path'
-import { GatsbyNode } from 'gatsby';
+import { GatsbyNode } from 'gatsby'
 
 // @ts-ignore
 import { CreateArticleListPagesQuery } from '../../types/graphql-types'
@@ -75,7 +75,7 @@ const createArticleListPages: GatsbyNode['createPages'] = async ({
         currentPage: i + 1,
       },
     })
-  });
+  })
 })
 
 module.exports = createArticleListPages

@@ -40,6 +40,6 @@ const Header: React.FC<HeaderProps> = ({
       </nav>
     </header>
   )
-};
+}
 
 export default Header

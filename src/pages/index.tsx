@@ -7,6 +7,6 @@ const ArticlesListPage = () => (
   <Layout title="TOP" type="article">
     <Link to="/blog">HOME</Link>
   </Layout>
-);
+)
 
 export default ArticlesListPage

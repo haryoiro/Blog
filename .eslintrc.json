@@ -5,27 +5,20 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "env": { "browser": true, "es6": true },
   "rules": {
-    "strict": 0,
     "semi": ["error", "never", { "beforeStatementContinuationChars": "never" }],
     "semi-spacing": ["error", { "after": true, "before": false }],
     "semi-style": ["error", "first"],
     "no-extra-semi": "error",
     "no-unexpected-multiline": "error",
     "no-unreachable": "error",
-    "react/jsx-filename-extension": [1, { 
-      "extensions": [".js", ".jsx", ".ts", ".tsx"] 
-    }],
-    "rect/prop-types": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "@typescript-eslint/semi": ["error", "never"],
+    "react/prop-types": 0
   }
 
 }

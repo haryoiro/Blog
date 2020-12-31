@@ -39,6 +39,6 @@ const Layout: React.FC<LayoutProps> = ({
     </div>
     <Footer />
   </>
-);
+)
 
 export default Layout

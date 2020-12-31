@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/no-unused-prop-types */
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout/Layout'
@@ -8,33 +10,34 @@ import { ArticleListQuery } from '../../types/graphql-types'
 export type Props = {
   data: ArticleListQuery,
 }
-;const ArticleListTemplate: React.FC<Props> = ({ data }) => {
+const ArticleListTemplate: React.FC<Props> = ({ data }) => {
   const articles = data.allMdx.edges
 
   return (
     <Layout title="記事一覧" type="website">
       {
-        articles.map(({
-          node: {
+        articles.map(({ node }: { node: any }): React.ReactElement => {
+          const {
             frontmatter,
             parent,
             excerpt,
-          },
-        }) => (
-          /* @ts-ignore */
-          <Article
-            id={frontmatter?.slug}
-            title={frontmatter?.title || 'none'}
-            slug={frontmatter?.slug || 'none'}
-            createdAt={parent?.birthTime || 'none'}
-            body={excerpt}
-            updatedAt={parent?.changeTime || 'none'}
-          />
-        ))
+          } = node
+          return (
+            <Article
+              key={frontmatter?.slug}
+              id={frontmatter?.slug}
+              title={frontmatter?.title}
+              slug={frontmatter?.slug}
+              createdAt={parent?.birthTime}
+              updatedAt={parent?.changeTime}
+              body={excerpt}
+            />
+          )
+        })
       }
     </Layout>
   )
-};
+}
 
 export default ArticleListTemplate
 
@@ -64,25 +67,5 @@ query ArticleList($skip: Int!, $limit: Int!) {
       }
     }
   }
-  allContentfulArticles(
-    limit: $limit,
-    skip: $skip,
-    sort: {fields: createdAt, order: DESC}) {
-    edges {
-      node {
-        id
-        title
-        slug
-        updatedAt(fromNow: true)
-        createdAt(formatString: "MMMM DD, YY")
-        body {
-          childMdx {
-            excerpt(pruneLength: 64)
-          }
-        }
-      }
-    }
-  }
 }
-
-`;
+`

@@ -19,15 +19,15 @@ export type SEOProps = {
   type: 'website' | 'article'
   title: string | null | undefined
 }
-;export const SEO: React.FC<SEOProps> = ({
+export const SEO: React.FC<SEOProps> = ({
   type,
   title,
 }) => {
   const siteMetadata = useSiteMetadata()
 
   const siteName = siteMetadata.title
-  const { description } = siteMetadata;
-  const { siteUrl } = siteMetadata;
+  const { description } = siteMetadata
+  const { siteUrl } = siteMetadata
 
   const metaTitle = title
     ? `${siteName} | ${title}`
@@ -81,6 +81,6 @@ export type SEOProps = {
       />
     </Helmet>
   )
-};
+}
 
 export default SEO
