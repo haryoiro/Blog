@@ -31,7 +31,7 @@
       padding: $content_padding_horizontal 0;
     }
     @include mq(md) {
-      display: block;
+      display: flex;
       max-width: 1160px;
       padding: $content_padding_horizontal $content_padding_vertical;
     }
@@ -54,7 +54,9 @@
         margin: 0;
       }
       @include mq(md) {
-        display: block;
+        display: flex;
+        max-width: 735px;
+        margin: 0;
       }
       @include mq(lg) {
         display: flex;
@@ -80,12 +82,14 @@
       @include mq(md) {
         display: flex;
         margin-left: 1rem;
-        max-width: 260px;
+        margin-top: 0;
+        max-width: 280px;
         height: 100%;
       }
       @include mq(lg) {
         display: flex;
-        max-width: 260px;
+        margin-top: 0;
+        max-width: 280px;
         width: 260px;
         height: 100%;
       }

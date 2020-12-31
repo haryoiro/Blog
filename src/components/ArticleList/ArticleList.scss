@@ -2,8 +2,10 @@
 
 .article {
   margin-bottom: 0.5rem;
+  margin-right: 2rem;
+  padding: 0 $content_padding_vertical / 2;
   @include mq(xs) {
-    min-width: 412px;
+    min-width: 400px;
   }
   &-wrapper {
     padding: 1rem 0;
@@ -27,7 +29,6 @@
   }
   &-tags a {
     color: $gray-0;
-    line-height: 0.4em;
     font-size: 0.8rem;
     @include mq(xs) {
       line-height: 0.3em;
@@ -44,7 +45,7 @@
     display: flex;
     justify-content: space-between;
     padding-top: 0.5rem;
-    .read-more {
+    .detail {
       font-size: 1rem;
       font-weight: 700;
       // background-color: $prime;
@@ -74,8 +75,7 @@
 }
 
 .tag {
-  padding: 0.5em 0;
-  margin: 1rem 0 1rem 0;
+  padding: 0.2rem 0.2rem  0.2rem 0;
   // border-radius: 100px;
   // border:2px solid $bg-gray;
 }

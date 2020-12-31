@@ -10,7 +10,7 @@ import './Layout.scss'
 
 type LayoutProps = SEOProps & {
   sub?: React.ReactElement,
-};
+}
 // |  header   |
 // -------------
 // | main| sub |
