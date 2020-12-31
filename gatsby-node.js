@@ -1,4 +1,4 @@
-/* eslint-disable import/no-unresolved */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 
 require('ts-node').register({
@@ -21,7 +21,7 @@ exports.createPages = async (GatsbyNode) => {
   return Promise.all([article, articleList])
 }
 
-exports.onCreateNode = ({ node, getNode, actions}) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'Mdx') {

@@ -6,7 +6,6 @@ import {
   GrCalendar as CreatedAtIcon,
 } from 'react-icons/gr'
 import { FiChevronsRight } from 'react-icons/fi'
-import { CreateArticleListPagesQuery } from '../../../types/graphql-types'
 
 import './ArticleList.scss'
 
@@ -27,7 +26,7 @@ type TitleProps = {
   className: string,
   title: string | null | undefined,
   slug: string | null | undefined,
-};
+}
 const Title: React.FC<TitleProps> = ({ className, title, slug }) => (
   <Link to={`/blog/${slug}`}>
     <h2 className={className}>
@@ -42,7 +41,7 @@ type TimeProps = {
   className: string,
   updatedAt: string | null | undefined,
   createdAt: string | null | undefined,
-};
+}
 const PublicationDate: React.FC<TimeProps> = ({ className, updatedAt, createdAt }) => (
   <span className={className}>
     <span className="in-icon">
@@ -64,7 +63,7 @@ type TagsProps = {
     slug: string,
     title: string,
   }>
-};
+}
 const Tags: React.FC<TagsProps> = ({ className, data }) => (
   <span className={className}>
     {
@@ -124,7 +123,7 @@ const Article: React.FC<ArticleProps> = ({
           />
           {/* Readmore */}
           <Link to={`/blog/${slug}`}>
-            <span className="read-more grad">
+            <span className="detail grad">
               続きを読む
               <FiChevronsRight />
             </span>

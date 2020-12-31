@@ -1,33 +1,25 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
-import React from 'react'
+import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 
 import useSiteMetadata from './SiteMetadata'
 
-// @ts-ignore
 import woff from '../fonts/Montserrat/montserrat-v15-latin-700.woff'
-// @ts-ignore
 import woff2 from '../fonts/Montserrat/montserrat-v15-latin-700.woff2'
 
 export type SEOProps = {
   type: 'website' | 'article'
   title: string | null | undefined
 }
-export const SEO: React.FC<SEOProps> = ({
+export const SEO: FC<SEOProps> = ({
   type,
   title,
 }) => {
   const siteMetadata = useSiteMetadata()
-
+  const {
+    description,
+    siteUrl,
+  } = siteMetadata
   const siteName = siteMetadata.title
-  const { description } = siteMetadata
-  const { siteUrl } = siteMetadata
 
   const metaTitle = title
     ? `${siteName} | ${title}`
@@ -41,8 +33,6 @@ export const SEO: React.FC<SEOProps> = ({
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       <title>{metaTitle}</title>
-
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
       <meta name="application-name" content={siteName} />
       <meta name="author" content="Haryoiro" />

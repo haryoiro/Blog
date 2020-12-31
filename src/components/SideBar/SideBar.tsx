@@ -10,7 +10,7 @@ const SideBar: React.FC = () => {
   } = useSiteMetadata()
 
   return (
-    <div className="sidebar">
+    <div className="sidebar card">
       <div>
         <strong>{author}</strong>
         <p>{description}</p>

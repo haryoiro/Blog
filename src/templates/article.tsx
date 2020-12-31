@@ -5,7 +5,7 @@
  * ページが動的に作成される。
  */
 
-import React from 'react'
+import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
@@ -19,7 +19,7 @@ export type Props = {
   data: ArticleBySlugQuery
 }
 
-const ArticlePostTemplate: React.FC<Props> = ({
+const ArticlePostTemplate: FC<Props> = ({
   data: { mdx },
 }) => {
   const title = mdx?.frontmatter?.title
