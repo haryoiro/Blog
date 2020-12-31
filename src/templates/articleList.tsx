@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unused-prop-types */
-import React from 'react'
+import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout/Layout'
 import Article from '../components/ArticleList/ArticleList'
@@ -10,7 +10,7 @@ import { ArticleListQuery } from '../../types/graphql-types'
 export type Props = {
   data: ArticleListQuery,
 }
-const ArticleListTemplate: React.FC<Props> = ({ data }) => {
+const ArticleListTemplate: FC<Props> = ({ data }) => {
   const articles = data.allMdx.edges
 
   return (

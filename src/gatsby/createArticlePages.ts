@@ -1,6 +1,8 @@
 import path from 'path'
 import { GatsbyNode } from 'gatsby'
 
+import { CreateArticleListPagesQuery } from '../../types/graphql-types'
+
 type Articles = {
   allMdx: {
     edges: Array<{
@@ -11,13 +13,13 @@ type Articles = {
       }
     }>
   }
-};
+}
 
 const createArticlePages: GatsbyNode['createPages'] = async ({
   graphql,
   actions: { createPage },
   reporter,
-}) => graphql<Articles>(`
+}) => graphql<Articles | CreateArticleListPagesQuery>(`
 query CreateArticlePages {
   allMdx {
     edges {
@@ -41,7 +43,8 @@ query CreateArticlePages {
     return
   }
 
-  posts.forEach(({ node: { frontmatter: { slug } } }) => {
+  posts.forEach(({ node }) => {
+    const slug = node.frontmatter?.slug
     if (slug) {
       createPage({
         path: `/blog/${slug}`,

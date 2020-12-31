@@ -9,27 +9,13 @@
 import path from 'path'
 import { GatsbyNode } from 'gatsby'
 
-// @ts-ignore
 import { CreateArticleListPagesQuery } from '../../types/graphql-types'
-
-type Articles = {
-  allMdx: {
-    edges: any
-  },
-  allContentfulArticles: {
-    edges: Array<{
-      node: {
-        slug: string
-      }
-    }>
-  }
-};
 
 const createArticleListPages: GatsbyNode['createPages'] = async ({
   graphql,
   actions: { createPage },
   reporter,
-}) => graphql<Articles | CreateArticleListPagesQuery>(`
+}) => graphql<CreateArticleListPagesQuery>(`
   query CreateArticleListPages {
     allMdx(
       limit: 1000
