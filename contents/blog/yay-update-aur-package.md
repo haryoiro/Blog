@@ -94,3 +94,8 @@ sudo yay -Yc
 ```bash=
 sudo yay <検索語>
 ```
+
+### 参考サイト
+
+https://computingforgeeks.com/yay-best-aur-helper-for-arch-linux-manjaro/
+https://tiridukano-yagigame.hatenablog.jp/entry/2019/12/01/200921
