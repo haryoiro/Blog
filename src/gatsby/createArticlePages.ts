@@ -1,25 +1,15 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import path from 'path'
 import { GatsbyNode } from 'gatsby'
 
-import { CreateArticleListPagesQuery } from '../../types/graphql-types'
-
-type Articles = {
-  allMdx: {
-    edges: Array<{
-      node: {
-        frontmatter: {
-          slug: string | null | undefined,
-        }
-      }
-    }>
-  }
-}
+// @ts-ignore
+import { CreateArticlePagesQuery } from '../../types/graphql-types'
 
 const createArticlePages: GatsbyNode['createPages'] = async ({
   graphql,
   actions: { createPage },
   reporter,
-}) => graphql<Articles | CreateArticleListPagesQuery>(`
+}) => graphql<CreateArticlePagesQuery>(`
 query CreateArticlePages {
   allMdx {
     edges {
@@ -43,6 +33,7 @@ query CreateArticlePages {
     return
   }
 
+<<<<<<< Updated upstream
   posts.forEach(({ node }) => {
     const slug = node.frontmatter?.slug
     if (slug) {
@@ -54,6 +45,17 @@ query CreateArticlePages {
         },
       })
     }
+=======
+  // @ts-ignore
+  posts.forEach(({ node: { frontmatter: { slug } } }) => {
+    createPage({
+      path: `/blog/${slug}`.toLowerCase(),
+      component: path.resolve('src/templates/articleTemplate.tsx'),
+      context: {
+        slug,
+      },
+    })
+>>>>>>> Stashed changes
   })
 })
 

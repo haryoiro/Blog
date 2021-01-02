@@ -14,12 +14,15 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
   const articles = data.allMdx.edges
 
   return (
-    <Layout title="記事一覧" type="website">
+    <Layout
+      title="記事一覧"
+      type="website"
+      topic="Blog"
+    >
       {
         articles.map(({ node }: { node: any }): React.ReactElement => {
           const {
             frontmatter,
-            parent,
             excerpt,
           } = node
           return (
@@ -28,8 +31,8 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
               id={frontmatter?.slug}
               title={frontmatter?.title}
               slug={frontmatter?.slug}
-              createdAt={parent?.birthTime}
-              updatedAt={parent?.changeTime}
+              createdAt={frontmatter?.createdAt}
+              tags={frontmatter?.tags}
               body={excerpt}
             />
           )
@@ -45,9 +48,9 @@ export const articleListQuery = graphql`
 query ArticleList($skip: Int!, $limit: Int!) {
   allMdx(
     filter: {
-      frontmatter: {title: {nin: ""}}}, 
-      skip: $skip, 
-      limit: $limit, 
+      frontmatter: {title: {nin: ""}}},
+      skip: $skip,
+      limit: $limit,
       sort: {fields: frontmatter___date, order: DESC}
   ) {
     edges {
@@ -55,15 +58,10 @@ query ArticleList($skip: Int!, $limit: Int!) {
         frontmatter {
           slug
           title
+          createdAt: date(formatString: "YYYY.MM.DD")
+          tags
         }
-        parent {
-          ... on File {
-            name
-            birthTime
-            changeTime
-          }
-        }
-        excerpt(pruneLength: 64)
+        excerpt(pruneLength: 67)
       }
     }
   }

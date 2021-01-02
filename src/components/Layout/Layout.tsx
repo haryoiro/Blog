@@ -6,13 +6,14 @@ import Footer from '../Footer/Footer'
 import SEO, { SEOProps } from '../SEO'
 
 import 'sanitize.css'
-import './Layout.scss'
 
 type LayoutProps = SEOProps & {
   sub?: React.ReactElement,
+  topic?: string,
 }
 // |  header   |
 // -------------
+// |   hero    |
 // | main| sub |
 // |     |     |
 // -------------
@@ -26,9 +27,6 @@ const Layout: React.FC<LayoutProps> = ({
   <>
     <SEO title={title} type={type} />
     <Header className="site-header" />
-    <div className="hero">
-      {/* <h1>Blog</h1> */}
-    </div>
     <div className="site-content" id="content">
       <main className="site-main">
         {children}

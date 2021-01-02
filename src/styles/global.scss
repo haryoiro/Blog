@@ -2,11 +2,9 @@
 
 @import './variable',
         './font',
-        './mixin',
-        './atom',
-        './animation';
+        './mixin';
 
-// @import '../components/ArticleList/ArticleList.scss';
+@import '../components/all.scss';
 
 html, body {
     background-color: $bg-light;
@@ -14,10 +12,13 @@ html, body {
     padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6, a, p{
-    font-family: "YakuHanJPs_Noto", "Hiragino Sans" sans-serif;
+h1, h2, h3, h4, h5, h6, a, p, blockquote, ul, ol, li, table, thread, tbody, tr, td, th, pre, em, strong, del, hr, img{
+    font-family: "YakuHanJPs_Noto", "Hiragino Sans", Arial, Helvetica, sans-serif;
     font-feature-settings: "palt";
     text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, a, p {
     margin: 0;
     padding: 0;
     color: inherit;

@@ -3,13 +3,12 @@ import React from 'react'
 
 import Svg from '../Svg/SVG'
 
-import './Header.scss'
 
 import useSiteMetadata from '../SiteMetadata'
 
 type HeaderProps = {
   className: string
-};
+}
 const Header: React.FC<HeaderProps> = ({
   className,
 }) => {
@@ -18,9 +17,9 @@ const Header: React.FC<HeaderProps> = ({
     <header className={className}>
       <nav className="nav nav-wrapper">
         <Link to="/blog">
-          <h1 className="logo">
+          <h2 className="logo">
             {title}
-          </h1>
+          </h2>
         </Link>
         <div className="col">
           <Link

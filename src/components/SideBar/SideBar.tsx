@@ -11,7 +11,7 @@ const SideBar: React.FC = () => {
 
   return (
     <div className="sidebar card">
-      <div>
+      <div className="article-wrapper">
         <strong>{author}</strong>
         <p>{description}</p>
       </div>

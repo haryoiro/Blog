@@ -8,18 +8,18 @@ import woff2 from '../fonts/Montserrat/montserrat-v15-latin-700.woff2'
 
 export type SEOProps = {
   type: 'website' | 'article'
-  title: string | null | undefined
+  title: string | null | undefined,
+  description?: string | null | undefined
 }
 export const SEO: FC<SEOProps> = ({
   type,
   title,
+  description,
 }) => {
   const siteMetadata = useSiteMetadata()
-  const {
-    description,
-    siteUrl,
-  } = siteMetadata
+  const { siteUrl } = siteMetadata
   const siteName = siteMetadata.title
+  const siteDescription = siteMetadata.description
 
   const metaTitle = title
     ? `${siteName} | ${title}`
@@ -36,14 +36,14 @@ export const SEO: FC<SEOProps> = ({
 
       <meta name="application-name" content={siteName} />
       <meta name="author" content="Haryoiro" />
-      <meta name="description" content={description} />
+      <meta name="description" content={siteDescription} />
       <meta name="theme-color" content="#fff" />
 
       <meta property="og:locale" content="ja" />
       <meta property="og:type" content={type} />
       <meta property="og:title" content={metaTitle} />
       {/* <meta property="og:url" content="/" /> */}
-      <meta property="og:description" content={description} />
+      <meta property="og:description" content={description || siteDescription} />
       <meta property="og:site_name" content={siteName} />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-VMYZ7W9W96" />
       <script>

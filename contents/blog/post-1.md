@@ -1,7 +1,17 @@
 ---
+<<<<<<< Updated upstream:contents/blog/post-1.md
 slug: "docker-compose-up-port-is-already-allocated-windows-linux"
 title: "DockerComposeに「port is already allocated」と怒られたときにやること"
 date: "2020-12-29"
+=======
+title: DockerComposeに「port is already allocated」と怒られたときにやること
+slug: docker-compose-up-port-is-already-allocated-windows-linux
+date: "2020-12-29"
+tags: 
+  - docker
+  - linux
+  - windows
+>>>>>>> Stashed changes:contents/blog/docker-compose-up-port-is-already-allocated-windows-linux.md
 ---
 
 ## 原因
