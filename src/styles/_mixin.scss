@@ -1,15 +1,23 @@
 
+// $breakpoints: (
+//   'xs': 'screen and (max-width: 479px)',
+//   'sm': 'screen and (min-width: 480px)',
+//   'mxd': 'screen and (max-width: 768px)',
+//   'md': 'screen and (min-width: 768px)',
+//   'lg': 'screen and (min-width: 1000px)',
+//   'xl': 'screen and (min-width: 1200px)',
+// ) !default;
+
 $breakpoints: (
-  'xs': 'screen and (max-width: 479px)',
-  'sm': 'screen and (min-width: 480px)',
-  'mxd': 'screen and (max-width: 768px)',
-  'md': 'screen and (min-width: 768px)',
-  'lg': 'screen and (min-width: 1000px)',
-  'xl': 'screen and (min-width: 1200px)',
+  'min': 'screen and (max-width: 319px)',
+  'small': 'screen and (min-width: 320px) and (max-width: 414px)',
+  'phone': 'screen and (min-width: 415px) and (max-width: 767px)',
+  'talet': 'screen and (min-width: 768px) and (max-width: 1024px)',
+  'pc': 'screen and (min-width: 1025px)',
 ) !default;
 
-@mixin mq($breakpoint: md) {
-  @media #{map-get($breakpoints, $breakpoint)} {
+@mixin media($breakpoint: min) {
+  @media #{map-get($breakpoints)} {
     @content;
   }
 }
@@ -26,33 +34,6 @@ $breakpoints: (
         + "Please make sure it is defined in `$breakpoints` map.";
   }
 }
-
-// =================================================================
-// Animations
-// =================================================================
-@mixin keyframes($animation-name) {
-  @-webkit-keyframes $animation-name {
-    @content;
-  }
-  @-moz-keyframes $animation-name {
-    @content;
-  }  
-  @keyframes 
-    $animation-name 
-  {
-    @content;
-  }
-}
-
-@mixin animation($animation-name) {
-  -webkit-animation: $animation-name;
-  -moz-animation: $animation-name;
-  animation: $animation-name;
-  -webkit-animation-fill-mode: both;
-  -moz-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
 
 
 // =================================================================

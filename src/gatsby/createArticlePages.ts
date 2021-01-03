@@ -33,19 +33,7 @@ query CreateArticlePages {
     return
   }
 
-<<<<<<< Updated upstream
-  posts.forEach(({ node }) => {
-    const slug = node.frontmatter?.slug
-    if (slug) {
-      createPage({
-        path: `/blog/${slug}`,
-        component: path.resolve('src/templates/article.tsx'),
-        context: {
-          slug,
-        },
-      })
-    }
-=======
+
   // @ts-ignore
   posts.forEach(({ node: { frontmatter: { slug } } }) => {
     createPage({
@@ -55,7 +43,6 @@ query CreateArticlePages {
         slug,
       },
     })
->>>>>>> Stashed changes
   })
 })
 

@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Header from '../Header/Header'
-import Sidebar from '../SideBar/SideBar'
-import Footer from '../Footer/Footer'
-import SEO, { SEOProps } from '../SEO'
+import Header from './Header'
+import Sidebar from './SideBar'
+import Footer from './Footer'
+import SEO, { SEOProps } from './SEO'
 
 import 'sanitize.css'
 

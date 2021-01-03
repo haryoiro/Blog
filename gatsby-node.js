@@ -16,26 +16,3 @@ exports.createPages = async (GatsbyNode) => {
 
   return Promise.all([article, articleList])
 }
-<<<<<<< Updated upstream
-
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === 'Mdx') {
-    const parent = getNode(node.parent)
-
-    const collection = {
-      source: parent.sourceInstanceNames.map,
-      createdAt: parent.birthTime,
-      updatedAt: parent.changeTime,
-    }
-
-    createNodeField({
-      node,
-      name: 'collection',
-      value: collection,
-    })
-  }
-}
-=======
->>>>>>> Stashed changes

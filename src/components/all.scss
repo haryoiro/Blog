@@ -27,9 +27,6 @@
 .article {
   margin-bottom: 0.5rem;
   padding: 0 $content_padding_vertical / 2;
-  @include mq(xs) {
-    min-width: 400px;
-  }
   &-wrapper {
     padding: 1rem 0;
   }
@@ -38,38 +35,22 @@
     font-size: 0.8rem;
     text-align: center;
     font-weight: 600;
-    @include mq(xs) {
-      line-height: 0.3em;
-      font-size: 0.6rem;
-    }
   }
   &-title {
     color: $prime;
     font-weight: 600;
     font-size: 20px;
     line-height: 1.3;
-    @include mq(xs) {
-      font-size: 200px;
-      line-height: 26px;
-    }
   }
   &-tags a {
     color: $gray-0;
     font-size: 0.8rem;
     font-weight: 600;
-    @include mq(xs) {
-      line-height: 0.3em;
-      font-size: 0.8rem;
-    }
   }
   &-main {
     padding: .5rem 0;
     font-size: 14px;
     line-height: 1.58;
-    @include mq(xs) {
-      font-size: 14px;
-      line-height: 1.58;
-    }
   }
   &-descriptions {
     display: flex;
@@ -87,13 +68,6 @@
         width: 1rem;
         height: 1rem;
       }
-      @include mq(xs) {
-        font-size: 1rem;
-        svg {
-          width: 0.8rem;
-          height: 0.8rem;
-        }
-      }
     }
   }
 }
@@ -108,24 +82,9 @@
   margin: auto;
   box-sizing: border-box;
   padding: 1rem 4rem;
-  @include mq(xs) {
-    padding: 1rem 2rem;
-  }
   &-wrapper {
     display: flex;
     justify-content: space-between;
-    @include mq(xs) {
-      padding: .5rem 0.5rem;
-    }
-    @include mq(sm) {
-      padding: 1rem 2rem;
-    }
-    @include mq(md) {
-      padding: 1rem 4rem;
-    }
-    @include mq(lg) {
-      padding: 1rem 4rem;
-    }
     .logo {
       margin: 0;
       font-family: 'Montserrat';
@@ -133,10 +92,6 @@
       text-align: center;
       font-size: 36px;
       font-weight: bold;
-      @include mq(xs) {
-        font-size: 36px;
-        min-width: 247px;
-      }
     }
     .git {
       margin: 0;
@@ -173,79 +128,12 @@
     
     margin: 0 auto;
     transition: padding 0.05s ease;
-    @include mq(xs) {
-      display: block;
-      padding: $content_padding_horizontal 0;
-    }
-    @include mq(sm) {
-      display: block;
-      padding: $content_padding_horizontal 0;
-    }
-    @include mq(mxd) {
-      display: block;
-      max-width: 1160px;
-      padding: $content_padding_horizontal $content_padding_vertical;
-    }
-    @include mq(md) {
-      display: flex;
-      padding: $content_padding_horizontal 4rem;
-    }
-    @include mq(lg) {
-      max-width: 1160px;
-      display: flex;
-    }
     &-main {
       flex: 1;
       max-width: 735px;
       margin: 0;
-      @include mq(xs) {
-        display: block;
-        max-width: 100%;
-      }
-      @include mq(sm) {
-        display: block;
-        max-width: 100%;
-      }
-      @include mq(mxd) {
-        display: block;
-        max-width: 735px;
-        padding-left: 2rem;
-      }
-      @include mq(lg) {
-        display: flex;
-        max-width: 735px;
-        padding: 2rem 2rem;
-      }
-      @include mq(xl) {
-      }
     }
     .sidebar {
-      @include mq(xs) {
-        display: block;
-      }
-      @include mq(sm) {
-        display: block;
-        max-width: 100%;
-        width: 100%;
-        margin: 0;
-      }
-      @include mq(mxd) {
-        display: block;
-        margin-left: 1rem;
-        margin-top: 0;
-        max-width: 260px;
-        height: 100%;
-      }
-      @include mq(md) {
-        display: block;
-      }
-      @include mq(lg) {
-        display: flex;
-        margin-top: 0;
-        max-width: 260px;
-        width: 260px;
-        height: 100%;
-      }
     }
   }
 
@@ -314,7 +202,4 @@
   border-radius: $radius;
   background-color: $bg-white;
 
-  @include mq(xs) {
-    border-radius: 0;
-  }
 }
