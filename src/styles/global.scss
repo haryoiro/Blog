@@ -11,20 +11,3 @@ html, body {
     margin: 0;
     padding: 0;
 }
-
-h1, h2, h3, h4, h5, h6, a, p, blockquote, ul, ol, li, table, thread, tbody, tr, td, th, pre, em, strong, del, hr, img{
-    font-family: "YakuHanJPs_Noto", "Hiragino Sans", Arial, Helvetica, sans-serif;
-    font-feature-settings: "palt";
-    text-decoration: none;
-}
-
-h1, h2, h3, h4, h5, h6, a, p {
-    margin: 0;
-    padding: 0;
-    color: inherit;
-    background-color: inherit;
-    font-weight: inherit;
-    justify-content: inherit;
-    align-items: inherit;
-    text-align: inherit;
-}
