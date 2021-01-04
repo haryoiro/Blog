@@ -4,23 +4,18 @@ import React from 'react'
 import Svg from './SVG'
 import useSiteMetadata from './SiteMetadata'
 
-type HeaderProps = {
-  className: string
-}
-const Header: React.FC<HeaderProps> = ({
-  className,
-}) => {
+const Header: React.FC = () => {
   const { title } = useSiteMetadata()
   return (
-    <header className="header grid-centering">
+    <header className="header grid-center">
       <div />
-      <nav className="">
+      <nav>
         <Link to="/blog">
           <h2 className="logo">
             {title}
           </h2>
         </Link>
-        <div className="col">
+        <div>
           <Link
             className="git"
             to="https://github.com/haryoiro"
