@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 
-import useSiteMetadata from './SiteMetadata'
+import useSiteMetadata from '../SiteMetadata'
 
 const SideBar: React.FC = () => {
   const {

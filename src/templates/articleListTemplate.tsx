@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { FC } from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Layout from '../components/layouts/MainLayout'
 import Article from '../components/ArticleList'
 
 import { ArticleListQuery } from '../../types/graphql-types'
@@ -14,11 +14,8 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
   const articles = data.allMdx.edges
 
   return (
-    <Layout
-      title="記事一覧"
-      type="website"
-      topic="Blog"
-    >
+    <Layout title="記事一覧" type="website">
+      <>
       {
         articles.map(({ node }: { node: any }): React.ReactElement => {
           const {
@@ -38,6 +35,8 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
           )
         })
       }
+      </>
+      <div />
     </Layout>
   )
 }

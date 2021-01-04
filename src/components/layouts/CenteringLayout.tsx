@@ -15,26 +15,26 @@ const Grid: FC<GridProps> = ({
   switch (position) {
     case 'left':
       return (
-        <div className="grid-left">
+        <div className={`grid-left ${className}`}>
           <div />
-          <div className={className}>{children}</div>
+          <div>{children}</div>
           <div />
         </div>
       )
     case 'right':
       return (
-        <div className="grid-right">
+        <div className={`grid-right ${className}`}>
           <div />
-          <div className={className}>{children}</div>
+          <div>{children}</div>
           <div />
         </div>
       )
     case 'center':
     default:
       return (
-        <div className="grid-center">
+        <div className={`grid-center ${className}`}>
           <div />
-          <div className={className}>{children}</div>
+          <div>{children}</div>
           <div />
         </div>
       )

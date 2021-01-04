@@ -61,6 +61,7 @@ module.exports = {
         path: `${__dirname}/contents/blog`,
       },
     },
+    'gatsby-plugin-svgr',
     {
       resolve: 'gatsby-plugin-typography',
       options: {

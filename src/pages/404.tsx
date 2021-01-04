@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import Layout from '../components/Layout'
+import Layout from '../components/layouts/MainLayout'
 
 const NotFoundPage: FC = () => (
   <Layout title="404: Not found" type="article">

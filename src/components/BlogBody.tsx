@@ -3,7 +3,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
 import MDComponents from './MDXComponents'
-import Layout from './Layout'
+import Layout from './layouts/MainLayout'
 
 import { ArticleBySlugQuery } from '../../types/graphql-types'
 
@@ -14,11 +14,7 @@ export type Props = {
 const BlogBody: FC<Props> = ({ data }) => {
   const title = data.mdx?.frontmatter?.title
   return (
-    <Layout
-      title={title}
-      type="article"
-      topic="Blog"
-    >
+    <Layout title={title} type="article">
       <div className="card">
         <MDXProvider components={MDComponents}>
           <div className="mdx-wrapper">
@@ -29,6 +25,7 @@ const BlogBody: FC<Props> = ({ data }) => {
           </div>
         </MDXProvider>
       </div>
+      <div />
     </Layout>
   )
 }

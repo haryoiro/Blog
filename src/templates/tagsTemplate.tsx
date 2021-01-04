@@ -3,7 +3,7 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { FC, ReactElement } from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Layout from '../components/layouts/MainLayout'
 import Article from '../components/ArticleList'
 // @ts-ignore
 import { ArticleListByTagQuery } from '../../types/graphql-types'
@@ -21,11 +21,7 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
   const articles = data.allMdx.edges
 
   return (
-    <Layout
-      title={`${pageContext.tag}`}
-      type="article"
-      topic={`Tag: ${pageContext.tag}`}
-    >
+    <Layout title={`${pageContext.tag}`} type="article">
       <>
         {
         articles.map((
@@ -51,6 +47,8 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
         ))
       }
       </>
+      
+      <div />
     </Layout>
   )
 }
