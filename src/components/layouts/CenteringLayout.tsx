@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 
 type GridPositions = 'left' | 'center' | 'right' | null | undefined
-type GridProps = {
-  className?: string | undefined
-  position?: GridPositions
+type GridProps = Partial<{
+  className: string | undefined
+  position: GridPositions
   children: React.ReactNode
-}
+}>
 
 const Grid: FC<GridProps> = ({
   className,

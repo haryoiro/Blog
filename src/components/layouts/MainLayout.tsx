@@ -1,10 +1,11 @@
 import React from 'react'
 
-import Header from './Header'
-import Sidebar from './SideBar'
-import Footer from './Footer'
-import Grid from './layouts/GridVerticalLayout'
-import SEO, { SEOProps } from './SEO'
+import Header from '../Molecules/Header'
+import Sidebar from '../SideBar'
+import Footer from '../Molecules/Footer'
+
+import TwoColumn from './TwoColumnLayout'
+import SEO, { SEOProps } from '../SEO'
 
 import 'sanitize.css'
 import './all.scss'
@@ -19,16 +20,16 @@ const Layout: React.FC<LayoutProps> = ({
 }) => (
   <>
     <SEO title={title} type={type} />
-    <Header />
-    <Grid>
+    <TwoColumn>
+      <Header />
       <main className="site-main">
         {children}
       </main>
       <div className="sidebar">
         {sub || <Sidebar />}
       </div>
-    </Grid>
-    <Footer />
+      <Footer />
+    </TwoColumn>
   </>
 )
 
