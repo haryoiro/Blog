@@ -1,9 +1,7 @@
 import React, { FC } from 'react'
 import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { MDXProvider } from '@mdx-js/react'
 
-import BlogBody from '../components/BlogBody/BlogBody'
+import BlogBody from '../components/BlogBody'
 
 import { ArticleBySlugQuery } from '../../types/graphql-types'
 

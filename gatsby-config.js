@@ -61,16 +61,12 @@ module.exports = {
         path: `${__dirname}/contents/blog`,
       },
     },
-    module.exports = {
-      plugins: [
-        {
-          resolve: `gatsby-plugin-typography`,
-          options: {
-            pathToConfigModule: `src/utils/typography`,
-          },
-        },
-      ],
-    }
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'src/utils/typography',
+      },
+    },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -93,7 +89,7 @@ module.exports = {
         //   - 新たなクエリを追加した。
         //   - 既存のクエリを編集した。
 
-        // codegen: false,
+        codegen: false,
 
         documentsPath: ['./src/**/*.{ts, tsx}'],
       },

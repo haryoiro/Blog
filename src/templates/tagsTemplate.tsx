@@ -3,8 +3,8 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { FC, ReactElement } from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout/Layout'
-import Article from '../components/ArticleList/ArticleList'
+import Layout from '../components/Layout'
+import Article from '../components/ArticleList'
 // @ts-ignore
 import { ArticleListByTagQuery } from '../../types/graphql-types'
 

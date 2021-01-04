@@ -1,10 +1,8 @@
 import { Link } from 'gatsby'
 import React from 'react'
 
-import Svg from '../Svg/SVG'
-
-
-import useSiteMetadata from '../SiteMetadata'
+import Svg from './SVG'
+import useSiteMetadata from './SiteMetadata'
 
 type HeaderProps = {
   className: string
@@ -14,8 +12,9 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const { title } = useSiteMetadata()
   return (
-    <header className={className}>
-      <nav className="nav nav-wrapper">
+    <header className="header grid-centering">
+      <div />
+      <nav className="">
         <Link to="/blog">
           <h2 className="logo">
             {title}
@@ -37,6 +36,7 @@ const Header: React.FC<HeaderProps> = ({
         </div>
 
       </nav>
+      <div />
     </header>
   )
 }

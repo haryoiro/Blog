@@ -1,1 +1,27 @@
 @import "../styles/mixin", "../styles/variable";
+
+.header {
+    background-color: $blue;
+}
+
+.grid-centering {
+    display: grid;
+    grid-template-columns: 1fr 1024px 1fr;
+}
+.max-width {
+    @include mq(pc) {
+        max-width: 1024px;
+    }
+    @include mq(tablet) {
+        max-width: 1024px;
+    }
+    @include mq(phone) {
+        max-width: 768px;
+    }
+    @include mq(small) {
+        max-width: 414px;
+    }
+    @include mq(min) {
+        max-width: 300px;
+    }
+}
