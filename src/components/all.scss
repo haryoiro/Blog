@@ -10,7 +10,21 @@ html, body {
 
 .grid-center {
     display: grid;
-    grid-template-columns: 1fr 1024px 1fr;
+    @include mq(PC) {
+        grid-template-columns: 1fr 1024px 1fr;
+    }
+    @include mq(TABLET) {
+        grid-template-columns: 1fr 768px 1fr;
+    }
+    @include mq(PHONE) {
+        grid-template-columns: 1rem 414px 1rem;
+    }
+    @include mq(SM) {
+        grid-template-columns: 1rem 320px 1rem;
+    }
+    @include mq(MI) {
+        grid-template-columns: 1rem 300px 1rem;
+    }
 }
 
 .max-width {
@@ -23,10 +37,10 @@ html, body {
     @include mq(PHONE) {
         max-width: 768px;
     }
-    @include mq(SMALL) {
+    @include mq(SM) {
         max-width: 414px;
     }
-    @include mq(MIN) {
+    @include mq(MI) {
         max-width: 300px;
     }
 }

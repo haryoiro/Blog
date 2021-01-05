@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react'
 
 import Styles from './TwoColumnsLayout.module.scss'
-import Center from './CenteringLayout'
+import Center from '../CenterLayout'
 
 type TwoColumnsLayoutProps = {
   className?: string | undefined,
@@ -19,14 +19,14 @@ const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = ({
 }) => (
   <div className={Styles.wrapper.concat(className)}>
     <Center className="header">
-      <div className={Styles.head}>{children[0]}</div>
+      <div className="head">{children[0]}</div>
     </Center>
     <Center>
-      <div className={Styles.main}>{children[1]}</div>
-      <div className={Styles.side}>{children[2]}</div>
+      <div className="main">{children[1]}</div>
+      <div className="side">{children[2]}</div>
     </Center>
     <Center>
-      <div className={Styles.foot}>{children[3]}</div>
+      <div className="foot">{children[3]}</div>
     </Center>
   </div>
 )

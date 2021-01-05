@@ -1,12 +1,12 @@
 import React, { FC, ReactElement } from 'react'
 
-import Header from '../Molecules/Header'
-import Footer from '../Molecules/Footer'
+import Header from '../../Molecules/Header'
+import Footer from '../../Molecules/Footer'
 
-import TwoColumns from './TwoColumnsLayout'
-import SEO, { SEOProps } from '../SEO'
+import TwoColumns from '../TwoColumnsLayout'
+import { SEOProps, SEO } from '../../SEO'
 
-import '../all.scss'
+import '../../all.scss'
 
 type LayoutProps = SEOProps & {
   children: [

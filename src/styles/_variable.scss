@@ -5,11 +5,42 @@ $white: #FFFFFF;
 $light: #FBFBFB;
 $grayish-white: #EEEEEE;
 $whitish-gray: #DFE1E5;
-$grauish-dark: #3C4043;
+$grayish-dark: #3C4043;
 $dark: #202124;
 $blue: #0092B5;
 $blue-deep: #0A5669;
 $red: #B5124C;
+$yellow: #B5A712;
+$yellow-deep: #696005;
+$orange: #FF7A18;
+
+$palettes: (
+  c: (
+    blue: ($blue, $white),
+    blue-deep: ($blue-deep, $white),
+    red: ($red, $white),
+    yellow: ($yellow, $white),
+    yellow-deep: ($yellow-deep, $white),
+    orange: ($orange, $white),
+  ),
+  g: (
+    white: ($white, $dark),
+    light: ($light, $dark),
+    grayish-white: ($grayish-white, $dark),
+    whitish-gray: ($whitish-gray, $dark),
+    grayish-dark: ($grayish-dark, $white),
+    dark: ($dark, $white),
+  ),
+);
+
+@each $paletteName, $palette in $palettes {
+  @each $colorName, $color in $palette {
+    .is#{colorName} {
+        background: nth($color, 1);
+        color: nth($color, 2);
+    }
+  }
+}
 
 // =============================
 // Shadow
