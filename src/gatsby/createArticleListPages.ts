@@ -29,15 +29,11 @@ const createArticleListPages: GatsbyNode['createPages'] = async ({
       }
     }
   }`).then((result) => {
-  if (result.errors || !result.data) {
-    return reporter.panicOnBuild('Error while running GraphQL query.')
-  }
+  if (result.errors || !result.data) return reporter.panicOnBuild('Error while running GraphQL query.')
 
   // すべての記事
   const posts = result.data.allMdx.edges
-  if (!posts) {
-    return reporter.panicOnBuild('Error while running GraphQL query.')
-  }
+  if (!posts) return reporter.panicOnBuild('Error while running GraphQL query.')
 
   // =================================================================
   // ArticleListPages
@@ -68,9 +64,7 @@ const createArticleListPages: GatsbyNode['createPages'] = async ({
   // TagsPages
   // =================================================================
   const { tags } = result.data.allMdx
-  if (!tags) {
-    return reporter.panicOnBuild('Error while running GraphQL query.')
-  }
+  if (!tags) return reporter.panicOnBuild('Error while running GraphQL query.')
 
   // @ts-ignore
   tags.forEach(({ fieldValue }: { fieldValue: any }) => {
