@@ -1,16 +1,19 @@
 import { Link } from 'gatsby'
-import React from 'react'
-import Center from '../../layouts/CenterLayout'
-import Logo from '../../Atoms/SiteLogo'
+import React, { FC } from 'react'
+import { ReactComponent as Logo } from './SiteLogo.svg'
 
-const Header: React.FC = () => (
-  <header className="header grid-center">
-    <Center>
-      <Link to="/blog">
-        <Logo />
-      </Link>
-    </Center>
-  </header>
+interface IHead {
+  className: string
+}
+
+type HeadProps = Partial<IHead>
+
+const Header: FC<HeadProps> = ({ className }) => (
+  <div className={`header ${className || ''}`}>
+    <Link to="/blog" className="siteLogo">
+      <Logo />
+    </Link>
+  </div>
 )
 
 export default Header

@@ -3,9 +3,6 @@ import { Helmet } from 'react-helmet'
 
 import useSiteMetadata from './SiteMetadata'
 
-import woff from '../fonts/Montserrat/montserrat-v15-latin-700.woff'
-import woff2 from '../fonts/Montserrat/montserrat-v15-latin-700.woff2'
-
 export type SEOProps = {
   type: 'website' | 'article'
   title: string | null | undefined,
@@ -55,20 +52,6 @@ export const SEO: FC<SEOProps> = ({
       `}
       </script>
       <link rel="canonical" href={siteUrl} />
-      <link
-        rel="preload"
-        as="font"
-        href={woff2}
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preload"
-        as="font"
-        href={woff}
-        type="font/woff"
-        crossOrigin="anonymous"
-      />
     </Helmet>
   )
 }

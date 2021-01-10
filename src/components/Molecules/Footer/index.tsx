@@ -1,16 +1,27 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import React from 'react'
+import React, { FC } from 'react'
 
 export type CopylightProps = {
   author: string
 }
-const Copylight: React.FC<CopylightProps> = ({ author }) => (
-  <div className="copylight">
-    {`© ${new Date().getFullYear()}\t ${author}`}
-  </div>
+const Copylight: FC<CopylightProps> = ({ author }) => (
+  <span className="copylight">
+    <span>
+      Built with
+      {' '}
+      <strong>Gatsby.</strong>
+      {' '}
+    </span>
+    <span>{`${author}  © 2020 - ${new Date().getFullYear()}`}</span>
+  </span>
 )
+interface FooterProps {
+  className: string;
+}
 
-const Footer: React.FC = () => {
+const Footer: FC<FooterProps> = ({
+  className,
+}) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -22,10 +33,8 @@ const Footer: React.FC = () => {
   `)
 
   return (
-    <footer>
-      <div>
-        <Copylight author={site.siteMetadata.author} />
-      </div>
+    <footer className={className}>
+      <Copylight author={site.siteMetadata.author} />
     </footer>
   )
 }

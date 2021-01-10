@@ -1,14 +1,16 @@
 .wrapper {
   display:grid;
   gap: 1rem;
-  grid-template: 
+  grid-template:
     "head head" 4rem
     "main side" 1fr
     "foot foot" 4rem /
-     1fr  minmax(200px 1fr);
+    1fr  minmax(200px 1fr);
 }
 
 .head {grid-area: head;}
 .main {grid-area: main;}
 .side {grid-area: side;}
 .foot {grid-area: foot;}
+
+.md {margin: 0 1rem;}

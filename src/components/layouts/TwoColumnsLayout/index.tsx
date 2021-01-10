@@ -1,34 +1,38 @@
 import React, { FC, ReactElement } from 'react'
 
-import Styles from './TwoColumnsLayout.module.scss'
-import Center from '../CenterLayout'
+import Header from '../../Molecules/Header'
+import Footer from '../../Molecules/Footer'
 
-type TwoColumnsLayoutProps = {
-  className?: string | undefined,
+import Center from '../CenterLayout'
+import { SEOProps, SEO } from '../../SEO'
+
+interface I2Layout {
   children: [
-    ReactElement, // head
     ReactElement, // main
     ReactElement, // side
-    ReactElement, // foot
   ],
 }
 
+type TwoColumnsLayoutProps = SEOProps & I2Layout
+
 const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = ({
-  className = '',
-  children,
+  children, title, type,
 }) => (
-  <div className={Styles.wrapper.concat(className)}>
-    <Center className="header">
-      <div className="head">{children[0]}</div>
-    </Center>
-    <Center>
-      <div className="main">{children[1]}</div>
-      <div className="side">{children[2]}</div>
-    </Center>
-    <Center>
-      <div className="foot">{children[3]}</div>
-    </Center>
-  </div>
+  <>
+    <SEO title={title} type={type} />
+    <div className="wrapper">
+      <Center className="is-blue" inClassName="header">
+        <Header className="head md" />
+      </Center>
+      <Center>
+        <main className="main md">{children[0]}</main>
+        <aside className="side md">{children[1]}</aside>
+      </Center>
+      <Center>
+        <Footer className="foot md" />
+      </Center>
+    </div>
+  </>
 )
 
 export default TwoColumnsLayout

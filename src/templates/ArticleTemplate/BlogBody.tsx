@@ -2,10 +2,10 @@ import React, { FC } from 'react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
-import MDComponents from './MDXComponents'
-import Layout from './layouts/MainLayout'
+import MDComponents from '../../components/MDXComponents'
+import Layout from '../../components/layouts/TwoColumnsLayout'
 
-import { ArticleBySlugQuery } from '../../types/graphql-types'
+import { ArticleBySlugQuery } from '../../../types/graphql-types'
 
 export type Props = {
   data: ArticleBySlugQuery
@@ -25,7 +25,7 @@ const BlogBody: FC<Props> = ({ data }) => {
           </div>
         </MDXProvider>
       </div>
-      <div />
+      <div>side</div>
     </Layout>
   )
 }

@@ -38,7 +38,6 @@ const createArticleListPages: GatsbyNode['createPages'] = async ({
   // =================================================================
   // ArticleListPages
   // =================================================================
-
   // 記事の本数
   const postsPerPage = 6
 
@@ -50,7 +49,7 @@ const createArticleListPages: GatsbyNode['createPages'] = async ({
     const pagePath = i === 0 ? '/blog' : `/blog/${i + 1}`
     createPage({
       path: pagePath,
-      component: path.resolve('src/templates/articleListTemplate.tsx'),
+      component: path.resolve('src/templates/ArticleListTemplate/index.tsx'),
       context: {
         limit: postsPerPage,
         skip: i * postsPerPage,
@@ -70,7 +69,7 @@ const createArticleListPages: GatsbyNode['createPages'] = async ({
   tags.forEach(({ fieldValue }: { fieldValue: any }) => {
     createPage({
       path: `/tag/${fieldValue}`.toLowerCase(),
-      component: path.resolve('src/templates/tagsTemplate.tsx'),
+      component: path.resolve('src/templates/TagsTemplate/index.tsx'),
       context: {
         tag: fieldValue,
       },

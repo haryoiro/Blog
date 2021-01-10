@@ -1,12 +1,40 @@
 @charset 'utf-8';
 
-@import './variable',
-        './font',
-        './mixin';
-
-@import '../components/all.scss';
-
-html, body {
+html, body, img {
     margin: 0;
     padding: 0;
+}
+
+
+@import
+    "./variable",
+    "./mixin",
+    "./variable";
+
+@import
+    "../components/layouts/TwoColumnsLayout/style.scss",
+    "../components/Molecules/Header/style.scss",
+    "../templates/ArticleListTemplate/style.scss";
+
+html, body {
+    background-color: #FFF;
+}
+
+.grid-center {
+    display: grid;
+    @include mq(PC) {
+        grid-template-columns: 1fr 1024px 1fr;
+    }
+    @include mq(TABLET) {
+        grid-template-columns: 1fr 768px 1fr;
+    }
+    @include mq(PHONE) {
+        grid-template-columns: 1rem 414px 1rem;
+    }
+    @include mq(SM) {
+        grid-template-columns: 1rem 320px 1rem;
+    }
+    @include mq(MI) {
+        grid-template-columns: 1rem 300px 1rem;
+    }
 }

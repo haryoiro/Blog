@@ -182,7 +182,7 @@ export type DirectoryEdge = {
   previous?: Maybe<Directory>;
 };
 
-export type DirectoryFieldsEnum = 
+export type DirectoryFieldsEnum =
   | 'sourceInstanceName'
   | 'absolutePath'
   | 'relativePath'
@@ -492,7 +492,7 @@ export type FileEdge = {
   previous?: Maybe<File>;
 };
 
-export type FileFieldsEnum = 
+export type FileFieldsEnum =
   | 'sourceInstanceName'
   | 'absolutePath'
   | 'relativePath'
@@ -711,6 +711,8 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___slug'
   | 'childMdx___frontmatter___date'
   | 'childMdx___frontmatter___tags'
+  | 'childMdx___frontmatter___thumbnail'
+  | 'childMdx___frontmatter___category'
   | 'childMdx___slug'
   | 'childMdx___body'
   | 'childMdx___excerpt'
@@ -831,7 +833,7 @@ export type FloatQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Float']>>>;
 };
 
-export type HeadingsMdx = 
+export type HeadingsMdx =
   | 'h1'
   | 'h2'
   | 'h3'
@@ -839,7 +841,7 @@ export type HeadingsMdx =
   | 'h5'
   | 'h6';
 
-export type ImageCropFocus = 
+export type ImageCropFocus =
   | 'CENTER'
   | 'NORTH'
   | 'NORTHEAST'
@@ -852,26 +854,26 @@ export type ImageCropFocus =
   | 'ENTROPY'
   | 'ATTENTION';
 
-export type ImageFit = 
+export type ImageFit =
   | 'COVER'
   | 'CONTAIN'
   | 'FILL'
   | 'INSIDE'
   | 'OUTSIDE';
 
-export type ImageFormat = 
+export type ImageFormat =
   | 'NO_CHANGE'
   | 'AUTO'
   | 'JPG'
   | 'PNG'
   | 'WEBP';
 
-export type ImageLayout = 
+export type ImageLayout =
   | 'FIXED'
   | 'FLUID'
   | 'CONSTRAINED';
 
-export type ImagePlaceholder = 
+export type ImagePlaceholder =
   | 'DOMINANT_COLOR'
   | 'TRACED_SVG'
   | 'BLURRED'
@@ -1060,7 +1062,7 @@ export type ImageSharpEdge = {
   previous?: Maybe<ImageSharp>;
 };
 
-export type ImageSharpFieldsEnum = 
+export type ImageSharpFieldsEnum =
   | 'fixed___base64'
   | 'fixed___tracedSVG'
   | 'fixed___aspectRatio'
@@ -1482,13 +1484,15 @@ export type MdxEdge = {
   previous?: Maybe<Mdx>;
 };
 
-export type MdxFieldsEnum = 
+export type MdxFieldsEnum =
   | 'rawBody'
   | 'fileAbsolutePath'
   | 'frontmatter___title'
   | 'frontmatter___slug'
   | 'frontmatter___date'
   | 'frontmatter___tags'
+  | 'frontmatter___thumbnail'
+  | 'frontmatter___category'
   | 'slug'
   | 'body'
   | 'excerpt'
@@ -1613,6 +1617,8 @@ export type MdxFrontmatter = {
   slug?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
+  thumbnail?: Maybe<Scalars['String']>;
+  category?: Maybe<Scalars['String']>;
 };
 
 
@@ -1628,6 +1634,8 @@ export type MdxFrontmatterFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
   tags?: Maybe<StringQueryOperatorInput>;
+  thumbnail?: Maybe<StringQueryOperatorInput>;
+  category?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxGroupConnection = {
@@ -1716,7 +1724,7 @@ export type Potrace = {
   background?: Maybe<Scalars['String']>;
 };
 
-export type PotraceTurnPolicy = 
+export type PotraceTurnPolicy =
   | 'TURNPOLICY_BLACK'
   | 'TURNPOLICY_WHITE'
   | 'TURNPOLICY_LEFT'
@@ -2051,7 +2059,7 @@ export type SiteBuildMetadataEdge = {
   previous?: Maybe<SiteBuildMetadata>;
 };
 
-export type SiteBuildMetadataFieldsEnum = 
+export type SiteBuildMetadataFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2189,7 +2197,7 @@ export type SiteEdge = {
   previous?: Maybe<Site>;
 };
 
-export type SiteFieldsEnum = 
+export type SiteFieldsEnum =
   | 'buildTime'
   | 'siteMetadata___title'
   | 'siteMetadata___description'
@@ -2391,7 +2399,7 @@ export type SitePageEdge = {
   previous?: Maybe<SitePage>;
 };
 
-export type SitePageFieldsEnum = 
+export type SitePageFieldsEnum =
   | 'path'
   | 'component'
   | 'internalComponentName'
@@ -2544,6 +2552,10 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___isTSX'
   | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___pluginOptions___allExtensions'
+  | 'pluginCreator___pluginOptions___base64Width'
+  | 'pluginCreator___pluginOptions___stripMetadata'
+  | 'pluginCreator___pluginOptions___defaultQuality'
+  | 'pluginCreator___pluginOptions___failOnError'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___pathToConfigModule'
@@ -2551,10 +2563,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___gatsbyRemarkPlugins'
   | 'pluginCreator___pluginOptions___lessBabel'
   | 'pluginCreator___pluginOptions___mediaTypes'
-  | 'pluginCreator___pluginOptions___base64Width'
-  | 'pluginCreator___pluginOptions___stripMetadata'
-  | 'pluginCreator___pluginOptions___defaultQuality'
-  | 'pluginCreator___pluginOptions___failOnError'
   | 'pluginCreator___pluginOptions___fileName'
   | 'pluginCreator___pluginOptions___documentsPath'
   | 'pluginCreator___pluginOptions___pathCheck'
@@ -2654,7 +2662,7 @@ export type SitePluginEdge = {
   previous?: Maybe<SitePlugin>;
 };
 
-export type SitePluginFieldsEnum = 
+export type SitePluginFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2757,6 +2765,10 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___isTSX'
   | 'pluginOptions___jsxPragma'
   | 'pluginOptions___allExtensions'
+  | 'pluginOptions___base64Width'
+  | 'pluginOptions___stripMetadata'
+  | 'pluginOptions___defaultQuality'
+  | 'pluginOptions___failOnError'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
   | 'pluginOptions___pathToConfigModule'
@@ -2764,10 +2776,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___gatsbyRemarkPlugins'
   | 'pluginOptions___lessBabel'
   | 'pluginOptions___mediaTypes'
-  | 'pluginOptions___base64Width'
-  | 'pluginOptions___stripMetadata'
-  | 'pluginOptions___defaultQuality'
-  | 'pluginOptions___failOnError'
   | 'pluginOptions___fileName'
   | 'pluginOptions___documentsPath'
   | 'pluginOptions___pathCheck'
@@ -2896,6 +2904,10 @@ export type SitePluginPluginOptions = {
   isTSX?: Maybe<Scalars['Boolean']>;
   jsxPragma?: Maybe<Scalars['String']>;
   allExtensions?: Maybe<Scalars['Boolean']>;
+  base64Width?: Maybe<Scalars['Int']>;
+  stripMetadata?: Maybe<Scalars['Boolean']>;
+  defaultQuality?: Maybe<Scalars['Int']>;
+  failOnError?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   pathToConfigModule?: Maybe<Scalars['String']>;
@@ -2903,10 +2915,6 @@ export type SitePluginPluginOptions = {
   gatsbyRemarkPlugins?: Maybe<Array<Maybe<Scalars['String']>>>;
   lessBabel?: Maybe<Scalars['Boolean']>;
   mediaTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
-  base64Width?: Maybe<Scalars['Int']>;
-  stripMetadata?: Maybe<Scalars['Boolean']>;
-  defaultQuality?: Maybe<Scalars['Int']>;
-  failOnError?: Maybe<Scalars['Boolean']>;
   fileName?: Maybe<Scalars['String']>;
   documentsPath?: Maybe<Array<Maybe<Scalars['String']>>>;
   pathCheck?: Maybe<Scalars['Boolean']>;
@@ -2926,6 +2934,10 @@ export type SitePluginPluginOptionsFilterInput = {
   isTSX?: Maybe<BooleanQueryOperatorInput>;
   jsxPragma?: Maybe<StringQueryOperatorInput>;
   allExtensions?: Maybe<BooleanQueryOperatorInput>;
+  base64Width?: Maybe<IntQueryOperatorInput>;
+  stripMetadata?: Maybe<BooleanQueryOperatorInput>;
+  defaultQuality?: Maybe<IntQueryOperatorInput>;
+  failOnError?: Maybe<BooleanQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   pathToConfigModule?: Maybe<StringQueryOperatorInput>;
@@ -2933,10 +2945,6 @@ export type SitePluginPluginOptionsFilterInput = {
   gatsbyRemarkPlugins?: Maybe<StringQueryOperatorInput>;
   lessBabel?: Maybe<BooleanQueryOperatorInput>;
   mediaTypes?: Maybe<StringQueryOperatorInput>;
-  base64Width?: Maybe<IntQueryOperatorInput>;
-  stripMetadata?: Maybe<BooleanQueryOperatorInput>;
-  defaultQuality?: Maybe<IntQueryOperatorInput>;
-  failOnError?: Maybe<BooleanQueryOperatorInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   documentsPath?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
@@ -2978,7 +2986,7 @@ export type SiteSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
-export type SortOrderEnum = 
+export type SortOrderEnum =
   | 'ASC'
   | 'DESC';
 
@@ -3007,12 +3015,12 @@ export type WebPOptions = {
 export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'author'>> }> };
+export type Unnamed_1_Query = { placeholderImage?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> };
 
 export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_2_Query = { placeholderImage?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> };
+export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'author'>> }> };
 
 export type Site_MetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3029,45 +3037,70 @@ export type CreateArticlePagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type CreateArticlePagesQuery = { allMdx: { edges: Array<{ node: { frontmatter?: Maybe<Pick<MdxFrontmatter, 'slug'>> } }> } };
 
+export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_3_Query = { allFile: { nodes: Array<Pick<File, 'publicURL' | 'name'>> } };
+
 export type ArticleListQueryVariables = Exact<{
   skip: Scalars['Int'];
   limit: Scalars['Int'];
 }>;
 
 
-export type ArticleListQuery = { allMdx: { edges: Array<{ node: (
+export type ArticleListQuery = {
+  allMdx: {
+    edges: Array<{
+      node: (
         Pick<Mdx, 'excerpt'>
-        & { frontmatter?: Maybe<(
-          Pick<MdxFrontmatter, 'slug' | 'title' | 'tags'>
-          & { createdAt: MdxFrontmatter['date'] }
-        )> }
-      ) }> } };
+        & {
+          frontmatter?: Maybe<(
+            Pick<MdxFrontmatter, 'slug' | 'title' | 'tags' | 'category'>
+            & { createdAt: MdxFrontmatter['date'] }
+          )>
+        }
+      )
+    }>
+  }
+};
 
 export type ArticleBySlugQueryVariables = Exact<{
   slug?: Maybe<Scalars['String']>;
 }>;
 
 
-export type ArticleBySlugQuery = { mdx?: Maybe<(
+export type ArticleBySlugQuery = {
+  mdx?: Maybe<(
     Pick<Mdx, 'body'>
-    & { frontmatter?: Maybe<(
-      Pick<MdxFrontmatter, 'slug' | 'title'>
-      & { createdAt: MdxFrontmatter['date'] }
-    )> }
-  )> };
+    & {
+      frontmatter?: Maybe<(
+        Pick<MdxFrontmatter, 'slug' | 'title'>
+        & { createdAt: MdxFrontmatter['date'] }
+      )>
+    }
+  )>
+};
 
 export type ArticleListByTagQueryVariables = Exact<{
   tag: Scalars['String'];
 }>;
 
 
-export type ArticleListByTagQuery = { allMdx: { edges: Array<{ node: (
+export type ArticleListByTagQuery = {
+  allMdx: {
+    edges: Array<{
+      node: (
         Pick<Mdx, 'excerpt'>
-        & { frontmatter?: Maybe<(
-          Pick<MdxFrontmatter, 'slug' | 'title' | 'tags'>
-          & { createdAt: MdxFrontmatter['date'] }
-        )> }
-      ) }> } };
+        & {
+          frontmatter?: Maybe<(
+            Pick<MdxFrontmatter, 'slug' | 'title' | 'tags' | 'thumbnail'>
+            & { createdAt: MdxFrontmatter['date'] }
+          )>
+        }
+      )
+    }>
+  }
+};
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 
-import BlogBody from '../components/BlogBody'
+import BlogBody from './BlogBody'
 
-import { ArticleBySlugQuery } from '../../types/graphql-types'
+import { ArticleBySlugQuery } from '../../../types/graphql-types'
 
 export type Props = {
   data: ArticleBySlugQuery
@@ -19,7 +19,7 @@ query ArticleBySlug($slug: String) {
     frontmatter {
       slug
       title
-      createdAt: date(formatString: "YYYY.MM.DD")
+      createdAt: date(formatString: "YYYY-MM-DD")
     }
     body
   }

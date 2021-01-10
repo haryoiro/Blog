@@ -2,11 +2,12 @@
 title: yayでAURパッケージを更新する
 slug: yay-update-aur-package
 date: "2020-12-31"
-tags: 
+tags:
   - linux
   - arch
   - pacman
   - yay
+category: archlinux
 ---
 
 ## はじめに
@@ -18,12 +19,12 @@ MacでいうHomebrewにプラスアルファでよりゆるいパッケージを
 そのAURで公開されているパッケージを管理するためのツールが`AUR ヘルパー` です。
 
 → 参考
-[Archlinux wiki | AUR_ヘルパー](https://wiki.archlinux.jp/index.php/AUR_%E3%83%98%E3%83%AB%E3%83%91%E3%83%BC) 
- 
+[Archlinux wiki | AUR_ヘルパー](https://wiki.archlinux.jp/index.php/AUR_%E3%83%98%E3%83%AB%E3%83%91%E3%83%BC)
+
 > AUR ヘルパーは Arch User Repository をより便利に使うために書かれたものです。
 
 
-  
+
 AUR ヘルパーにはいくつか種類があり、yayはそのうちのひとつ。
 
 yayはpacmanににた構文でAURを管理できるので、pacmanを使い慣れたユーザにとってとてもフレンドリーなAURヘルパーです。

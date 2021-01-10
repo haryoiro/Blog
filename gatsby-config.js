@@ -10,10 +10,10 @@ if (process.env.ENVIRONMENT !== 'production') {
 
 module.exports = {
   siteMetadata: {
-    title: 'CloudGazelle',
+    title: 'HaryoiroBlog',
     description: 'フロントエンドとか気になった技術とか',
     author: 'Haryoiro',
-    siteUrl: 'https://cloudgazelle.netlify.app/',
+    siteUrl: 'https://www.haryoiro.com/',
     githubId: 'haryoiro',
     charset: 'utf-8',
   },
@@ -31,8 +31,15 @@ module.exports = {
         sassRuleTest: /\.scss$/,
         sassRuleModulesTest: /\.module\.scss$/,
         postCssPlugins: [
-          autoprefixer({ grid: 'autoplace' }),
-          cssnano({ preset: 'default' }),
+          autoprefixer({
+            grid: 'autoplace',
+            browsers: ['ie >= 11'],
+          }),
+          cssnano({
+            preset: [
+              'default',
+            ],
+          }),
         ],
       },
     },
@@ -47,6 +54,16 @@ module.exports = {
       },
     },
     'gatsby-plugin-typescript-checker',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-svgr',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'logos',
+        path: `${__dirname}/contents/logos`,
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -61,7 +78,6 @@ module.exports = {
         path: `${__dirname}/contents/blog`,
       },
     },
-    'gatsby-plugin-svgr',
     {
       resolve: 'gatsby-plugin-typography',
       options: {
@@ -77,8 +93,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
       // CodeGenerator
       resolve: 'gatsby-plugin-graphql-codegen',

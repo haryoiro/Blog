@@ -1,0 +1,18 @@
+.l-card {
+  display:grid;
+  gap: 0;
+  grid-template:
+    "logo body" 192px /
+    158px auto;
+}
+
+// LeftSide
+.c-logo {
+  grid-area: logo;
+}
+// RightSide
+.c-body {
+  grid-area: body;
+  align-self: center;
+}
+.c-category {align-self: center;}

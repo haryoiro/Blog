@@ -14,33 +14,43 @@ $yellow: #B5A712;
 $yellow-deep: #696005;
 $orange: #FF7A18;
 
+
 $palettes: (
   c: (
-    blue: ($blue, $white),
-    blue-deep: ($blue-deep, $white),
-    red: ($red, $white),
-    yellow: ($yellow, $white),
-    yellow-deep: ($yellow-deep, $white),
-    orange: ($orange, $white),
+    'blue': ($blue, $white),
+    'bluedeep': ($blue-deep, $white),
+    'red': ($red, $white),
+    'yellow': ($yellow, $white),
+    'yellowdeep': ($yellow-deep, $white),
+    'orange': ($orange, $white),
   ),
   g: (
-    white: ($white, $dark),
-    light: ($light, $dark),
-    grayish-white: ($grayish-white, $dark),
-    whitish-gray: ($whitish-gray, $dark),
-    grayish-dark: ($grayish-dark, $white),
-    dark: ($dark, $white),
+    'white': ($white, $dark),
+    'light': ($light, $dark),
+    'grayishwhite': ($grayish-white, $dark),
+    'whitishgray': ($whitish-gray, $dark),
+    'grayishdark': ($grayish-dark, $white),
+    'dark': ($dark, $white),
   ),
 );
 
 @each $paletteName, $palette in $palettes {
   @each $colorName, $color in $palette {
-    .is#{colorName} {
+    .is-#{$colorName} {
+      & {
         background: nth($color, 1);
         color: nth($color, 2);
-    }
-  }
-}
+      }
+      &_str {
+          color: nth($color, 1);
+      }
+      &_bg {
+          background: nth($color, 1);
+      }
+    } // .is-
+  } // each color in palette
+} // each palette in palettes
+
 
 // =============================
 // Shadow

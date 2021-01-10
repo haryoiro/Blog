@@ -1,18 +1,21 @@
 import React, { FC } from 'react'
 
-type GridProps = Partial<{
-  className: string | undefined
+interface IGrid {
+  className: string
+  inClassName: string
   children: React.ReactNode
-}>
+}
+type GridProps = Partial<IGrid>
 
 const Grid: FC<GridProps> = ({
   className,
+  inClassName,
   children,
 }) => (
-  <div className="grid-center">
-    <br />
-    <div className={className}>{children}</div>
-    <br />
+  <div className={`grid-center ${className || ''}`}>
+    <div />
+    <div className={inClassName}>{children}</div>
+    <div />
   </div>
 )
 

@@ -2,10 +2,11 @@
 title: DockerComposeに「port is already allocated」と怒られたときにやること
 slug: docker-compose-up-port-is-already-allocated-windows-linux
 date: "2020-12-29"
-tags: 
+tags:
   - docker
   - linux
   - windows
+category: docker
 ---
 
 ## 原因
@@ -24,7 +25,7 @@ tags:
 - 調べたものを元にプロセスを終了する
 - プロセスが終了したかの確認
 
-順に説明します。  
+順に説明します。
 
 
 ### ポートがどのプロセスで使われているのかを調べる
