@@ -1,5 +1,6 @@
 import Typography from 'typography'
 import FairyGatesTheme from 'typography-theme-fairy-gates'
+import 'typeface-fira-code'
 
 const opt = {
   title: 'Haryoiros',
