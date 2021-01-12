@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path')
 const dotenv = require('dotenv')
 const sass = require('node-sass')
-const autoprefixer = require('autoprefixer')
+// const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 
 if (process.env.ENVIRONMENT !== 'production') {
@@ -89,7 +90,19 @@ module.exports = {
       options: {
         extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
-          'gatsby-transformer-remark',
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              classPrefix: 'language-',
+              showLineNumbers: false,
+              noInlineHighlight: false,
+              aliases: {
+                sh: 'bash',
+                js: 'javascript',
+                ts: 'typescript',
+              },
+            },
+          },
         ],
       },
     },

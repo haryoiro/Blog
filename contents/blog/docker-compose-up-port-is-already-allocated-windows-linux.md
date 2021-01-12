@@ -15,7 +15,7 @@ category: docker
 「port is already allocated」直訳すると「ポートはすでに割り当てられています」となり、
 起動しようとしているコンテナが使用するポートと他のプロセスが使っているポートが競合しています。
 
-ポートには一つにつき1プロセスしか割り当てられません。なので二つ目を割り当てようとするとエラーを履きます。  
+ポートには一つにつき1プロセスしか割り当てられません。なので二つ目を割り当てようとするとエラーを履きます。
 
 
 ### 対処法
@@ -71,7 +71,7 @@ PowerShellとBashでは使用するコマンドが異なります。対応した
 
 ### プロセスが終了したかの確認
 
-```windows
+```powershell
  netstart -ano | findstr :[port]
 ```
 
@@ -89,7 +89,7 @@ Dockerだけの問題であればlsofやnetstartを使わずdocker psを使用�
 
 ### ポートがかぶっているコンテナをストップ
 
-```bash=
+```bash
 docker ps
 docker stop [name]
 ```
@@ -99,7 +99,7 @@ dockerのコンテナ一覧からPORTSがかぶっていそうなものを探し
 
 ### ポートがかぶっているプロセスを探して kill
 
-```bash=
+```bash
 lsof -i :[port]
 kill -9 [PID]
 ```

@@ -35,14 +35,14 @@ yayはpacmanににた構文でAURを管理できるので、pacmanを使い慣�
 
 
  Manjaro Linuxでは公式リポジトリに`yay`が登録されているので、その他アプリと同様に`pacman`でインストールできます。
- 
-```bash=
+
+```sh
 sudo pacman -S yay
 ```
 
  Arch Linuxではその他AURパッケージと同様にリポジトリから手動でクローン、「PKGBUILD」があるディレクトリで`makepkg`コマンドを使用してパッケージ化してからインストールする必要があります。
 
-```bash=
+```sh
 pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -51,8 +51,8 @@ makepkg -si
 
 ### yayを更新
 
-```bash=
-$ sudo pacman -Syu
+```sh
+sudo pacman -Syu
 ```
 
 ### yayのコマンド
@@ -61,51 +61,53 @@ yayは`yay`コマンドを打つと自動的に`-Syu`オプションが実行さ
 
 #### インストール済みパッケージをリストを含め更新
 
-```bash=
+```sh
 sudo yay
 ```
 
 #### パッケージリストのみ更新
 
-```bash=
+```sh
 sudo yay -Sy
-````
+```
 
 #### パッケージリストを強制的に更新
 
-```bash=
+```sh
 sudo yay -Syy
 ```
 
 #### パッケージをインストール
-```bash=
+
+```sh
 sudo yay -S hoge
 ```
 
 
 #### パッケージを削除
 
-```bash=
+```sh
 sudo yay -R hoge
 ```
 
 
 #### hogeの依存関係をまとめて削除
 
-```bash=
+```sh
 sudo yay -Rs hoge
 ```
 
 
 #### 不要な依存関係を削除
 
-```bash=
+```sh
 sudo yay -Yc
 ```
 
 
 #### パッケージを検索
-```bash=
+
+```sh
 sudo yay <検索語>
 ```
 
