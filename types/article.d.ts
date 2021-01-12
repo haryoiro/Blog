@@ -7,6 +7,7 @@ export interface IArticle {
   tags: Array<string>
   body: string
   category: string
+  style: any
 }
 
 export type ArticleProps = Partial<IArticle>

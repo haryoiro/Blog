@@ -9,13 +9,12 @@ type GridProps = Partial<IGrid>
 
 const Grid: FC<GridProps> = ({
   className,
-  inClassName,
   children,
 }) => (
-  <div className={`grid-center ${className || ''}`}>
-    <div />
-    <div className={inClassName}>{children}</div>
-    <div />
+  <div className={className || ''}>
+    <div className="grid-center">
+      {children}
+    </div>
   </div>
 )
 

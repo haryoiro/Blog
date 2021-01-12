@@ -3,12 +3,12 @@ import { Link } from 'gatsby'
 
 import { ArticleProps } from '../../../../types/article'
 
-const Tags: FC<ArticleProps> = ({ className, tags }) => (
+const Tags: FC<ArticleProps> = ({ className, tags, style }) => (
   <span className={className}>
     {
       tags && tags.map((tag) => (
-        <Link to={`/tag/${tag}`} key={tag}>
-          {tag}
+        <Link to={`/tag/${tag}`} key={tag} style={style} className="tag">
+          {tag},
         </Link>
       ))
     }

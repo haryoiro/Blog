@@ -1,18 +1,98 @@
+@import '../../styles/mixin',
+        '../../styles/variable';
+.l-card-crown {
+  width: 100%;
+  background-color: $white;
+  box-sizing: border-box;
+  border-radius: 3px 3px 0 0;
+  border: 1px solid $grayish-white;
+  padding: 16px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.spacebetween {
+  display: flex;
+  justify-content: space-between;
+}
+
 .l-card {
   display:grid;
-  gap: 0;
-  grid-template:
-    "logo body" 192px /
-    158px auto;
+  grid-template-areas: "logo body";
+  grid-template-columns: minmax(99px 158px) auto;
+  width: 100%;
+  background-color: $white;
+  box-sizing: border-box;
+  border: 1px solid $whitish-gray;
+  border-top-width: 0px;
 }
+
 
 // LeftSide
 .c-logo {
   grid-area: logo;
+  align-self: center;
+  justify-self: center;
+  min-width: 101.75px;
 }
 // RightSide
 .c-body {
   grid-area: body;
   align-self: center;
+  margin: 1rem 0;
+  padding: 0 2rem 0 0;
+  @include mq(SM) {
+    padding: 0 1rem 0 0;
+  }
+  @include mq(MI) {
+    padding: 0 1rem 0 0;
+  }
 }
-.c-category {align-self: center;}
+.c-category {
+  margin: 29.5px 21.75px;
+}
+.c-tags {
+  height: 12px;
+  line-height: 12px;
+  font-weight: 700;
+  margin-bottom: 1.4375rem;
+}
+.tag {
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
+  text-decoration: underline;
+  margin-right: 4px;
+  color: $gray;
+
+}
+.c-createdAt {
+  color: $gray;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
+  margin-right: 6px;
+  font-weight: 600;
+}
+.c-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: #{1.414rem * 2};
+  line-height: 1.414 * 1.414;
+  color: $blue;
+  margin-bottom: 0.4375rem;
+  font-weight: 900;
+  letter-spacing: 0.01rem;
+}
+.c-description {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: #{17 * 3}px;
+  color: $grayish-dark;
+  margin: 0;
+  ::after {
+    content: '続きを読む';
+    color: $blue;
+  }
+}

@@ -9,10 +9,14 @@ interface IHead {
 type HeadProps = Partial<IHead>
 
 const Header: FC<HeadProps> = ({ className }) => (
-  <div className={`header ${className || ''}`}>
-    <Link to="/blog" className="siteLogo">
-      <Logo />
-    </Link>
+  <div className={className || ''}>
+    <div style={{
+      justifySelf: 'left'
+    }}>
+      <Link to="/blog" className="siteLogo">
+        <Logo />
+      </Link>
+    </div>
   </div>
 )
 

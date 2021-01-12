@@ -7,6 +7,7 @@ tags:
   - linux
   - windows
 category: docker
+color: "#2496ED"
 ---
 
 ## 原因

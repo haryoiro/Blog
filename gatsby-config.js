@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const dotenv = require('dotenv')
-const sass = require('sass')
+const sass = require('node-sass')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 
@@ -19,8 +19,8 @@ module.exports = {
   },
   flags: {
     PRESERVE_WEBPACK_CACHE: true,
-    PRESERVE_FILE_DOWNLOAD_CACHE: false,
-    FAST_REFRESH: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+    FAST_REFRESH: false,
     LAZY_IMAGES: true,
   },
   plugins: [
@@ -31,10 +31,10 @@ module.exports = {
         sassRuleTest: /\.scss$/,
         sassRuleModulesTest: /\.module\.scss$/,
         postCssPlugins: [
-          autoprefixer({
-            grid: 'autoplace',
-            browsers: ['ie >= 11'],
-          }),
+          // autoprefixer({
+          //   grid: 'autoplace',
+          //   browsers: ['ie >= 11'],
+          // }),
           cssnano({
             preset: [
               'default',

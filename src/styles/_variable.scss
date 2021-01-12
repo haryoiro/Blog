@@ -5,6 +5,7 @@ $white: #FFFFFF;
 $light: #FBFBFB;
 $grayish-white: #EEEEEE;
 $whitish-gray: #DFE1E5;
+$gray: #878787;
 $grayish-dark: #3C4043;
 $dark: #202124;
 $blue: #0092B5;
@@ -29,7 +30,8 @@ $palettes: (
     'light': ($light, $dark),
     'grayishwhite': ($grayish-white, $dark),
     'whitishgray': ($whitish-gray, $dark),
-    'grayishdark': ($grayish-dark, $white),
+    'gray': ($gray, $white),
+    'grayishdark': ($grayish-dark, $grayish-white),
     'dark': ($dark, $white),
   ),
 );
@@ -51,14 +53,18 @@ $palettes: (
   } // each color in palette
 } // each palette in palettes
 
-
+body {
+  background-color: $grayish-white;
+}
 // =============================
 // Shadow
 // =============================
 $low-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 $high-shadow: rgba(0, 0, 0, 0.1) 0px 7px 20px;
 
-$filter: drop-shadow(0px 24px 64px rgba(0, 0, 0, 0.1));
+.shadowish {
+  filter: drop-shadow(0px 12px 24px rgba(0, 0, 0, 0.1));
+}
 
 $card-border: 1px solid #dfe1e5;
 

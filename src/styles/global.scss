@@ -1,40 +1,30 @@
 @charset 'utf-8';
 
+@import './font';
+
 html, body, img {
     margin: 0;
     padding: 0;
 }
+a {
+    text-decoration: none;
+}
 
-
+// Atoms
 @import
-    "./variable",
-    "./mixin",
-    "./variable";
+    "../components/Atoms/Tags/styles.scss";
 
+// Layouts
 @import
-    "../components/layouts/TwoColumnsLayout/style.scss",
+    "../components/layouts/CenterLayout/style.scss",
+    "../components/layouts/TwoColumnsLayout/style.scss";
+
+// Molecules
+@import
     "../components/Molecules/Header/style.scss",
+    "../components/Molecules/Footer/style.scss";
+
+// Templates
+@import
     "../templates/ArticleListTemplate/style.scss";
 
-html, body {
-    background-color: #FFF;
-}
-
-.grid-center {
-    display: grid;
-    @include mq(PC) {
-        grid-template-columns: 1fr 1024px 1fr;
-    }
-    @include mq(TABLET) {
-        grid-template-columns: 1fr 768px 1fr;
-    }
-    @include mq(PHONE) {
-        grid-template-columns: 1rem 414px 1rem;
-    }
-    @include mq(SM) {
-        grid-template-columns: 1rem 320px 1rem;
-    }
-    @include mq(MI) {
-        grid-template-columns: 1rem 300px 1rem;
-    }
-}

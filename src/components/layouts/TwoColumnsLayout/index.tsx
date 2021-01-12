@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react'
+import React, { FC, ReactElement, Fragment } from 'react'
 
 import Header from '../../Molecules/Header'
 import Footer from '../../Molecules/Footer'
@@ -18,21 +18,25 @@ type TwoColumnsLayoutProps = SEOProps & I2Layout
 const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = ({
   children, title, type,
 }) => (
-  <>
+  <Fragment>
     <SEO title={title} type={type} />
-    <div className="wrapper">
-      <Center className="is-blue" inClassName="header">
-        <Header className="head md" />
+    <div className="site-wrapper">
+      <div className="is-blue_str">
+        <Center className="head">
+          <Header className="header" />
+        </Center>
+      </div>
+      <Center className="l-center">
+        <div className="body-wrapper">
+          <main className="main">{children[0]}</main>
+          <aside className="side">{children[1]}</aside>
+        </div>
       </Center>
-      <Center>
-        <main className="main md">{children[0]}</main>
-        <aside className="side md">{children[1]}</aside>
-      </Center>
-      <Center>
-        <Footer className="foot md" />
+      <Center className="foot is-grayishdark footer">
+        <Footer />
       </Center>
     </div>
-  </>
+  </Fragment>
 )
 
 export default TwoColumnsLayout

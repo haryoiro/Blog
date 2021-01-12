@@ -3,7 +3,8 @@ $breakpoints: (
   'SM': 'screen and (min-width: 320px) and (max-width: 414px)',
   'PHONE': 'screen and (min-width: 415px) and (max-width: 767px)',
   'TABLET': 'screen and (min-width: 768px) and (max-width: 1024px)',
-  'PC': 'screen and (min-width: 1025px)',
+  'PC': 'screen and (min-width: 1025px) and (max-width: 1439px)',
+  'MAX': 'screen and (min-width: 1440px)',
 ) !default;
 
 @mixin mq($breakpoint: MI) {

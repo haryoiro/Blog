@@ -1,5 +1,5 @@
 ---
-title: yayでAURパッケージを更新する
+title: AURパッケージをyayで更新する
 slug: yay-update-aur-package
 date: "2020-12-31"
 tags:

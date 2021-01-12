@@ -9,14 +9,14 @@ const Copylight: FC<CopylightProps> = ({ author }) => (
     <span>
       Built with
       {' '}
-      <strong>Gatsby.</strong>
+      <strong>Gatsby</strong>.
       {' '}
     </span>
-    <span>{`${author}  © 2020 - ${new Date().getFullYear()}`}</span>
+    <span>{` © ${author} 2020 - ${new Date().getFullYear()}`}</span>
   </span>
 )
 interface FooterProps {
-  className: string;
+  className?: string;
 }
 
 const Footer: FC<FooterProps> = ({
@@ -33,9 +33,9 @@ const Footer: FC<FooterProps> = ({
   `)
 
   return (
-    <footer className={className}>
+    <div className={(className || '') + ' l-center'}>
       <Copylight author={site.siteMetadata.author} />
-    </footer>
+    </div>
   )
 }
 
