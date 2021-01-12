@@ -1,42 +1,70 @@
 // =============================
 // colors
 // =============================
-$bg-white: hsl(0, 0%, 100%);
-$bg-black: hsl(0, 0%, 4%);
-$bg-light: #f6f6f6;
-$bg-dark:  hsl(0, 0%, 21%);
-$gray-0: #525252;
-$gray-1: #dfe1e5;
+$white: #FFFFFF;
+$light: #FBFBFB;
+$grayish-white: #EEEEEE;
+$whitish-gray: #DFE1E5;
+$gray: #878787;
+$grayish-dark: #3C4043;
+$dark: #202124;
+$blue: #0092B5;
+$blue-deep: #0A5669;
+$red: #B5124C;
+$yellow: #B5A712;
+$yellow-deep: #696005;
+$orange: #FF7A18;
 
 
-$prime: #0092B5;
-$second: #9400FF;
+$palettes: (
+  c: (
+    'blue': ($blue, $white),
+    'bluedeep': ($blue-deep, $white),
+    'red': ($red, $white),
+    'yellow': ($yellow, $white),
+    'yellowdeep': ($yellow-deep, $white),
+    'orange': ($orange, $white),
+  ),
+  g: (
+    'white': ($white, $dark),
+    'light': ($light, $dark),
+    'grayishwhite': ($grayish-white, $dark),
+    'whitishgray': ($whitish-gray, $dark),
+    'gray': ($gray, $white),
+    'grayishdark': ($grayish-dark, $grayish-white),
+    'dark': ($dark, $white),
+  ),
+);
 
-$summer_days: #ECAA61;
-$hearty_orange: #B44B34;
-$grand_view: #6B927F;
-$black_bean: #403330;
-$green_bay: #2e6864;
+@each $paletteName, $palette in $palettes {
+  @each $colorName, $color in $palette {
+    .is-#{$colorName} {
+      & {
+        background: nth($color, 1);
+        color: nth($color, 2);
+      }
+      &_str {
+          color: nth($color, 1);
+      }
+      &_bg {
+          background: nth($color, 1);
+      }
+    } // .is-
+  } // each color in palette
+} // each palette in palettes
 
-$sky: #7CDBD5;
-$bright_coral: #F53240;
-$golden: #F9BED2;
-$aquamarine: #02C8A7;
-
+body {
+  background-color: $grayish-white;
+}
 // =============================
 // Shadow
 // =============================
 $low-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 $high-shadow: rgba(0, 0, 0, 0.1) 0px 7px 20px;
 
+.shadowish {
+  filter: drop-shadow(0px 12px 24px rgba(0, 0, 0, 0.1));
+}
 
 $card-border: 1px solid #dfe1e5;
 
-// =============================
-// Some Long
-// =============================
-$content_padding_horizontal: 2em;
-$content_padding_vertical: 4rem;
-
-$radius: 0.33rem;
-$padding: $content_padding_horizontal $content_padding_vertical;

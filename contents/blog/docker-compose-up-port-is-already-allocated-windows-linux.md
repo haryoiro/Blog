@@ -1,16 +1,22 @@
 ---
 title: DockerComposeに「port is already allocated」と怒られたときにやること
 slug: docker-compose-up-port-is-already-allocated-windows-linux
-date: 2020-12-29
-tags: docker, linux, windows
+
+date: "2020-12-29"
+tags:
+  - docker
+  - linux
+  - windows
+category: docker
 ---
 
-## 原因はポートの競合
+## 原因
 
 「port is already allocated」直訳すると「ポートはすでに割り当てられています」となり、
 起動しようとしているコンテナが使用するポートと他のプロセスが使っているポートが競合しています。
 
 ポートには一つにつき1プロセスしか割り当てられません。なので二つ目を割り当てようとするとエラーを履きます。  
+
 
 ### 対処法
 
@@ -20,7 +26,7 @@ tags: docker, linux, windows
 - 調べたものを元にプロセスを終了する
 - プロセスが終了したかの確認
 
-順に説明します。  
+順に説明します。
 
 
 ### ポートがどのプロセスで使われているのかを調べる
@@ -28,11 +34,11 @@ tags: docker, linux, windows
 特定のポートを使用しているプロセスはターミナルから確認可能です。
 PowerShellとBashでは使用するコマンドが異なります。対応したコマンドを参照してください。
 
-```powershell=
+```powershell
  netstart -ano | findstr :[port]
 ```
 
-```bash=
+```bash
  lsof -i :[port]
 ```
 
@@ -40,11 +46,11 @@ PowerShellとBashでは使用するコマンドが異なります。対応した
 
 `port:80`がどのプロセスに占有されているのか調べたい場合はこのようになります。
 
-```powershell=
+```powershell
  netstart -ano | findstr :80
 ```
 
-```bash=
+```bash
  lsof -i :80
 ```
 
@@ -55,21 +61,21 @@ PowerShellとBashでは使用するコマンドが異なります。対応した
 
 今回も同様にPowerShellとBashで使用するコマンドが異なります。以下のコマンドに先程コピーしたPIDを組み合わせて実行してください。
 
-```powershell=
+```powershell
  tskill [PID]
 ```
 
-```bash=
+```bash
  kill -9 [PID]
 ```
 
 ### プロセスが終了したかの確認
 
-```bash=
+```windows
  netstart -ano | findstr :[port]
 ```
 
-```bash=
+```bash
  lsof -i :[port]
  ```
 

@@ -1,58 +1,17 @@
-
 $breakpoints: (
-  'xs': 'screen and (max-width: 479px)',
-  'sm': 'screen and (min-width: 480px)',
-  'md': 'screen and (min-width: 768px)',
-  'lg': 'screen and (min-width: 1000px)',
-  'xl': 'screen and (min-width: 1200px)',
+  'MI': 'screen and (max-width: 319px)',
+  'SM': 'screen and (min-width: 320px) and (max-width: 414px)',
+  'PHONE': 'screen and (min-width: 415px) and (max-width: 767px)',
+  'TABLET': 'screen and (min-width: 768px) and (max-width: 1024px)',
+  'PC': 'screen and (min-width: 1025px) and (max-width: 1439px)',
+  'MAX': 'screen and (min-width: 1440px)',
 ) !default;
 
-@mixin mq($breakpoint: md) {
+@mixin mq($breakpoint: MI) {
   @media #{map-get($breakpoints, $breakpoint)} {
     @content;
   }
 }
-
-@mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
-      @content;
-    }
-  }
-
-  @else {
-    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
-        + "Please make sure it is defined in `$breakpoints` map.";
-  }
-}
-
-// =================================================================
-// Animations
-// =================================================================
-@mixin keyframes($animation-name) {
-  @-webkit-keyframes $animation-name {
-    @content;
-  }
-  @-moz-keyframes $animation-name {
-    @content;
-  }  
-  @keyframes 
-    $animation-name 
-  {
-    @content;
-  }
-}
-
-@mixin animation($animation-name) {
-  -webkit-animation: $animation-name;
-  -moz-animation: $animation-name;
-  animation: $animation-name;
-  -webkit-animation-fill-mode: both;
-  -moz-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-
 
 // =================================================================
 // absolute() : top/right/bottom/left を一括設定

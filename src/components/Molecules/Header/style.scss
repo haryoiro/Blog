@@ -1,0 +1,23 @@
+@import '../../../styles/variable';
+.siteLogo {
+    svg {
+        max-width: 414px;
+        width: 100%;
+        height: 100%;
+        path {
+            color: $blue-deep;
+        }
+        padding: 0 1rem;
+    }
+    a {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.header {
+    display: flex;
+    height: 5rem;
+    width: 100%;
+    margin: auto;
+}

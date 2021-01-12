@@ -1,0 +1,25 @@
+@import '../../../styles/mixin';
+
+.grid-center {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    @include mq(MAX) {
+        width: 1024px;
+    }
+    @include mq(PC) {
+        width: 768px;
+    }
+    @include mq(TABLET) {
+        width: 768px;
+    }
+    @include mq(PHONE) {
+        width: minmax(414px, 767px);
+    }
+    @include mq(SM) {
+        width:  minmax(320px, 414px);
+    }
+    @include mq(MI) {
+        width: minmax(280px, 300px);
+    }
+}
