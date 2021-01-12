@@ -9,7 +9,6 @@ html, body, img {
 a {
     text-decoration: none;
 }
-
 // Atoms
 @import
     "../components/Atoms/Tags/styles.scss";
@@ -28,3 +27,7 @@ a {
 @import
     "../templates/ArticleListTemplate/style.scss";
 
+
+// PrismJS Theme
+@import
+    "/node_modules/prismjs/themes/prism-okaidia.css";
