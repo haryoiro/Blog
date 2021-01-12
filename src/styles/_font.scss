@@ -1,14 +1,3 @@
-/* montserrat-700 - latin */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local(''),
-       url('../fonts/Montserrat/montserrat-v15-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/Montserrat/montserrat-v15-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
 /*! Yaku Han JP v3.3.1 (OFL-1.1 AND MIT) by Qrac */
 /*! Type: YakuHanJPs_Noto - Based on Noto Sans CJK JP */
 @font-face {
@@ -16,8 +5,9 @@
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Thin.eot");
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Thin.woff2") format("woff2"), url("../fonts/YakuHanJPs/YakuHanJPs-Thin.woff") format("woff");
+  src:  url("../fonts/YakuHanJPs/YakuHanJPs-Thin.eot") format("eot"),
+        url("../fonts/YakuHanJPs/YakuHanJPs-Thin.woff2") format("woff2"),
+        url("../fonts/YakuHanJPs/YakuHanJPs-Thin.woff") format("woff");
   unicode-range: U+3008-3011, U+3014-3015, U+ff08-ff09, U+ff3b, U+ff3d, U+ff5b, U+ff5d;
 }
 
@@ -26,8 +16,9 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Light.eot");
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Light.woff2") format("woff2"), url("../fonts/YakuHanJPs/YakuHanJPs-Light.woff") format("woff");
+  src:  url("../fonts/YakuHanJPs/YakuHanJPs-Light.eot") format("eot"),
+        url("../fonts/YakuHanJPs/YakuHanJPs-Light.woff2") format("woff2"),
+        url("../fonts/YakuHanJPs/YakuHanJPs-Light.woff") format("woff");
   unicode-range: U+3008-3011, U+3014-3015, U+ff08-ff09, U+ff3b, U+ff3d, U+ff5b, U+ff5d;
 }
 
@@ -36,8 +27,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Regular.eot");
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Regular.woff2") format("woff2"), url("../fonts/YakuHanJPs/YakuHanJPs-Regular.woff") format("woff");
+  src:  url("../fonts/YakuHanJPs/YakuHanJPs-Regular.eot") format("eot"),
+        url("../fonts/YakuHanJPs/YakuHanJPs-Regular.woff2") format("woff2"), 
+        url("../fonts/YakuHanJPs/YakuHanJPs-Regular.woff") format("woff");
   unicode-range: U+3008-3011, U+3014-3015, U+ff08-ff09, U+ff3b, U+ff3d, U+ff5b, U+ff5d;
 }
 
@@ -46,8 +38,9 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Medium.eot");
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Medium.woff2") format("woff2"), url("../fonts/YakuHanJPs/YakuHanJPs-Medium.woff") format("woff");
+  src:  url("../fonts/YakuHanJPs/YakuHanJPs-Medium.eot") format("eot"),
+        url("../fonts/YakuHanJPs/YakuHanJPs-Medium.woff2") format("woff2"),
+        url("../fonts/YakuHanJPs/YakuHanJPs-Medium.woff") format("woff");
   unicode-range: U+3008-3011, U+3014-3015, U+ff08-ff09, U+ff3b, U+ff3d, U+ff5b, U+ff5d;
 }
 
@@ -56,8 +49,9 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Bold.eot");
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Bold.woff2") format("woff2"), url("../fonts/YakuHanJPs/YakuHanJPs-Bold.woff") format("woff");
+  src:  url("../fonts/YakuHanJPs/YakuHanJPs-Bold.eot") format("eot"),
+        url("../fonts/YakuHanJPs/YakuHanJPs-Bold.woff2") format("woff2"),
+        url("../fonts/YakuHanJPs/YakuHanJPs-Bold.woff") format("woff");
   unicode-range: U+3008-3011, U+3014-3015, U+ff08-ff09, U+ff3b, U+ff3d, U+ff5b, U+ff5d;
 }
 
@@ -66,7 +60,8 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Black.eot");
-  src: url("../fonts/YakuHanJPs/YakuHanJPs-Black.woff2") format("woff2"), url("../fonts/YakuHanJPs/YakuHanJPs-Black.woff") format("woff");
+  src:  url("../fonts/YakuHanJPs/YakuHanJPs-Black.eot") format("eot"),
+        url("../fonts/YakuHanJPs/YakuHanJPs-Black.woff2") format("woff2"), 
+        url("../fonts/YakuHanJPs/YakuHanJPs-Black.woff") format("woff");
   unicode-range: U+3008-3011, U+3014-3015, U+ff08-ff09, U+ff3b, U+ff3d, U+ff5b, U+ff5d;
 }

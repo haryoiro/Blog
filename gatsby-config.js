@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const dotenv = require('dotenv')
-const sass = require('sass')
+const sass = require('node-sass')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 
@@ -10,17 +10,17 @@ if (process.env.ENVIRONMENT !== 'production') {
 
 module.exports = {
   siteMetadata: {
-    title: 'CloudGazelle',
+    title: 'HaryoiroBlog',
     description: 'フロントエンドとか気になった技術とか',
     author: 'Haryoiro',
-    siteUrl: 'https://cloudgazelle.netlify.app/',
+    siteUrl: 'https://www.haryoiro.com/',
     githubId: 'haryoiro',
     charset: 'utf-8',
   },
   flags: {
     PRESERVE_WEBPACK_CACHE: true,
-    PRESERVE_FILE_DOWNLOAD_CACHE: false,
-    FAST_REFRESH: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+    FAST_REFRESH: false,
     LAZY_IMAGES: true,
   },
   plugins: [
@@ -31,8 +31,15 @@ module.exports = {
         sassRuleTest: /\.scss$/,
         sassRuleModulesTest: /\.module\.scss$/,
         postCssPlugins: [
-          autoprefixer({ grid: 'autoplace' }),
-          cssnano({ preset: 'default' }),
+          // autoprefixer({
+          //   grid: 'autoplace',
+          //   browsers: ['ie >= 11'],
+          // }),
+          cssnano({
+            preset: [
+              'default',
+            ],
+          }),
         ],
       },
     },
@@ -47,6 +54,16 @@ module.exports = {
       },
     },
     'gatsby-plugin-typescript-checker',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-svgr',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'logos',
+        path: `${__dirname}/contents/logos`,
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -62,6 +79,12 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'src/utils/typography',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.md', '.mdx'],
@@ -70,16 +93,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-sharp',
-    {
-    // BLOG記事ソース Contentful
-      resolve: 'gatsby-source-contentful',
-      options: {
-        spaceId: process.env.CF_SPACE_ID,
-        accessToken: process.env.CF_ACCESS_TOKEN,
-      },
-    },
-    'gatsby-transformer-sharp',
     {
       // CodeGenerator
       resolve: 'gatsby-plugin-graphql-codegen',

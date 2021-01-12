@@ -1,0 +1,52 @@
+@import '../../../styles/mixin';
+
+.site-wrapper {
+  display:grid;
+  gap: 1rem;
+  grid-template:
+  "head" 5rem
+  "body" 100vh
+  "foot" 4rem /
+  1fr;
+}
+
+.head {grid-area: head;}
+.body {grid-area: body;}
+.foot {grid-area: foot;}
+
+
+.body-wrapper {
+  display:grid;
+  grid-gap: 1rem;
+  margin: 0 1rem;
+  @include mq(MAX) {
+    grid-template: "main side" 1fr / auto 280px;
+  }
+  @include mq(PC) {
+    grid-template: "main side" 1fr / auto 200px;
+  }
+  @include mq(TABLET) {
+    grid-template: "main side" 1fr / auto 200px;
+  }
+  @include mq(PHONE) {
+    grid-template:  "main" 1fr
+                    "side" auto / 1fr;
+  }
+  @include mq(SM) {
+    grid-template:  "main" 1fr
+                    "side" auto / 1fr;
+  }
+  @include mq(MI) {
+    grid-template:  "main" 1fr
+                    "side" auto / 1fr;
+  }
+}
+
+.main {grid-area: main;}
+.side {grid-area: side;}
+
+.md {margin: 0 1rem;}
+
+.l-center {
+  justify-self: center;
+}

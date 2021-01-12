@@ -1,29 +1,30 @@
 @charset 'utf-8';
 
-@import './variable',
-        './font',
-        './mixin',
-        './atom',
-        './animation';
+@import './font';
 
-// @import '../components/ArticleList/ArticleList.scss';
-
-html, body {
-    background-color: $bg-light;
+html, body, img {
     margin: 0;
     padding: 0;
 }
-
-h1, h2, h3, h4, h5, h6, a, p{
-    font-family: "YakuHanJPs_Noto", "Hiragino Sans" sans-serif;
-    font-feature-settings: "palt";
+a {
     text-decoration: none;
-    margin: 0;
-    padding: 0;
-    color: inherit;
-    background-color: inherit;
-    font-weight: inherit;
-    justify-content: inherit;
-    align-items: inherit;
-    text-align: inherit;
 }
+
+// Atoms
+@import
+    "../components/Atoms/Tags/styles.scss";
+
+// Layouts
+@import
+    "../components/layouts/CenterLayout/style.scss",
+    "../components/layouts/TwoColumnsLayout/style.scss";
+
+// Molecules
+@import
+    "../components/Molecules/Header/style.scss",
+    "../components/Molecules/Footer/style.scss";
+
+// Templates
+@import
+    "../templates/ArticleListTemplate/style.scss";
+

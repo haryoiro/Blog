@@ -18,7 +18,8 @@
     "no-unexpected-multiline": "error",
     "no-unreachable": "error",
     "@typescript-eslint/semi": ["error", "never"],
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "react/no-unused-prop-types": 0
   }
 
 }
