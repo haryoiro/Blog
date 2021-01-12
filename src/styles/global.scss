@@ -1,6 +1,7 @@
 @charset 'utf-8';
 
-@import './font';
+// @import './font';
+@import '/node_modules/yakuhanjp/dist/css/yakuhanjp_s-noto.min.css';
 
 html, body, img {
     margin: 0;
@@ -9,7 +10,6 @@ html, body, img {
 a {
     text-decoration: none;
 }
-
 // Atoms
 @import
     "../components/Atoms/Tags/styles.scss";
@@ -28,3 +28,7 @@ a {
 @import
     "../templates/ArticleListTemplate/style.scss";
 
+
+// PrismJS Theme
+@import
+    "/node_modules/prismjs/themes/prism-okaidia.css";
