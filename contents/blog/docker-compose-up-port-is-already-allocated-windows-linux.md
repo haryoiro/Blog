@@ -1,6 +1,7 @@
 ---
 title: DockerComposeに「port is already allocated」と怒られたときにやること
 slug: docker-compose-up-port-is-already-allocated-windows-linux
+
 date: "2020-12-29"
 tags:
   - docker
@@ -44,6 +45,7 @@ PowerShellとBashでは使用するコマンドが異なります。対応した
 `[port]`には競合しているポートを入れます。
 
 `port:80`がどのプロセスに占有されているのか調べたい場合はこのようになります。
+
 ```powershell
  netstart -ano | findstr :80
 ```
@@ -87,19 +89,21 @@ Dockerだけの問題であればlsofやnetstartを使わずdocker psを使用�
 
 ### ポートがかぶっているコンテナをストップ
 
-$ docker ps
-$ docker stop [name]
+```bash=
+docker ps
+docker stop [name]
+```
 
 dockerのコンテナ一覧からPORTSがかぶっていそうなものを探してNAMEをコポー
 直接コンテナをストップ
 
 ### ポートがかぶっているプロセスを探して kill
 
-$ lsof -i :[port]
-$ kill -9 [PID]
+```bash=
+lsof -i :[port]
+kill -9 [PID]
+```
 
 ポートを占拠しているのがdockerだけとは限りません。
 lsofでポートを指定することで、そのポートを使っているプロセスを特定できます。
 特定できたらPIDをコピーしてプロセスをキルします。
-
-### まとめ
