@@ -25,12 +25,13 @@ MacでいうHomebrewにプラスアルファでよりゆるいパッケージを
 
 
 
+
 AUR ヘルパーにはいくつか種類があり、yayはそのうちのひとつ。
 
 yayはpacmanににた構文でAURを管理できるので、pacmanを使い慣れたユーザにとってとてもフレンドリーなAURヘルパーです。
 
 
-## yayをインストール
+### yayをインストール
 
 
  Manjaro Linuxでは公式リポジトリに`yay`が登録されているので、その他アプリと同様に`pacman`でインストールできます。
@@ -48,51 +49,68 @@ cd yay
 makepkg -si
 ```
 
-## yayを更新
+### yayを更新
 
 ```bash=
 $ sudo pacman -Syu
 ```
 
-## yayのコマンド
+### yayのコマンド
+
 yayは`yay`コマンドを打つと自動的に`-Syu`オプションが実行されAURが全て更新されます。
 
-### インストール済みパッケージをリストを含め更新
+#### インストール済みパッケージをリストを含め更新
+
 ```bash=
 sudo yay
 ```
 
-### パッケージリストのみ更新
+#### パッケージリストのみ更新
+
 ```bash=
 sudo yay -Sy
-```
+````
 
-### パッケージリストを強制的に更新
+#### パッケージリストを強制的に更新
+
 ```bash=
 sudo yay -Syy
 ```
 
-### パッケージをインストール
+#### パッケージをインストール
 ```bash=
 sudo yay -S hoge
 ```
 
-### パッケージを削除
+
+#### パッケージを削除
+
 ```bash=
 sudo yay -R hoge
 ```
 
-### hogeの依存関係をまとめて削除
+
+#### hogeの依存関係をまとめて削除
+
 ```bash=
 sudo yay -Rs hoge
 ```
 
-### 不要な依存関係を削除
+
+#### 不要な依存関係を削除
+
 ```bash=
 sudo yay -Yc
 ```
 
-### パッケージを検索
+
+#### パッケージを検索
 ```bash=
 sudo yay <検索語>
 ```
+
+### 参考サイト
+
+https://computingforgeeks.com/yay-best-aur-helper-for-arch-linux-manjaro/
+https://tiridukano-yagigame.hatenablog.jp/entry/2019/12/01/200921
+
