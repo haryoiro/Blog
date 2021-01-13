@@ -55,7 +55,7 @@
 .c-tags {
   height: 12px;
   line-height: 12px;
-  font-weight: 700;
+  font-weight: 400;
   margin-bottom: 1.4375rem;
 }
 .tag {
@@ -64,15 +64,14 @@
   line-height: 12px;
   text-decoration: underline;
   margin-right: 4px;
-  color: $gray;
+  color: $grayish-dark;
 }
 .c-createdAt {
-  color: $gray;
+  color: $grayish-dark;
   font-size: 12px;
   height: 12px;
   line-height: 12px;
-  margin-right: 6px;
-  font-weight: 600;
+  margin-right: 8px;
 }
 .c-title {
   text-overflow: ellipsis;
@@ -81,7 +80,7 @@
   line-height: 1.414 * 1.414;
   color: $blue-deep;
   margin-bottom: 0.4375rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.01rem;
 }
 .c-description {
