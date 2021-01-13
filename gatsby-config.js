@@ -90,6 +90,7 @@ module.exports = {
       options: {
         extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
+          'gatsby-remark-prismjs-title',
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
@@ -103,6 +104,7 @@ module.exports = {
               },
             },
           },
+
         ],
       },
     },
