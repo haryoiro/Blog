@@ -5,6 +5,28 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
  * @author ocodia
  */
+.gatsby-code-title {
+  display: block;
+  position: relative;
+  background: transparent;
+  width: auto;
+  top: 11px;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+
+.gatsby-code-title span {
+  display: inline;
+  position: relative;
+	font-family: "Fira Code", Consolas ,Menlo, Courier, monospace;
+	font-size: 14px;
+  color: white;
+  background:  #3C4043;
+  border-top-left-radius: .3em;
+  border-top-right-radius: .3em;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
 
 code[class*="language-"],
 pre[class*="language-"] {
