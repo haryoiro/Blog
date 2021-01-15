@@ -19,8 +19,8 @@ const ArticleTemplate: FC<Props> = ({ data }) => {
       <div className="card">
         <MDXProvider components={MDComponents}>
           <div className="mdx-wrapper">
-            <h1>{title}</h1>
             <article>
+              <h2>{title}</h2>
               <MDXRenderer>{data.mdx?.body || ' '}</MDXRenderer>
             </article>
           </div>
