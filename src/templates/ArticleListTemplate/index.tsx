@@ -6,7 +6,7 @@ import { Link, graphql } from 'gatsby'
 // @ts-ignore
 import { scale, rhythm } from '../../utils/typography'
 
-import Layout from '../../components/layouts/TwoColumnsLayout'
+import Layout from '../../components/Layouts/TwoColumnsLayout'
 
 import Svg from '../../components/Atoms/Svgs'
 import Tags from '../../components/Atoms/Tags'
