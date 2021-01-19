@@ -1,0 +1,16 @@
+.is-mobile {
+  @include mq(MAX) { visibility: hidden; }
+  @include mq(PC) { visibility: hidden; }
+  @include mq(TABLET) { visibility: hidden; }
+  @include mq(PHONE) { visibility: visible; }
+  @include mq(SM) { visibility: visible; }
+  @include mq(MI) { visibility: visible; }
+}
+.is-pc {
+  @include mq(MAX) { visibility: visible; }
+  @include mq(PC) { visibility: visible; }
+  @include mq(TABLET) { visibility: visible; }
+  @include mq(PHONE) { visibility: hidden; }
+  @include mq(SM) { visibility: hidden; }
+  @include mq(MI) { visibility: hidden; }
+}
