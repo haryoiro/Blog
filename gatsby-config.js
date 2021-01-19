@@ -14,7 +14,7 @@ module.exports = {
     title: 'HaryoiroBlog',
     description: 'フロントエンドとか気になった技術とか',
     author: 'Haryoiro',
-    siteUrl: 'https://www.haryoiro.com/blog',
+    siteUrl: 'https://www.haryoiro.com/blog/',
     githubId: 'haryoiro',
     charset: 'utf-8',
   },
