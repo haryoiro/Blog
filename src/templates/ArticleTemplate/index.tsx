@@ -5,7 +5,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
 import MDComponents from './MDXComponents'
-import Layout from '../../components/Layouts/TwoColumnsLayout'
+import Layout from '../../components/layouts/TwoColumnsLayout'
 import Sidebar from '../../components/Elements/Sidebar'
 import Toc from '../../components/Elements/Toc'
 import TagCloud from '../../components/Elements/TagCloud'
