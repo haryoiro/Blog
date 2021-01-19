@@ -5,7 +5,7 @@ import React, { FC } from 'react'
 import { Link, graphql } from 'gatsby'
 // @ts-ignore
 import { scale, rhythm } from '../../utils/typography'
-import Layout from '../../components/Layouts/TwoColumnsLayout'
+import Layout from '../../components/layouts/TwoColumnsLayout'
 
 import Svgs from '../../components/Atoms/Svgs'
 import Tags from '../../components/Atoms/Tags'
