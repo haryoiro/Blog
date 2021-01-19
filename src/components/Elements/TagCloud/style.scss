@@ -1,0 +1,23 @@
+@import '../../../styles/variable';
+
+.tags-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  .item {
+    flex: 1 auto;
+    padding: .1rem .3rem;
+    margin: .2rem;
+    text-align: center;
+    font-size: 14px;
+    background-color: $blue;
+    border: 2px solid #0001;
+    a {
+      text-transform: capitalize;
+      text-decoration: none;
+      color: $grayish-white;
+      padding-top: 1px;
+    }
+  }
+}

@@ -1,0 +1,96 @@
+@import '../../styles/variable';
+
+hr {
+  border: none;
+  text-align: center;
+  margin: 2.828rem 0;
+  &::before {
+    content: "・ ・ ・";
+    font-size: 1rem;
+    color: $blue;
+  }
+}
+.mdx-wrapper{
+  .mdx-header {
+    text-align: center;
+    letter-spacing: 0.05rem;
+    border: 3px solid $blue;
+    padding: 0 2rem;
+    .c-a-title {
+      color: $blue;
+      font-weight: 300;
+      font-size: 1.414rem;
+      line-height: 2.121rem;
+      padding-top: 1.414rem;
+      margin-bottom: 0.45rem;
+    }
+    .c-a-desc {
+      line-height: 16px;
+      position: relative;
+      color: $blue;
+      top: 9px;
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 200px;
+      background-color: white;
+    }
+  }
+
+
+  article {
+    padding: 16px;
+    padding-top: 1.414rem;
+    max-width: 100%;
+    h2, h3 {
+      position: sticky;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      &::before, &::after {
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+        content: "";
+        flex-grow: 1;
+        height: 3px;
+      }
+      &::before  {margin-right: 1rem;}
+      &::after   {margin-left: 1rem;}
+    }
+    h2 {
+      color: $blue;
+      font-size: 1.68141rem;
+      line-height: 2.121rem;
+      margin-bottom: 1.414rem;
+      padding-top: 4.242rem;
+    }
+    h3 {
+      color: $blue;
+      font-size: 1.414rem;
+      line-height: 2.121rem;
+      margin-bottom: 1.414rem;
+      padding-top: 2.828rem;
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.414rem;
+      margin-bottom: 2.121rem;
+      font-weight: 400;
+      padding-top: 0.707rem;
+      letter-spacing: 0.02rem;
+    }
+    a {
+      text-decoration: underline;
+      color: $blue;
+      :link,
+      :visited {
+        color: $blue-deep;
+      }
+      :hover,
+      :active {
+        color: $orange;
+        background-color: $whitish-gray;
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+}

@@ -4,28 +4,35 @@
   width: 100%;
   background-color: $white;
   box-sizing: border-box;
-  border-radius: .3em .3em 0 0;
-  border: 1px solid $grayish-white;
-  padding: 16px;
+  border: 1px solid $whitish-gray;
+  border-top-width: 0px;
+  padding: 1rem;
   font-weight: bold;
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 1rem;
+  line-height: 1rem;
+  text-align: center;
 }
-
+.l-card-tp {
+  padding: 16px;
+  div {
+    padding-top: 1.414rem;
+    margin-bottom: 1.414rem;
+  }
+}
 .spacebetween {
   display: flex;
   justify-content: space-between;
 }
 
+.c-card {
+  width: 100%;
+  background-color: $white;
+  box-sizing: border-box;
+}
 .l-card {
   display:grid;
   grid-template-areas: "logo body";
   grid-template-columns: minmax(99px 158px) auto;
-  width: 100%;
-  background-color: $white;
-  box-sizing: border-box;
-  border: 1px solid $whitish-gray;
-  border-top-width: 0px;
 }
 
 
@@ -40,14 +47,8 @@
 .c-body {
   grid-area: body;
   align-self: center;
-  margin: 1rem 0;
-  padding: 0 2rem 0 0;
-  @include mq(SM) {
-    padding: 0 1rem 0 0;
-  }
-  @include mq(MI) {
-    padding: 0 1rem 0 0;
-  }
+  margin: 1.414rem 0;
+  padding: 0 1.414rem 0 0;
 }
 .c-category {
   margin: 29.5px 21.75px;
@@ -77,11 +78,11 @@
   text-overflow: ellipsis;
   overflow: hidden;
   max-height: #{1.414rem * 2};
-  line-height: 1.414 * 1.414;
-  color: $blue-deep;
-  margin-bottom: 0.4375rem;
+  line-height: 1.414 * 2;
+  color: $blue;
+  margin-bottom: .4375rem;
   font-weight: 700;
-  letter-spacing: 0.01rem;
+  letter-spacing: .05rem;
 }
 .c-description {
   text-overflow: ellipsis;

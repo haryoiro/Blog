@@ -1,7 +1,5 @@
 @charset 'utf-8';
 
-@import '/node_modules/yakuhanjp/dist/css/yakuhanjp_s-noto.min.css';
-
 html, body, img {
     margin: 0;
     padding: 0;
@@ -15,19 +13,17 @@ a {
 
 // Layouts
 @import
-    "../components/layouts/CenterLayout/style.scss",
-    "../components/layouts/TwoColumnsLayout/style.scss";
+    "../components/Layouts/CenterLayout/style.scss",
+    "../components/Layouts/TwoColumnsLayout/style.scss";
 
-// Molecules
+// Elements
 @import
-    "../components/Molecules/Header/style.scss",
-    "../components/Molecules/Footer/style.scss";
+    "../components/Elements/Header/style.scss",
+    "../components/Elements/Footer/style.scss",
+    "../components/Elements/Sidebar/style.scss",
+    "../components/Elements/Toc/style.scss",
+    "../components/Elements/TagCloud/style.scss";
 
 // Templates
 @import
     "../templates/ArticleListTemplate/style.scss";
-
-
-// PrismJS Theme
-@import
-    "/node_modules/prismjs/themes/prism-okaidia.css";

@@ -14,7 +14,8 @@ const createArticleListPages: GatsbyNode['createPages'] = async ({
 }) => graphql<CreateArticleListPagesQuery>(`
   query CreateArticleListPages {
     allMdx(
-      limit: 1000
+      limit: 1000,
+      filter: {frontmatter: {wip: {nin: true}}}
     ) {
       tags: group(field: frontmatter___tags) {
         fieldValue

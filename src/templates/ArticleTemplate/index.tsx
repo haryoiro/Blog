@@ -1,10 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC } from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
-import MDComponents from '../../components/MDXComponents'
-import Layout from '../../components/layouts/TwoColumnsLayout'
+import MDComponents from './MDXComponents'
+import Layout from '../../components/Layouts/TwoColumnsLayout'
+import Sidebar from '../../components/Elements/Sidebar'
+import Toc from '../../components/Elements/Toc'
+import TagCloud from '../../components/Elements/TagCloud'
 
 import { ArticleBySlugQuery } from '../../../types/graphql-types'
 
@@ -14,20 +18,27 @@ export type Props = {
 
 const ArticleTemplate: FC<Props> = ({ data }) => {
   const title = data.mdx?.frontmatter?.title
+  const body = data.mdx?.body
+  const toc = data.mdx?.tableOfContents
+  const createdAt = data.mdx?.frontmatter?.createdAt
   return (
-    <Layout title={title} type="article">
-      <div className="card">
-        <MDXProvider components={MDComponents}>
-          <div className="mdx-wrapper">
-            <article>
-              <h2>{title}</h2>
-              <MDXRenderer>{data.mdx?.body || ' '}</MDXRenderer>
-            </article>
-          </div>
-        </MDXProvider>
-      </div>
-      <div>side</div>
-    </Layout>
+    <MDXProvider components={MDComponents}>
+      <Layout title={title} type="article">
+        <div className="mdx-wrapper">
+          <article className="c-card">
+            <div className="mdx-header">
+              <div className="c-a-title">{title}</div>
+              <div className="c-a-desc">{createdAt}</div>
+            </div>
+            <MDXRenderer>{body || ' '}</MDXRenderer>
+          </article>
+        </div>
+        <Sidebar title="Contents">
+          <Toc data={toc} />
+          <TagCloud />
+        </Sidebar>
+      </Layout>
+    </MDXProvider>
   )
 }
 
@@ -35,14 +46,16 @@ export default ArticleTemplate
 
 export const ArticleBySlug = graphql`
 query ArticleBySlug($slug: String) {
-  mdx(frontmatter: {slug: {eq: $slug}}) {
+  mdx(frontmatter: {slug: {eq: $slug}, wip: {nin: true}}) {
     frontmatter {
       slug
       title
-      createdAt: date(formatString: "YYYY-MM-DD")
+      createdAt: date(formatString: "MMMM DD, YYYY")
+      tags
+      category
     }
     body
+    tableOfContents(maxDepth: 4)
   }
 }
-
 `

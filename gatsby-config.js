@@ -14,14 +14,14 @@ module.exports = {
     title: 'HaryoiroBlog',
     description: 'フロントエンドとか気になった技術とか',
     author: 'Haryoiro',
-    siteUrl: 'https://www.haryoiro.com/',
+    siteUrl: 'https://www.haryoiro.com/blog',
     githubId: 'haryoiro',
     charset: 'utf-8',
   },
   flags: {
     PRESERVE_WEBPACK_CACHE: true,
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
-    FAST_REFRESH: false,
+    FAST_REFRESH: true,
     LAZY_IMAGES: true,
   },
   plugins: [
@@ -46,18 +46,9 @@ module.exports = {
     },
     'gatsby-plugin-remove-fingerprints',
     'gatsby-plugin-react-helmet',
-    {
-      resolve: 'gatsby-plugin-typescript',
-      options: {
-        isTSX: true,
-        jsxPragma: 'jsx',
-        allExtensions: true,
-      },
-    },
     'gatsby-plugin-typescript-checker',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-svgr',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -92,6 +83,13 @@ module.exports = {
         gatsbyRemarkPlugins: [
           'gatsby-remark-prismjs-title',
           {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              icon: false,
+              elements: ['h2', 'h3', 'h4'],
+            },
+          },
+          {
             resolve: 'gatsby-remark-prismjs',
             options: {
               classPrefix: 'language-',
@@ -104,7 +102,6 @@ module.exports = {
               },
             },
           },
-
         ],
       },
     },
@@ -113,14 +110,11 @@ module.exports = {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
         fileName: 'types/graphql-types.d.ts',
-
         // Codegenはとても重いので以下の場合のみtrueにすること
         //   - 新たなプラグインを追加した。
         //   - 新たなクエリを追加した。
         //   - 既存のクエリを編集した。
-
         codegen: false,
-
         documentsPath: ['./src/**/*.{ts, tsx}'],
       },
     },
