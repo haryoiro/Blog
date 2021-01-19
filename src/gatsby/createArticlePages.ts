@@ -11,11 +11,14 @@ const createArticlePages: GatsbyNode['createPages'] = async ({
   reporter,
 }) => graphql<CreateArticlePagesQuery>(`
 query CreateArticlePages {
-  allMdx {
+  allMdx(
+    filter: {frontmatter: {wip: {nin: true}}}
+  ) {
     edges {
       node {
         frontmatter {
           slug
+          wip
         }
       }
     }
@@ -33,17 +36,17 @@ query CreateArticlePages {
     return
   }
 
-  // @ts-ignore
-  posts.forEach(({ node: { frontmatter: { slug } } }) => {
-    createPage({
-      path: `/blog/${slug}`.toLowerCase(),
-      component: path.resolve('src/templates/ArticleTemplate/index.tsx'),
-
-      context: {
-        slug,
-      },
+  posts
+    // @ts-ignore
+    .forEach(({ node: { frontmatter: { slug } } }) => {
+      createPage({
+        path: `/blog/${slug}`.toLowerCase(),
+        component: path.resolve('src/templates/ArticleTemplate/index.tsx'),
+        context: {
+          slug,
+        },
+      })
     })
-  })
 })
 
 module.exports = createArticlePages

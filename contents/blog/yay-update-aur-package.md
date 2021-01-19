@@ -8,9 +8,10 @@ tags:
   - pacman
   - yay
 category: archlinux
+wip: false
 ---
 
-## はじめに
+### yayとは？
 
 Arch Linuxには、pacmanというパッケージマネージャで管理できるリポジトリの他に、公式リポジトリに登録する前のパッケージを登録できるAURというリポジトリがあります。
 

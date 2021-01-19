@@ -4,12 +4,12 @@
 import React, { FC } from 'react'
 import { Link, graphql } from 'gatsby'
 // @ts-ignore
-import { scale, rhythm } from "../../utils/typography"
-import Layout from '../../components/layouts/TwoColumnsLayout'
+import { scale, rhythm } from '../../utils/typography'
+import Layout from '../../components/Layouts/TwoColumnsLayout'
 
 import Svgs from '../../components/Atoms/Svgs'
 import Tags from '../../components/Atoms/Tags'
-import Side from '../../components/Molecules/Sidebar'
+import Sidebar from '../../components/Elements/Sidebar'
 
 // @ts-ignore
 import { ArticleListByTagQuery } from '../../../types/graphql-types'
@@ -26,10 +26,16 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
   return (
     <Layout title={`${pageContext.tag}`} type="article">
       <>
-      <div className="l-card-crown spacebetween">
-        <span>Tag {pageContext.tag.toUpperCase()}</span>
-        <span>{articleCount} Articles</span>
-      </div>
+        <div className="l-card-crown spacebetween">
+          <span>
+            Tag
+            {pageContext.tag.toUpperCase()}
+          </span>
+          <span>
+            {articleCount}
+            Articles
+          </span>
+        </div>
         {
           articles.map(({
             node: {
@@ -51,36 +57,42 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
                 </div>
               </Link>
               <div className="c-body">
-                <Link to={`/blog/${slug}`}><h2
-                  className="c-title"
-                  style={{ 
-                    fontSize: scale(0.2).fontSize, 
-                    lineHeight: scale(0.2).lineHeight,
-                    height: rhythm(0.2).height, 
-                  }}
-                >{title}</h2></Link>
+                <Link to={`/blog/${slug}`}>
+                  <h2
+                    className="c-title"
+                    style={{
+                      fontSize: scale(0.2).fontSize,
+                      lineHeight: scale(0.2).lineHeight,
+                      height: rhythm(0.2).height,
+                    }}
+                  >
+                    {title}
+                  </h2>
+                </Link>
                 <div className="c-tags">
                   <span className="c-createdAt">{createdAt}</span>
                   <Tags tags={tags} />
                 </div>
                 <p
                   className="c-description"
-                  style={{ 
-                    fontSize: '14px', 
+                  style={{
+                    fontSize: '14px',
                     lineHeight: '17px',
                     height: rhythm(0).height,
                     marginBottom: 0,
                     fontWeight: 500,
                   }}
-                >{excerpt}</p>
+                >
+                  {excerpt}
+                </p>
               </div>
             </article>
           ))
         }
       </>
-      <Side>
+      <Sidebar title="author" className="author">
         side
-      </Side>
+      </Sidebar>
     </Layout>
   )
 }
@@ -90,7 +102,7 @@ export default TagsTemplate
 export const ArticleListByTag = graphql`
 query ArticleListByTag($tag: String!) {
   allMdx(
-    filter: {frontmatter: {tags: {eq: $tag}}},
+    filter: {frontmatter: {tags: {eq: $tag}, wip: {nin: true}}},
       sort: {fields: frontmatter___date, order: DESC}
   ) {
     edges {

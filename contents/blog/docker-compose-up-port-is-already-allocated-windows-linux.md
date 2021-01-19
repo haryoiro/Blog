@@ -8,9 +8,10 @@ tags:
   - linux
   - windows
 category: docker
+wip: false
 ---
 
-## 原因
+### 原因は？
 
 「port is already allocated」直訳すると「ポートはすでに割り当てられています」となり、
 起動しようとしているコンテナが使用するポートと他のプロセスが使っているポートが競合しています。

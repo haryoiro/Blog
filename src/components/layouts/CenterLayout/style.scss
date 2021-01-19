@@ -1,25 +1,22 @@
 @import '../../../styles/mixin';
 
 .grid-center {
-    margin-left: auto;
-    margin-right: auto;
     display: grid;
+    place-content: center;
+    justify-self: center;
     @include mq(MAX) {
-        width: 1024px;
+        width: 1023px;
+        max-width: 1023px;
     }
     @include mq(PC) {
-        width: 768px;
+        width: 767px;
+        max-width: 767px;
     }
     @include mq(TABLET) {
-        width: 768px;
+        width: 767px;
+        max-width: 767px;
     }
-    @include mq(PHONE) {
-        width: minmax(414px, 767px);
-    }
-    @include mq(SM) {
-        width:  minmax(320px, 414px);
-    }
-    @include mq(MI) {
-        width: minmax(280px, 300px);
-    }
+    @include mq(PHONE) {width: minmax(414px, 760px)}
+    @include mq(SM) {width:  minmax(320px, 410px)}
+    @include mq(MI) {width: minmax(280px, 290px)}
 }

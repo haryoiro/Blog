@@ -42,6 +42,7 @@ const Svgs: FC<SvgsProps> = ({
             src={url?.publicURL}
             alt={svgName}
             style={style}
+            loading="lazy"
           />
         )
       }

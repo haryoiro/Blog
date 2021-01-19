@@ -1,0 +1,33 @@
+@import '../../../styles/variable';
+
+.toc {
+  &-header {
+    font-weight: 500;
+    margin-bottom: 1.414rem;
+    font-size: 1.414rem;
+    line-height: 1.414rem;
+    color: $grayish-dark;
+    text-align: center;
+  }
+  &-wrapper {
+    background-color: transparent;
+    padding-left: 1rem;
+    padding-bottom: 1.414rem;
+    font-weight: 300;
+    ul {
+      margin-bottom: 1.414rem;
+    }
+    li {
+      font-size: .707rem;
+      line-height: .707rem;
+      margin-bottom: 1.414rem;
+      :link, :visited {
+        color: $grayish-dark;
+      }
+      :hover, :active {
+        color: $blue;
+        background-color: $whitish-gray;
+      }
+    }
+  }
+}
