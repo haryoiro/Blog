@@ -1,1 +1,0 @@
-module.exports = require("/Users/dev/ssg-blog-example/src/utils/typography")

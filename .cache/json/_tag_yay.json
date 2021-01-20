@@ -1,1 +1,0 @@
-{"data":{"allMdx":{"edges":[{"node":{"frontmatter":{"slug":"yay-update-aur-package","title":"AURパッケージをyayで更新する","createdAt":"December 31, 2020","tags":["linux","arch","pacman","yay"],"category":"archlinux"},"excerpt":"yayとは？ Arch Linuxには、pacmanというパッケージマネージャで管理できるリポジトリの他に、公式リポジトリに登録する前のパッケージを登録できるAURというリポジトリがあります。 MacでいうHomebrew…"}}],"totalCount":1}},"pageContext":{"tag":"yay"}}
