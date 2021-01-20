@@ -9,21 +9,21 @@ tags:
 wip: true
 ---
 
-### 環境
+## 環境
 
 - macOS Catalina version 10.15.7
 - goenv 2.0.0beta11
 - fish version 3.1.0
 
-### goenvとは
+## goenvとは
 
 [Go Version Management: goenv](https://github.com/syndbg/goenv)
 
 goenvはGoのためのバージョン管理システム。
 異なったバージョンのGoをいくつも切り替えて使いたいときに便利です。
-**pyenv**や**rbenv**を使ったことがある人なら、難なく使いこなせると思います。
+**pyenv**や**rbenv**を使ったことがある人なら、難なく使いこなすことができるでしょう。
 
-### githubからgoenvをクローン、インストール
+## githubからgoenvをクローン、インストール
 
 Homebrewでインストールすると古いバージョンがインストールされてしまうため、リポジトリから直接クローン、インストールします。
 
@@ -31,7 +31,7 @@ Homebrewでインストールすると古いバージョンがインストール
 git clone https://github.com/syndbg/goenv.git ~/.goenv
 ```
 
-### 環境変数を設定
+## 環境変数を設定
 
 環境変数を設定するにはシェルの設定ファイルに設定を書き込む必要があります。
 
@@ -70,7 +70,7 @@ source ~/.config/fish/config.fish
 exec $SHELL
 ```
 
-### goenvがインストールされているか確認
+## goenvがインストールされているか確認
 
 バージョンを確認し、インストールされていれば何かしらのバージョンが表示されるはずです。
 
@@ -79,7 +79,7 @@ goenv -v
 > goenv 2.0.0beta11
 ```
 
-### Goをインストール
+## Goをインストール
 
 インストールできるバージョンを確認します。
 
@@ -110,8 +110,8 @@ goenv install 1.15.6
 インストールされているバージョンを確認します。
 
 ```sh
-goenv versions                                                   
-* system (set by /Users/haryoiro/.goenv/version)
+goenv versions
+> * system (set by /Users/haryoiro/.goenv/version)
   1.15.6
 ```
 
@@ -119,8 +119,8 @@ goenv versions
 次に、グローバルでどのバージョンを使用するかを設定します。
 
 ```sh
-$ goenv global 1.15.6
-$ goenv rehash
+goenv global 1.15.6
+goenv rehash
 ```
 
 どのバージョンが有効化されているかを確認します。
@@ -130,11 +130,9 @@ goenv versions
 > * 1.15.6 (set by /Users/dddddd/.goenv/version)
 ```
 
-$ HELLO
-
 **1.15.6**にチェックがされていればOK。
 
-### GOPATHを設定
+## GOPATHを設定
 
 > bashの場合
 ```sh
@@ -156,7 +154,7 @@ go version
 ```
 
 
-### 参考
+## 参考
 
 > [syndbg/goenv/INSTALL.md](https://github.com/syndbg/goenv/blob/master/INSTALL.md)
 > [[Go] MacでGo言語環境構築](https://qiita.com/koralle/items/7a16772ad1d2e2e34682)

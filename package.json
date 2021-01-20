@@ -2,7 +2,7 @@
   "name": "blog",
   "private": true,
   "description": "Haryoiro's Blog",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Haryoiro <mizusecocolte@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -11,7 +11,9 @@
     "lint": "eslint ./src/**/*.tsx --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve -p 4000",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "text": "textlint ./contents/blog/*.md",
+    "text:fix": "textlint --fix ./contents/blog/*.md"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -76,7 +78,11 @@
     "eslint-plugin-react": "^7.21.5",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-remark-prismjs-title": "^1.0.0",
-    "prettier": "2.1.2"
+    "prettier": "2.1.2",
+    "textlint": "^11.7.7",
+    "textlint-rule-preset-ja-spacing": "^2.0.2",
+    "textlint-rule-preset-ja-technical-writing": "^4.0.1",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0"
   },
   "browserslist": {
     "development": [
