@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, Fragment } from 'react'
+import React, { FC, ReactElement } from 'react'
 
 import Header from '../../Elements/Header'
 import Footer from '../../Elements/Footer'
@@ -13,7 +13,7 @@ interface I2Layout {
   ],
 }
 
-type TwoColumnsLayoutProps = SEOProps & I2Layout
+export type TwoColumnsLayoutProps = SEOProps & I2Layout
 
 const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = ({
   children, title, type,
