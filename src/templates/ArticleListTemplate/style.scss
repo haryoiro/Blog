@@ -32,8 +32,10 @@
 }
 .l-card {
   display:grid;
-  grid-template-areas: "logo body";
-  grid-template-columns: minmax(99px 158px) auto;
+  // grid-template-areas: "logo body";
+  // grid-template-columns: minmax(99px 158px) auto;
+  grid-template-areas: "body";
+  grid-template-columns: auto;
 }
 
 

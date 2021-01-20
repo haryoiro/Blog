@@ -14,10 +14,13 @@ hr {
 .inner-toc {
   padding-left: 0;
   padding-top: 5.636rem;
-  .toc-header {
+  .sidecontent-header {
     font-size: 14px;
     text-align: left;
   }
+}
+.gatsby-highlight {
+  max-width: 100%;
 }
 
 .mdx-wrapper{
@@ -54,33 +57,8 @@ hr {
     h2, h3 {
       color: $blue;
       font-weight: 700;
-    }
-    // h3 {
-    //   align-items: center;
-    //   &::before, &::after {
-    //     border-top: 1px solid;
-    //     border-bottom: 1px solid;
-    //     flex-grow: 1;
-    //     height: 3px;
-    //   }
-    //   &::before  {margin-right: 1rem;}
-    //   &::after   {margin-left: 1rem;}
-    // }
-    h2 {
-      font-size: 1.68141rem;
-      line-height: 2.121rem;
-      margin-bottom: 2.121rem;
-      padding-top: 4.242rem;
-    }
-    h3 {
-      color: $blue;
-      font-size: 1.414rem;
-      line-height: 2.121rem;
-      margin-bottom: 1.414rem;
-      padding-top: 2.828rem;
       position: relative;
       border-bottom: 3px solid $whitish-gray;
-      padding-bottom: 3px;
       &::after {
         position: absolute;
         display:block;
@@ -89,6 +67,20 @@ hr {
         bottom: -3px;
         width: 5rem;
       }
+    }
+    h2 {
+      font-size: 1.68141rem;
+      line-height: 2.121rem;
+      margin-bottom: 2.121rem;
+      padding-top: 4.242rem;
+      padding-bottom: 6px;
+    }
+    h3{
+      font-size: 1.414rem;
+      line-height: 2.121rem;
+      margin-bottom: 1.414rem;
+      padding-top: 2.828rem;
+      padding-bottom: 3px;
     }
     p {
       font-size: 1rem;

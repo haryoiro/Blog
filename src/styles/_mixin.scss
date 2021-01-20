@@ -7,16 +7,24 @@ $breakpoints: (
   'MAX': 'screen and (min-width: 1440px)',
 ) !default;
 
+$bk: (
+  'MI': 319px,
+  'SM': 320px,
+  'PHONE': 415px,
+  'TABLET': 568px,
+  'PC': 824px,
+  'MAX': 824px,
+);
+
 @mixin mq($breakpoint: MI) {
   @media #{map-get($breakpoints, $breakpoint)} {
     @content;
   }
 }
-
 .is-mobile {
-  @include mq(MAX) { visibility: hidden; }
-  @include mq(PC) { visibility: hidden; }
-  @include mq(TABLET) { visibility: hidden; }
+  @include mq(MAX) { visibility: hidden; height: 0px; }
+  @include mq(PC) { visibility: hidden; height: 0px; }
+  @include mq(TABLET) { visibility: hidden; height: 0px; }
   @include mq(PHONE) { visibility: visible; }
   @include mq(SM) { visibility: visible; }
   @include mq(MI) { visibility: visible; }
@@ -25,7 +33,7 @@ $breakpoints: (
   @include mq(MAX) { visibility: visible; }
   @include mq(PC) { visibility: visible; }
   @include mq(TABLET) { visibility: visible; }
-  @include mq(PHONE) { visibility: hidden; }
-  @include mq(SM) { visibility: hidden; }
-  @include mq(MI) { visibility: hidden; }
+  @include mq(PHONE) { visibility: hidden; height: 0px; }
+  @include mq(SM) { visibility: hidden; height: 0px; }
+  @include mq(MI) { visibility: hidden; height: 0px; }
 }

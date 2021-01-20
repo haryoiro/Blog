@@ -1,12 +1,12 @@
 ---
 title: MacでGolangの開発環境を整える
-slug: setting-up-golang-environment-on-Mac
-data: 2021-01-20
+slug: setting-up-golang-environment-on-mac
+date: "2021-01-20"
 tags:
-    - Mac
-    - Golang
-    - "fish shell"
-wip: true
+  - Mac
+  - Golang
+  - "fish shell"
+wip: false
 ---
 
 ## 環境
@@ -154,7 +154,7 @@ go version
 ```
 
 
-## 参考
+## 参考サイト
 
 > [syndbg/goenv/INSTALL.md](https://github.com/syndbg/goenv/blob/master/INSTALL.md)
 > [[Go] MacでGo言語環境構築](https://qiita.com/koralle/items/7a16772ad1d2e2e34682)

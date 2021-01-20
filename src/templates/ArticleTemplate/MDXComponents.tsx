@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { MDXProviderComponentsProp } from '@mdx-js/react'
 
-import '../../styles/prism.css'
+import '../../styles/prism.scss'
 import './style.scss'
 
 export type CustomComponents = React.FC<{

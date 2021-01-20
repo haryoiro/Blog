@@ -8,24 +8,28 @@ interface ITagCloud {
 const TagCloud: FC<ITagCloud> = ({ className }) => {
   const { allMdx: { tags } } = useStaticQuery(graphql`
     query {
-      allMdx(limit: 1000, filter: {frontmatter: {wip: {}, title: {}}}) {
+      allMdx(limit: 1000, filter: {frontmatter: {wip: {nin: true}, title: {}}}) {
         tags: group(field: frontmatter___tags) {
           tag: fieldValue
         }
       }
-    }`
-  )
+    }`)
+
   return (
-    <div className={`tags-wrapper c-card ${className || ''}`}>
-      <div>Tags</div>
-      {tags && tags.map(({ tag }: { tag: string }) => (
-        <span className="item">
-          <a href={`/tag/${tag}/`}>
-            {/* text-transformが効くようにスペースを挿入する */}
-            {' ' + tag + ' '}
-          </a>
-        </span>
-      ))}
+    <div className={`c-card ${className || ''}`}>
+      <div className="sidecontent-header">
+        Tags
+      </div>
+      <div className="tags-wrapper">
+        {tags && tags.map(({ tag }: { tag: string }) => (
+          <span className="item" key={tag}>
+            <a href={`/tag/${tag}/`}>
+              {/* text-transformが効くようにスペースを挿入する */}
+              {` ${tag} `}
+            </a>
+          </span>
+        ))}
+      </div>
     </div>
   )
 }

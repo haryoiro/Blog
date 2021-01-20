@@ -1,7 +1,6 @@
 ---
 title: VALORANTでカスタム解像度を設定して優勝する
 slug: how-to-custom-resolution-setting-valorant
-
 date: "2021-01-16"
 tags:
   - valorant
