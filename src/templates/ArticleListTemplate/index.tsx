@@ -8,7 +8,6 @@ import { scale, rhythm } from '../../utils/typography'
 
 import Layout from '../../components/Layouts/TwoColumnsLayout'
 
-import Svg from '../../components/Atoms/Svgs'
 import Tags from '../../components/Atoms/Tags'
 import Sidebar from '../../components/Elements/Sidebar'
 import TagCloud from '../../components/Elements/TagCloud'

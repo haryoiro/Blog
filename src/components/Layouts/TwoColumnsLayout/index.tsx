@@ -24,7 +24,7 @@ const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = ({
       <Header className="head grid-center shadowish" />
       <div className="body grid-center">
         <div className="body-wrapper">
-          <main className="main">{children[0]}</main>
+          <main className="main" role="main">{children[0]}</main>
           <aside className="side">{children[1]}</aside>
         </div>
       </div>

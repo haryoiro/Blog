@@ -24,7 +24,7 @@ const ArticleTemplate: FC<Props> = ({ data }) => {
   return (
     <MDXProvider components={MDComponents}>
       <Layout title={title} type="article">
-        <div className="mdx-wrapper">
+        <div className="mdx-wrapper" role="article">
           <article className="c-card">
             <div className="mdx-header">
               <div className="c-a-title">{title}</div>
