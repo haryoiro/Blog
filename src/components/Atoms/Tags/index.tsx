@@ -8,7 +8,7 @@ const Tags: FC<ArticleProps> = ({ className, tags, style }) => (
     {
       tags && tags.map((tag) => (
         <Link to={`/tag/${tag}`} key={tag} style={style}>
-          <span className="tag">{tag}</span>
+          <span className="tag">{tag + ' '}</span>
         </Link>
       ))
     }

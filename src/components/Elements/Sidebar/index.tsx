@@ -7,7 +7,7 @@ interface ISideBar {
 }
 
 const SideBar: FC<ISideBar> = ({ className, title, children }) => (
-  <div className={`sidebar ${className}`}>
+  <div className={`sidebar ${className || ''}`}>
     {children}
   </div>
 )

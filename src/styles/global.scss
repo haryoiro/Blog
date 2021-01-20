@@ -7,6 +7,9 @@ html, body, img {
 a {
     text-decoration: none;
 }
+
+@import "./utils";
+
 // Atoms
 @import
     "../components/Atoms/Tags/styles.scss";

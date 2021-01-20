@@ -43,7 +43,7 @@ sudo pacman -S yay
 
  Arch Linuxではその他AURパッケージと同様にリポジトリから手動でクローン、「PKGBUILD」があるディレクトリで`makepkg`コマンドを使用してパッケージ化してからインストールする必要があります。
 
-```sh:title=yay-install
+```sh
 pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay

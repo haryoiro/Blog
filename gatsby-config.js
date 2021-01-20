@@ -86,7 +86,7 @@ module.exports = {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
               icon: false,
-              elements: ['h2', 'h3', 'h4'],
+              elements: ['h2', 'h3'],
             },
           },
           {

@@ -12,6 +12,7 @@ interface ITocData {
 interface IExpandTocProps {
   className?: Maybe<string>,
   data: ITocData,
+  title?: Maybe<string>;
 }
 
 const ExpandToc: FC<IExpandTocProps> = ({ data: { title, items, url } }) => (
@@ -24,19 +25,19 @@ const ExpandToc: FC<IExpandTocProps> = ({ data: { title, items, url } }) => (
         </li>
       )}
     {items && (
-      <ol>
+      <ul>
         {items.map((next: ITocData) => (
           <ExpandToc key={next.title} data={next} />
         ))}
-      </ol>
+      </ul>
       )}
   </>
 )
 
-const Toc: FC<IExpandTocProps> = ({ data }) => (
-  <div className="c-card toc-wrapper">
+const Toc: FC<IExpandTocProps> = ({ title, data, className }) => (
+  <div className={`c-card toc-wrapper ${className  || ''}`}>
     <div className="toc-header">
-      目次
+      {title}
     </div>
     <ExpandToc data={data} />
   </div>

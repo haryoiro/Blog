@@ -28,6 +28,7 @@
   width: 100%;
   background-color: $white;
   box-sizing: border-box;
+  border-bottom: 1px solid $grayish-white;
 }
 .l-card {
   display:grid;
@@ -48,7 +49,7 @@
   grid-area: body;
   align-self: center;
   margin: 1.414rem 0;
-  padding: 0 1.414rem 0 0;
+  padding: 0 1.414rem;
 }
 .c-category {
   margin: 29.5px 21.75px;
@@ -60,6 +61,7 @@
   margin-bottom: 1.4375rem;
 }
 .tag {
+  text-transform: capitalize;
   font-size: 12px;
   height: 12px;
   line-height: 12px;

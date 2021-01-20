@@ -17,10 +17,12 @@ const TagCloud: FC<ITagCloud> = ({ className }) => {
   )
   return (
     <div className={`tags-wrapper c-card ${className || ''}`}>
+      <div>Tags</div>
       {tags && tags.map(({ tag }: { tag: string }) => (
         <span className="item">
           <a href={`/tag/${tag}/`}>
-          {' ' + tag + ' '}
+            {/* text-transformが効くようにスペースを挿入する */}
+            {' ' + tag + ' '}
           </a>
         </span>
       ))}

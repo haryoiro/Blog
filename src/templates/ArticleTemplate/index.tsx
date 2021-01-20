@@ -5,7 +5,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
 import MDComponents from './MDXComponents'
-import Layout from '../../components/layouts/TwoColumnsLayout'
+import Layout from '../../components/Layouts/TwoColumnsLayout'
 import Sidebar from '../../components/Elements/Sidebar'
 import Toc from '../../components/Elements/Toc'
 import TagCloud from '../../components/Elements/TagCloud'
@@ -30,11 +30,20 @@ const ArticleTemplate: FC<Props> = ({ data }) => {
               <div className="c-a-title">{title}</div>
               <div className="c-a-desc">{createdAt}</div>
             </div>
-            <MDXRenderer>{body || ' '}</MDXRenderer>
+            <Toc
+              title="このページには以下の内容が含まれます："
+              data={toc}
+              className="is-mobile inner-toc"
+            />
+            <MDXRenderer>{body || ''}</MDXRenderer>
           </article>
         </div>
         <Sidebar title="Contents">
-          <Toc data={toc} />
+          <Toc
+            title="Contents"
+            data={toc}
+            className="is-pc outer-toc"
+          />
           <TagCloud />
         </Sidebar>
       </Layout>
@@ -55,7 +64,7 @@ query ArticleBySlug($slug: String) {
       category
     }
     body
-    tableOfContents(maxDepth: 4)
+    tableOfContents(maxDepth: 3)
   }
 }
 `
