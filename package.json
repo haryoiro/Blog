@@ -6,7 +6,7 @@
   "author": "Haryoiro <mizusecocolte@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby clean | gatsby build",
     "dev": "gatsby develop -p 4000",
     "lint": "eslint ./src/**/*.tsx --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
