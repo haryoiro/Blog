@@ -57,40 +57,38 @@
   margin: 29.5px 21.75px;
 }
 .c-tags {
-  height: 12px;
-  line-height: 12px;
-  font-weight: 400;
-  margin-bottom: 1.4375rem;
+  font-size: 14px;
+  height: 14px;
+  line-height: 14px;
+  font-weight: 500;
+  margin-bottom: 21.05px;
+  .tag {
+    text-transform: capitalize;
+    text-decoration: underline;
+    margin-right: 6px;
+    color: $grayish-dark;
+  }
+  .c-createdAt {
+    color: $grayish-dark;
+    margin-right: 8px;
+  }
 }
-.tag {
-  text-transform: capitalize;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
-  text-decoration: underline;
-  margin-right: 4px;
-  color: $grayish-dark;
-}
-.c-createdAt {
-  color: $grayish-dark;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
-  margin-right: 8px;
-}
+
+
 .c-title {
   text-overflow: ellipsis;
   overflow: hidden;
-  max-height: #{1.414rem * 2};
-  line-height: 1.414 * 2;
   color: $blue;
-  margin-bottom: .4375rem;
+  font-size: 1.31935rem;
+  line-height: 2.121rem;
+  margin-bottom: 7px;
   font-weight: 700;
-  letter-spacing: .05rem;
 }
 .c-description {
   text-overflow: ellipsis;
   overflow: hidden;
+  font-size: 14px;
+  line-height: 17px;
   height: #{17 * 3}px;
   color: $grayish-dark;
   margin: 0;

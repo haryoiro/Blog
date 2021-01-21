@@ -38,7 +38,7 @@ const ArticleTemplate: FC<Props> = ({ data }) => {
             <MDXRenderer>{body || ''}</MDXRenderer>
           </article>
         </div>
-        <Sidebar title="Contents">
+        <Sidebar>
           <Toc
             title="Contents"
             data={toc}

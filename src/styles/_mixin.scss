@@ -1,19 +1,27 @@
 $breakpoints: (
-  'MI': 'screen and (max-width: 319px)',
-  'SM': 'screen and (min-width: 320px) and (max-width: 414px)',
-  'PHONE': 'screen and (min-width: 415px) and (max-width: 767px)',
-  'TABLET': 'screen and (min-width: 768px) and (max-width: 1024px)',
-  'PC': 'screen and (min-width: 1025px) and (max-width: 1439px)',
   'MAX': 'screen and (min-width: 1440px)',
+  'PC': 'screen and (min-width: 1025px) and (max-width: 1439px)',
+  'TABLET': 'screen and (min-width: 768px) and (max-width: 1024px)',
+  'PHONE': 'screen and (min-width: 415px) and (max-width: 767px)',
+  'SM': 'screen and (min-width: 320px) and (max-width: 414px)',
+  'MI': 'screen and (max-width: 319px)',
 ) !default;
 
 $bk: (
-  'MI': 319px,
-  'SM': 320px,
-  'PHONE': 415px,
-  'TABLET': 568px,
-  'PC': 824px,
-  'MAX': 824px,
+  'MAX': 1024px,
+  'PC': 1024px,
+  'TABLET': 768px,
+  'PHONE': auto,
+  'SM': auto,
+  'MI': auto,
+);
+$maw: (
+  'MAX': 689.376px,
+  'PC': 689.376px,
+  'TABLET': 513.376px,
+  'PHONE': 100vw,
+  'SM': 100vw,
+  'MI': 100vw,
 );
 
 @mixin mq($breakpoint: MI) {

@@ -79,7 +79,7 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
           ))
         }
       </>
-      <Sidebar title="author" className="author">
+      <Sidebar>
         side
       </Sidebar>
     </Layout>

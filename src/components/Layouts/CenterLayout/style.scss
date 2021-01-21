@@ -4,19 +4,10 @@
     display: grid;
     place-content: center;
     justify-self: center;
-    @include mq(MAX) {
-        width: 1023px;
-        max-width: 1023px;
-    }
-    @include mq(PC) {
-        width: 767px;
-        max-width: 767px;
-    }
-    @include mq(TABLET) {
-        width: 767px;
-        max-width: 767px;
-    }
-    @include mq(PHONE) {width: minmax(414px, 760px)}
-    @include mq(SM) {width:  minmax(320px, 410px)}
-    @include mq(MI) {width: minmax(280px, 290px)}
+    @include mq(MAX) { width: map-get($bk, MAX) }
+    @include mq(PC) { width: map-get($bk, PC) }
+    @include mq(TABLET) { width: map-get($bk, TABLET) }
+    @include mq(PHONE) { width: map-get($bk, PHONE) }
+    @include mq(SM) { width: map-get($bk, SM) }
+    @include mq(MI) { width: map-get($bk, MI) }
 }

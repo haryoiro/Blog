@@ -31,13 +31,18 @@ pre[class*="language-"] {
 	margin: .5em 0;
 	overflow: scroll;
 	border-radius: 0.3em;
+	@include mq(MAX) { max-width: #{map-get($maw, MAX)} }
+  @include mq(PC) { max-width: #{map-get($maw, PC)} }
+  @include mq(TABLET) { max-width: #{map-get($maw, TABLET)} }
+  @include mq(PHONE) { max-width: #{map-get($maw, PHONE)} }
+  @include mq(SM) { max-width: #{map-get($maw, SM)} }
+  @include mq(MI) { max-width: #{map-get($maw, MI)} }
+}
 
-	@include mq(MAX) { max-width: #{map-get($bk, MAX)} }
-  @include mq(PC) { max-width: #{map-get($bk, PC)} }
-  @include mq(TABLET) { max-width: #{map-get($bk, TABLET)} }
-  @include mq(PHONE) { max-width: #{map-get($bk, PHONE)} }
-  @include mq(SM) { max-width: #{map-get($bk, SM)} }
-  @include mq(MI) { max-width: #{map-get($bk, MI)} }
+blockquote {
+	width: calc(100% - 2.828rem);
+	margin-left: 1.414rem;
+	margin-right: -1.414rem;
 }
 
 :not(pre) > code[class*="language-"],

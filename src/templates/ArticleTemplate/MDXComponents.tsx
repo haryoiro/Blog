@@ -25,7 +25,7 @@ const img: FC<ICustom> = ({ alt, src, className }): JSX.Element => (
     decoding="async"
   />
 )
-const Undefined: FC<ICustom> = ({ children, className }): JSX.Element => (
+const Undefined: FC<ICustom> = ({ children }): JSX.Element => (
   <div>{children}</div>
 )
 

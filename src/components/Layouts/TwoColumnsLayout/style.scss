@@ -26,6 +26,7 @@ auto;
   display:grid;
   grid-gap: 1.414rem;
   margin-top: 1.414rem;
+  max-width: 100%;
   min-height: 100vh;
   @include mq(MAX) { grid-template: $ms-max }
   @include mq(PC) { grid-template: $ms-max }

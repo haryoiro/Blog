@@ -22,15 +22,13 @@ const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = ({
     <SEO title={title} type={type} />
     <div className="site-wrapper">
       <Header className="head grid-center shadowish" />
-      <div className="body grid-center">
-        <div className="body-wrapper">
+      <div className="body">
+        <div className=" grid-center body-wrapper">
           <main className="main" role="main">{children[0]}</main>
           <aside className="side">{children[1]}</aside>
         </div>
       </div>
-      <Center className="foot is-grayishdark footer">
-        <Footer />
-      </Center>
+      <Footer className="foot grid-center is-grayishdark footer" />
     </div>
   </>
 )

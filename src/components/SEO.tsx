@@ -25,7 +25,7 @@ export const SEO: FC<SEOProps> = ({
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <title>{title}</title>
+      <title>{title || 'HaryoiroBlog'}</title>
 
       <meta name="application-name" content={siteName} />
       <meta name="author" content="Haryoiro" />
@@ -39,7 +39,7 @@ export const SEO: FC<SEOProps> = ({
       <meta property="og:description" content={description || siteDescription} />
       <meta property="og:site_name" content={siteName} />
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-VMYZ7W9W96" />
-      <script defer>
+      <script>
         {`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
