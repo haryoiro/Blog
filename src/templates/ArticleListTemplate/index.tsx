@@ -32,21 +32,24 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
             },
           }: any) => (
             <article key={`post-${slug}`} className="l-card c-card">
-              <Link to={`/blog/${slug}`}>
-                <div className="c-body">
+              <div className="c-body">
+                <Link to={`/blog/${slug}`}>
                   <h2 className="c-title">
                     {title}
                   </h2>
-                  <div className="c-tags">
-                    <span className="c-createdAt">{createdAt}</span>
-                    <Tags tags={tags} />
-                  </div>
-                  <p className="c-description">
-                    {excerpt}
-                  </p>
-                  <div className="c-detail">続きを読む</div>
+                </Link>
+                <div className="c-tags spacebetween">
+                  <Tags tags={tags} />
+                  <div className="c-createdAt">{createdAt}</div>
                 </div>
-              </Link>
+                <Link to={`/blog/${slug}`}>
+                  <div className="c-description">
+                    {excerpt}
+                    <div className="c-detail">続きを読む</div>
+                  </div>
+                </Link>
+              </div>
+
             </article>
           ))
         }

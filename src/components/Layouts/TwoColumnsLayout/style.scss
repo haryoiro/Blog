@@ -29,6 +29,7 @@ auto;
   margin-top: 1.414rem;
   max-width: 100%;
   min-height: 100vh;
+  transition: grid-template .2ms ease-in-out;
   @include mq(MAX) { grid-template: $ms-max }
   @include mq(PC) { grid-template: $ms-max }
   @include mq(TABLET) { grid-template: $ms-mid }
