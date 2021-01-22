@@ -7,7 +7,6 @@ interface ISvgs {
   className: string | undefined
   width?: string | undefined
   height?: string | undefined
-  style?: any
 }
 
 type SvgsProps = Partial<ISvgs>
@@ -18,7 +17,6 @@ const Svgs: FC<SvgsProps> = ({
   className,
   height = defaultSize,
   width = defaultSize,
-  style,
 }) => (
   <StaticQuery
     query={graphql`
@@ -41,7 +39,6 @@ const Svgs: FC<SvgsProps> = ({
             className={className}
             src={url?.publicURL}
             alt={svgName}
-            style={style}
             loading="lazy"
           />
         )
@@ -51,7 +48,6 @@ const Svgs: FC<SvgsProps> = ({
           width={width}
           height={height}
           className={className}
-          style={style}
         />
       )
     }}

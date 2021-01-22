@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { MDXProviderComponentsProp } from '@mdx-js/react'
 
-import '../../styles/prism.css'
+import '../../styles/prism.scss'
 import './style.scss'
 
 export type CustomComponents = React.FC<{
@@ -25,7 +25,7 @@ const img: FC<ICustom> = ({ alt, src, className }): JSX.Element => (
     decoding="async"
   />
 )
-const Undefined: FC<ICustom> = ({ children, className }): JSX.Element => (
+const Undefined: FC<ICustom> = ({ children }): JSX.Element => (
   <div>{children}</div>
 )
 

@@ -24,17 +24,26 @@ const ArticleTemplate: FC<Props> = ({ data }) => {
   return (
     <MDXProvider components={MDComponents}>
       <Layout title={title} type="article">
-        <div className="mdx-wrapper">
+        <div className="mdx-wrapper" role="article">
           <article className="c-card">
             <div className="mdx-header">
               <div className="c-a-title">{title}</div>
               <div className="c-a-desc">{createdAt}</div>
             </div>
-            <MDXRenderer>{body || ' '}</MDXRenderer>
+            <Toc
+              title="このページには以下の内容が含まれます："
+              data={toc}
+              className="is-mobile inner-toc"
+            />
+            <MDXRenderer>{body || ''}</MDXRenderer>
           </article>
         </div>
-        <Sidebar title="Contents">
-          <Toc data={toc} />
+        <Sidebar>
+          <Toc
+            title="Contents"
+            data={toc}
+            className="is-pc outer-toc"
+          />
           <TagCloud />
         </Sidebar>
       </Layout>
@@ -55,7 +64,7 @@ query ArticleBySlug($slug: String) {
       category
     }
     body
-    tableOfContents(maxDepth: 4)
+    tableOfContents(maxDepth: 3)
   }
 }
 `

@@ -14,15 +14,15 @@ module.exports = {
     title: 'HaryoiroBlog',
     description: 'フロントエンドとか気になった技術とか',
     author: 'Haryoiro',
-    siteUrl: 'https://www.haryoiro.com/blog',
+    siteUrl: 'https://www.haryoiro.com/blog/',
     githubId: 'haryoiro',
     charset: 'utf-8',
   },
   flags: {
-    PRESERVE_WEBPACK_CACHE: true,
-    PRESERVE_FILE_DOWNLOAD_CACHE: true,
-    FAST_REFRESH: true,
-    LAZY_IMAGES: true,
+    // PRESERVE_WEBPACK_CACHE: false,
+    // PRESERVE_FILE_DOWNLOAD_CACHE: false,
+    // FAST_REFRESH: true,
+    // LAZY_IMAGES: true,
   },
   plugins: [
     {
@@ -32,10 +32,6 @@ module.exports = {
         sassRuleTest: /\.scss$/,
         sassRuleModulesTest: /\.module\.scss$/,
         postCssPlugins: [
-          // autoprefixer({
-          //   grid: 'autoplace',
-          //   browsers: ['ie >= 11'],
-          // }),
           cssnano({
             preset: [
               'default',
@@ -44,7 +40,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-remove-fingerprints',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript-checker',
     'gatsby-plugin-sharp',
@@ -86,7 +81,7 @@ module.exports = {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
               icon: false,
-              elements: ['h2', 'h3', 'h4'],
+              elements: ['h2', 'h3'],
             },
           },
           {
@@ -96,6 +91,7 @@ module.exports = {
               showLineNumbers: false,
               noInlineHighlight: false,
               aliases: {
+                fish: 'bash',
                 sh: 'bash',
                 js: 'javascript',
                 ts: 'typescript',
@@ -115,7 +111,10 @@ module.exports = {
         //   - 新たなクエリを追加した。
         //   - 既存のクエリを編集した。
         codegen: false,
-        documentsPath: ['./src/**/*.{ts, tsx}'],
+        documentsPath: [
+          './src/**/*.{ts, tsx}',
+          './node_modules/gatsby-*/**/*.js',
+        ],
       },
     },
   ],
