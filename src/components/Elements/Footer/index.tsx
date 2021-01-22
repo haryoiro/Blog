@@ -1,17 +1,13 @@
 import { useStaticQuery, graphql } from 'gatsby'
 import React, { FC } from 'react'
+import { Link } from 'gatsby'
 
 export type CopylightProps = {
   author: string
 }
 const Copylight: FC<CopylightProps> = ({ author }) => (
   <span className="copylight">
-    <span>
-      Built with
-      {' '}
-      <strong>Gatsby</strong>.
-      {' '}
-    </span>
+    <Link to="/sitemap.xml">サイトマップ</Link>
     <span>{` © ${author} 2020 - ${new Date().getFullYear()}`}</span>
   </span>
 )
