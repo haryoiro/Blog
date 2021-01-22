@@ -40,6 +40,15 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.haryoiro.com',
+        sitemap: 'https://www.haryoiro.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/blog/' }],
+      },
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript-checker',
     'gatsby-plugin-sharp',

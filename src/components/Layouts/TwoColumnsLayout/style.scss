@@ -1,11 +1,12 @@
-@import '../../../styles/mixin';
+@import '../../../styles/mixin',
+        '../../../styles/variable';
 
 .site-wrapper {
   display:grid;
   place-content: center;
   max-width: 100%;
   grid-template:
-  "head" 5rem
+  "head" 87.34px
   "body" auto
   "foot" 5rem /
   auto;
@@ -38,3 +39,12 @@ auto;
 
 .main {grid-area: main;}
 .side {grid-area: side;}
+
+.site-color {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  height: 87.34px;
+  width: 100%;
+  background-color: $blue;
+}

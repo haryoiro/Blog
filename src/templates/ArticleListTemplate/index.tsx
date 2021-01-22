@@ -44,6 +44,7 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
                   <p className="c-description">
                     {excerpt}
                   </p>
+                  <div className="c-detail">続きを読む</div>
                 </div>
               </Link>
             </article>
