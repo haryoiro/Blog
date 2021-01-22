@@ -69,7 +69,7 @@ const createArticleListPages: GatsbyNode['createPages'] = async ({
   // @ts-ignore
   tags.forEach(({ fieldValue }: { fieldValue: any }) => {
     createPage({
-      path: `/tag/${fieldValue}`.toLowerCase(),
+      path: `/tag/${fieldValue.toLowerCase()}`,
       component: path.resolve('src/templates/TagsTemplate/index.tsx'),
       context: {
         tag: fieldValue,

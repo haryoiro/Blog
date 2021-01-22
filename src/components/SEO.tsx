@@ -18,10 +18,6 @@ export const SEO: FC<SEOProps> = ({
   const siteName = siteMetadata.title
   const siteDescription = siteMetadata.description
 
-  const metaTitle = title
-    ? `${siteName} | ${title}`
-    : siteName
-
   return (
     <Helmet>
       <html lang="ja" />
@@ -29,7 +25,7 @@ export const SEO: FC<SEOProps> = ({
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <title>{metaTitle}</title>
+      <title>{title || 'HaryoiroBlog'}</title>
 
       <meta name="application-name" content={siteName} />
       <meta name="author" content="Haryoiro" />
@@ -38,7 +34,7 @@ export const SEO: FC<SEOProps> = ({
 
       <meta property="og:locale" content="ja" />
       <meta property="og:type" content={type} />
-      <meta property="og:title" content={metaTitle} />
+      <meta property="og:title" content={title || siteName} />
       {/* <meta property="og:url" content="/" /> */}
       <meta property="og:description" content={description || siteDescription} />
       <meta property="og:site_name" content={siteName} />

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, Fragment } from 'react'
+import React, { FC, ReactElement } from 'react'
 
 import Header from '../../Elements/Header'
 import Footer from '../../Elements/Footer'
@@ -13,7 +13,7 @@ interface I2Layout {
   ],
 }
 
-type TwoColumnsLayoutProps = SEOProps & I2Layout
+export type TwoColumnsLayoutProps = SEOProps & I2Layout
 
 const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = ({
   children, title, type,
@@ -21,16 +21,14 @@ const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = ({
   <>
     <SEO title={title} type={type} />
     <div className="site-wrapper">
-      <Header className="head grid-center" />
-      <div className="body grid-center">
-        <div className="body-wrapper">
-          <main className="main">{children[0]}</main>
+      <Header className="head grid-center shadowish" />
+      <div className="body">
+        <div className=" grid-center body-wrapper">
+          <main className="main" role="main">{children[0]}</main>
           <aside className="side">{children[1]}</aside>
         </div>
       </div>
-      <Center className="foot is-grayishdark footer">
-        <Footer />
-      </Center>
+      <Footer className="foot grid-center is-grayishdark footer" />
     </div>
   </>
 )

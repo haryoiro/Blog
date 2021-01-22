@@ -4,6 +4,7 @@
 $white: #FFFFFF;
 $whitish-light:#f0f0f0;
 $light: #FBFBFB;
+$grayish-light: #FAFBFC;
 $grayish-white: #EEEEEE;
 $whitish-gray: #DFE1E5;
 $gray: #878787;
@@ -55,7 +56,7 @@ $palettes: (
 } // each palette in palettes
 
 body {
-  background-color: $grayish-white;
+  background-color: $grayish-light;
 }
 // =============================
 // Shadow

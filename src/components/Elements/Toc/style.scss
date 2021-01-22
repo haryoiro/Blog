@@ -21,6 +21,8 @@
       font-size: .707rem;
       line-height: .707rem;
       margin-bottom: 1.414rem;
+      text-underline-offset: 0.1rem;
+      text-decoration-color: $blue;
       :link, :visited {
         color: $grayish-dark;
       }

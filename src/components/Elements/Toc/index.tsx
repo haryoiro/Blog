@@ -1,8 +1,6 @@
 import React, { FC } from 'react'
 import { Link } from 'gatsby'
 import { Maybe } from '../../../utils/util'
-// @ts-ignore
-import { scale } from '../../../utils/typography'
 
 interface ITocData {
   title: Maybe<string>,
@@ -12,31 +10,32 @@ interface ITocData {
 interface IExpandTocProps {
   className?: Maybe<string>,
   data: ITocData,
+  title?: Maybe<string>;
 }
 
 const ExpandToc: FC<IExpandTocProps> = ({ data: { title, items, url } }) => (
   <>
     {title && (
-        <li>
-          <Link to={encodeURI(url || '')} rel="heading">
-            {title}
-          </Link>
-        </li>
-      )}
+    <li>
+      <Link to={encodeURI(url || '')} rel="heading">
+        {title}
+      </Link>
+    </li>
+    )}
     {items && (
-      <ol>
+      <ul>
         {items.map((next: ITocData) => (
           <ExpandToc key={next.title} data={next} />
         ))}
-      </ol>
-      )}
+      </ul>
+    )}
   </>
 )
 
-const Toc: FC<IExpandTocProps> = ({ data }) => (
-  <div className="c-card toc-wrapper">
-    <div className="toc-header">
-      目次
+const Toc: FC<IExpandTocProps> = ({ title, data, className }) => (
+  <div className={`c-card toc-wrapper ${className || ''}`}>
+    <div className="sidecontent-header">
+      {title}
     </div>
     <ExpandToc data={data} />
   </div>

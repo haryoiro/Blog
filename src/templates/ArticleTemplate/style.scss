@@ -10,6 +10,20 @@ hr {
     color: $blue;
   }
 }
+
+.inner-toc {
+  padding-left: 0;
+  padding-top: 5.636rem;
+  .sidecontent-header {
+    font-size: 14px;
+    text-align: left;
+  }
+  font-size: 14px;
+}
+.gatsby-highlight {
+  max-width: 100%;
+}
+
 .mdx-wrapper{
   .mdx-header {
     text-align: center;
@@ -18,7 +32,7 @@ hr {
     padding: 0 2rem;
     .c-a-title {
       color: $blue;
-      font-weight: 300;
+      font-weight: 700;
       font-size: 1.414rem;
       line-height: 2.121rem;
       padding-top: 1.414rem;
@@ -42,33 +56,32 @@ hr {
     padding-top: 1.414rem;
     max-width: 100%;
     h2, h3 {
-      position: sticky;
-      display: flex;
-      align-items: center;
-      font-weight: 500;
-      &::before, &::after {
-        border-top: 1px solid;
-        border-bottom: 1px solid;
-        content: "";
-        flex-grow: 1;
-        height: 3px;
+      color: $blue;
+      font-weight: 700;
+      position: relative;
+      border-bottom: 3px solid $whitish-gray;
+      &::after {
+        position: absolute;
+        display:block;
+        content: " ";
+        border-bottom: solid 3px $blue;
+        bottom: -3px;
+        width: 5rem;
       }
-      &::before  {margin-right: 1rem;}
-      &::after   {margin-left: 1rem;}
     }
     h2 {
-      color: $blue;
       font-size: 1.68141rem;
       line-height: 2.121rem;
-      margin-bottom: 1.414rem;
+      margin-bottom: 2.121rem;
       padding-top: 4.242rem;
+      padding-bottom: 6px;
     }
-    h3 {
-      color: $blue;
+    h3{
       font-size: 1.414rem;
       line-height: 2.121rem;
       margin-bottom: 1.414rem;
       padding-top: 2.828rem;
+      padding-bottom: 3px;
     }
     p {
       font-size: 1rem;
@@ -76,10 +89,9 @@ hr {
       margin-bottom: 2.121rem;
       font-weight: 400;
       padding-top: 0.707rem;
-      letter-spacing: 0.02rem;
     }
     a {
-      text-decoration: underline;
+      text-decoration: none;
       color: $blue;
       :link,
       :visited {

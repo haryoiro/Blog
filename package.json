@@ -2,16 +2,18 @@
   "name": "blog",
   "private": true,
   "description": "Haryoiro's Blog",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Haryoiro <mizusecocolte@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop -p 4000",
     "lint": "eslint ./src/**/*.tsx --ext .js,.jsx,.ts,.tsx --fix",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
     "serve": "gatsby serve -p 4000",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "text": "textlint ./contents/blog/*.md",
+    "text:fix": "textlint --fix ./contents/blog/*.md"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -74,6 +76,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
+    "gatsby-cli": "^2.18.0",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-remark-prismjs-title": "^1.0.0",
     "prettier": "2.1.2"

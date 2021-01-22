@@ -7,7 +7,6 @@ import { Link, graphql } from 'gatsby'
 import { scale, rhythm } from '../../utils/typography'
 import Layout from '../../components/Layouts/TwoColumnsLayout'
 
-import Svgs from '../../components/Atoms/Svgs'
 import Tags from '../../components/Atoms/Tags'
 import Sidebar from '../../components/Elements/Sidebar'
 
@@ -24,7 +23,7 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
   const articleCount = data.allMdx.totalCount
 
   return (
-    <Layout title={`${pageContext.tag}`} type="article">
+    <Layout title={`tag : ${pageContext.tag}`} type="article">
       <>
         <div className="l-card-crown spacebetween">
           <span>
@@ -40,22 +39,12 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
           articles.map(({
             node: {
               frontmatter: {
-                slug, title, tags, category, createdAt,
+                slug, title, tags, createdAt,
               },
               excerpt,
             },
           }: any) => (
             <article key={`post-${slug}`} className="l-card">
-              <Link to={`/blog/${slug}`}>
-                <div className="c-logo">
-                  <Svgs
-                    svgName={category}
-                    className="c-category"
-                    width="80"
-                    height="80"
-                  />
-                </div>
-              </Link>
               <div className="c-body">
                 <Link to={`/blog/${slug}`}>
                   <h2
@@ -90,7 +79,7 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
           ))
         }
       </>
-      <Sidebar title="author" className="author">
+      <Sidebar>
         side
       </Sidebar>
     </Layout>
@@ -102,8 +91,8 @@ export default TagsTemplate
 export const ArticleListByTag = graphql`
 query ArticleListByTag($tag: String!) {
   allMdx(
-    filter: {frontmatter: {tags: {eq: $tag}, wip: {nin: true}}},
-      sort: {fields: frontmatter___date, order: DESC}
+    filter: {frontmatter: {tags: {eq: $tag}, wip: {}}},
+    sort: {fields: frontmatter___date, order: DESC}
   ) {
     edges {
       node {

@@ -3,12 +3,9 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { FC } from 'react'
 import { Link, graphql } from 'gatsby'
-// @ts-ignore
-import { scale, rhythm } from '../../utils/typography'
 
 import Layout from '../../components/Layouts/TwoColumnsLayout'
 
-import Svg from '../../components/Atoms/Svgs'
 import Tags from '../../components/Atoms/Tags'
 import Sidebar from '../../components/Elements/Sidebar'
 import TagCloud from '../../components/Elements/TagCloud'
@@ -29,47 +26,23 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
           articles.map(({
             node: {
               frontmatter: {
-                slug, title, tags, category, createdAt,
+                slug, title, tags, createdAt,
               },
               excerpt,
             },
           }: any) => (
             <article key={`post-${slug}`} className="l-card c-card">
-              <Link to={`/blog/${slug}`} className="c-logo">
-                <Svg
-                  svgName={category}
-                  className="c-category"
-                  width="80"
-                  height="80"
-                />
-              </Link>
               <div className="c-body">
                 <Link to={`/blog/${slug}`}>
-                  <h2
-                    className="c-title"
-                    style={{
-                      fontSize: scale(0.2).fontSize,
-                      lineHeight: scale(0.2).lineHeight,
-                      height: rhythm(0.2).height,
-                    }}
-                  >
+                  <h2 className="c-title">
                     {title}
                   </h2>
                 </Link>
-                <div className="c-tags">
-                  <span className="c-createdAt">{createdAt}</span>
+                <div className="c-tags spacebetween">
                   <Tags tags={tags} />
+                  <span className="c-createdAt">{createdAt}</span>
                 </div>
-                <p
-                  className="c-description"
-                  style={{
-                    fontSize: '14px',
-                    lineHeight: '17px',
-                    height: rhythm(0).height,
-                    marginBottom: 0,
-                    fontWeight: 400,
-                  }}
-                >
+                <p className="c-description">
                   {excerpt}
                 </p>
               </div>
@@ -77,7 +50,7 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
           ))
         }
       </>
-      <Sidebar title="autor" className="autor">
+      <Sidebar>
         <TagCloud />
       </Sidebar>
     </Layout>
@@ -99,7 +72,7 @@ query ArticleList($skip: Int!, $limit: Int!) {
         frontmatter {
           slug
           title
-          createdAt: date(formatString: "MMMM DD, YYYY")
+          createdAt: date(formatString: "YYYY/MM/DD")
           tags
           category
         }
