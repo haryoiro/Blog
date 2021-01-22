@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const dotenv = require('dotenv')
-const sass = require('node-sass')
+const sass = require('sass')
 // const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 

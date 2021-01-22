@@ -57,11 +57,13 @@ sh -c "echo 'eval (goenv init - | source)' >> ~/.config/fish/config.fish"
 設定を反映させるには、設定ファイルを再読込させる必要があります。
 
 > zsh
+
 ```sh
 source ~/.zshrc
 ```
 
 > fish
+
 ```fish
 source ~/.config/fish/config.fish
 ```
@@ -135,12 +137,14 @@ goenv versions
 ## GOPATHを設定
 
 > bashの場合
+
 ```sh
 echo 'export PATH="$GOROOT/bin/$PATH"' >> ~/.bash_profile
 echo 'export PATH="$PATH:$GOPATH/bin"' >> ~/.bash_profile
 ```
 
 > fishの場合
+
 ```sh
 sh -c "echo 'set -x GOPATH \$HOME/bin' >> ~/.config/fish/config.fish"
 sh -c "echo 'set -x PATH \$PATH \$GOPATH/bin' >> ~/.config/fish/config.fish"
@@ -157,5 +161,7 @@ go version
 ## 参考サイト
 
 > [syndbg/goenv/INSTALL.md](https://github.com/syndbg/goenv/blob/master/INSTALL.md)
+
 > [[Go] MacでGo言語環境構築](https://qiita.com/koralle/items/7a16772ad1d2e2e34682)
+
 > [goenvでgoをインストール 〜初心者向け〜](https://qiita.com/yut-kt/items/9f5ac1e788df61f64290)

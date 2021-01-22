@@ -29,53 +29,53 @@ const createArticleListPages: GatsbyNode['createPages'] = async ({
         }
       }
     }
-  }`).then((result) => {
-  if (result.errors || !result.data) return reporter.panicOnBuild('Error while running GraphQL query.')
+  }`)
+  // eslint-disable-next-line consistent-return
+  .then((result) => {
+    if (result.errors || !result.data) return reporter.panicOnBuild('Error while running GraphQL query.')
 
-  // すべての記事
-  const posts = result.data.allMdx.edges
-  if (!posts) return reporter.panicOnBuild('Error while running GraphQL query.')
+    // すべての記事
+    const posts = result.data.allMdx.edges
+    if (!posts) return reporter.panicOnBuild('Error while running GraphQL query.')
 
-  // =================================================================
-  // ArticleListPages
-  // =================================================================
-  // 記事の本数
-  const postsPerPage = 6
+    // =================================================================
+    // ArticleListPages
+    // =================================================================
+    // ページあたりの記事数
+    const postsPerPage = 6
+    const numPages = Math.ceil(posts.length / postsPerPage)
 
-  // ページ数
-  const numPages = Math.ceil(posts.length / postsPerPage)
+    Array.from({ length: numPages }).forEach((_, i) => {
+      // 配列のindexをもとにページ番号を割り当て。
+      const pagePath = i === 0 ? '/blog/' : `/blog/${i + 1}/`
+      createPage({
+        path: pagePath,
+        component: path.resolve('src/templates/ArticleListTemplate/index.tsx'),
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
+    })
 
-  Array.from({ length: numPages }).forEach((_, i) => {
-    // 配列のindexをもとにページ番号を割り当て。
-    const pagePath = i === 0 ? '/blog' : `/blog/${i + 1}`
-    createPage({
-      path: pagePath,
-      component: path.resolve('src/templates/ArticleListTemplate/index.tsx'),
-      context: {
-        limit: postsPerPage,
-        skip: i * postsPerPage,
-        numPages,
-        currentPage: i + 1,
-      },
+    // =================================================================
+    // TagsPages
+    // =================================================================
+    const { tags } = result.data.allMdx
+    if (!tags) return reporter.panicOnBuild('Error while running GraphQL query.')
+
+    // @ts-ignore
+    tags.forEach(({ fieldValue }: { fieldValue: any }) => {
+      createPage({
+        path: `/tag/${fieldValue.toLowerCase()}/`,
+        component: path.resolve('src/templates/TagsTemplate/index.tsx'),
+        context: {
+          tag: fieldValue,
+        },
+      })
     })
   })
-
-  // =================================================================
-  // TagsPages
-  // =================================================================
-  const { tags } = result.data.allMdx
-  if (!tags) return reporter.panicOnBuild('Error while running GraphQL query.')
-
-  // @ts-ignore
-  tags.forEach(({ fieldValue }: { fieldValue: any }) => {
-    createPage({
-      path: `/tag/${fieldValue.toLowerCase()}`,
-      component: path.resolve('src/templates/TagsTemplate/index.tsx'),
-      context: {
-        tag: fieldValue,
-      },
-    })
-  })
-})
 
 module.exports = createArticleListPages

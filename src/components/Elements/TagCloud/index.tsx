@@ -23,9 +23,8 @@ const TagCloud: FC<ITagCloud> = ({ className }) => {
       <div className="tags-wrapper">
         {tags && tags.map(({ tag }: { tag: string }) => (
           <span className="item" key={tag}>
-            <a href={`/tag/${tag}/`}>
-              {/* text-transformが効くようにスペースを挿入する */}
-              {` ${tag} `}
+            <a href={`/tag/${tag}/`} className="tag">
+              {tag.charAt(0).toUpperCase() + tag.slice(1)}
             </a>
           </span>
         ))}

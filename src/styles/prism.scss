@@ -41,8 +41,8 @@ pre[class*="language-"] {
 
 blockquote {
 	width: calc(100% - 2.828rem);
-	margin-left: 1.414rem;
-	margin-right: -1.414rem;
+	margin-left: auto;
+	margin-right: 0px;
 }
 
 :not(pre) > code[class*="language-"],

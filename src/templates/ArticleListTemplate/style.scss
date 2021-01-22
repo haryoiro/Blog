@@ -57,21 +57,44 @@
   margin: 29.5px 21.75px;
 }
 .c-tags {
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  line-height: 24px;
   font-weight: 500;
   margin-bottom: 21.05px;
-  .tag {
-    text-transform: capitalize;
-    text-decoration: underline;
-    margin-right: 6px;
-    color: $grayish-dark;
-  }
   .c-createdAt {
+    font-size: 14px;
     color: $grayish-dark;
     margin-right: 8px;
   }
+}
+.tag {
+  line-height: 24px;
+  height: 24px;
+  color: $blue;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  text-decoration: none;
+  text-transform: capitalize;
+  border: solid 1px $blue;
+  border-radius: 18px;
+  margin-bottom: 21.05px;
+  margin-right: 8px;
+  padding: 3px 7px;
+  transition: all 0.5ms;
+  @include mq(PHONE) {
+    padding: 5px 9px;
+    font-size: 14px;
+  }
+  @include mq(SM) {
+    padding: 5px 9px;
+    font-size: 14px;
+  }
+  @include mq(MI) {
+    padding: 5px 9px;
+    font-size: 14px;
+  }
+
 }
 
 
@@ -79,8 +102,8 @@
   text-overflow: ellipsis;
   overflow: hidden;
   color: $blue;
-  font-size: 1.31935rem;
-  line-height: 2.121rem;
+  font-size: 1.07174rem;
+  line-height: 1.414rem;
   margin-bottom: 7px;
   font-weight: 700;
 }
@@ -92,8 +115,4 @@
   height: #{17 * 3}px;
   color: $grayish-dark;
   margin: 0;
-  ::after {
-    content: '続きを読む';
-    color: $blue;
-  }
 }

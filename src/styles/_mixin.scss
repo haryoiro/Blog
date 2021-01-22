@@ -30,9 +30,9 @@ $maw: (
   }
 }
 .is-mobile {
-  @include mq(MAX) { visibility: hidden; height: 0px; }
-  @include mq(PC) { visibility: hidden; height: 0px; }
-  @include mq(TABLET) { visibility: hidden; height: 0px; }
+  @include mq(MAX) { display:none; }
+  @include mq(PC) { display:none; }
+  @include mq(TABLET) { display:none; }
   @include mq(PHONE) { visibility: visible; }
   @include mq(SM) { visibility: visible; }
   @include mq(MI) { visibility: visible; }
@@ -41,7 +41,7 @@ $maw: (
   @include mq(MAX) { visibility: visible; }
   @include mq(PC) { visibility: visible; }
   @include mq(TABLET) { visibility: visible; }
-  @include mq(PHONE) { visibility: hidden; height: 0px; }
-  @include mq(SM) { visibility: hidden; height: 0px; }
-  @include mq(MI) { visibility: hidden; height: 0px; }
+  @include mq(PHONE) { display:none; }
+  @include mq(SM) { display:none; }
+  @include mq(MI) { display:none; }
 }
