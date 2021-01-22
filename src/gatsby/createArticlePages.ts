@@ -40,7 +40,7 @@ query CreateArticlePages {
     // @ts-ignore
     .forEach(({ node: { frontmatter: { slug } } }) => {
       createPage({
-        path: `/blog/${slug}`.toLowerCase(),
+        path: `/blog/${slug.toLowerCase()}/`,
         component: path.resolve('src/templates/ArticleTemplate/index.tsx'),
         context: {
           slug,

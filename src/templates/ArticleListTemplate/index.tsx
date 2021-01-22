@@ -32,20 +32,21 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
             },
           }: any) => (
             <article key={`post-${slug}`} className="l-card c-card">
-              <div className="c-body">
-                <Link to={`/blog/${slug}`}>
+              <Link to={`/blog/${slug}`}>
+                <div className="c-body">
                   <h2 className="c-title">
                     {title}
                   </h2>
-                </Link>
-                <div className="c-tags spacebetween">
-                  <Tags tags={tags} />
-                  <span className="c-createdAt">{createdAt}</span>
+                  <div className="c-tags">
+                    <span className="c-createdAt">{createdAt}</span>
+                    <Tags tags={tags} />
+                  </div>
+                  <p className="c-description">
+                    {excerpt}
+                  </p>
+                  <div className="c-detail">続きを読む</div>
                 </div>
-                <p className="c-description">
-                  {excerpt}
-                </p>
-              </div>
+              </Link>
             </article>
           ))
         }
@@ -72,7 +73,7 @@ query ArticleList($skip: Int!, $limit: Int!) {
         frontmatter {
           slug
           title
-          createdAt: date(formatString: "YYYY/MM/DD")
+          createdAt: date(formatString: "MMMM DD, YYYY")
           tags
           category
         }

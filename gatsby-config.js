@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const dotenv = require('dotenv')
-const sass = require('node-sass')
+const sass = require('sass')
 // const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 
@@ -38,6 +38,15 @@ module.exports = {
             ],
           }),
         ],
+      },
+    },
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.haryoiro.com',
+        sitemap: 'https://www.haryoiro.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/blog/' }],
       },
     },
     'gatsby-plugin-react-helmet',
