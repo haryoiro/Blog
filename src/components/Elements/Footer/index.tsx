@@ -1,6 +1,5 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import React, { FC } from 'react'
-import { Link } from 'gatsby'
 
 export type CopylightProps = {
   author: string
