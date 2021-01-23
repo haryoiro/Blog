@@ -11,12 +11,10 @@ const Copylight: FC<CopylightProps> = ({ author }) => (
   </span>
 )
 interface FooterProps {
-  className?: string;
+  className?: string
 }
 
-const Footer: FC<FooterProps> = ({
-  className,
-}) => {
+const Footer: FC<FooterProps> = ({ className }) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -28,7 +26,7 @@ const Footer: FC<FooterProps> = ({
   `)
 
   return (
-    <div className={(className || '') + ' l-center'}>
+    <div className={className || ' '}>
       <Copylight author={site.siteMetadata.author} />
     </div>
   )

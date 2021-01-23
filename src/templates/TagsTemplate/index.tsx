@@ -5,17 +5,18 @@ import React, { FC } from 'react'
 import { Link, graphql } from 'gatsby'
 // @ts-ignore
 import { scale, rhythm } from '../../utils/typography'
+// @ts-ignorec
 import Layout from '../../components/Layouts/TwoColumnsLayout'
 
-import Tags from '../../components/Atoms/Tags'
+import Tags from '../../components/Elements/Tags'
 import Sidebar from '../../components/Elements/Sidebar'
 
 // @ts-ignore
 import { ArticleListByTagQuery } from '../../../types/graphql-types'
 
 export type Props = {
-  data: ArticleListByTagQuery,
-  pageContext: any,
+  data: ArticleListByTagQuery
+  pageContext: any
 }
 
 const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
@@ -35,14 +36,12 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
             Articles
           </span>
         </div>
-        {
-          articles.map(({
+        {articles.map(
+          ({
             node: {
-              frontmatter: {
-                slug, title, tags, createdAt,
-              },
-              excerpt,
-            },
+              frontmatter: { slug, title, tags, createdAt },
+              excerpt
+            }
           }: any) => (
             <article key={`post-${slug}`} className="l-card">
               <div className="c-body">
@@ -52,7 +51,7 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
                     style={{
                       fontSize: scale(0.2).fontSize,
                       lineHeight: scale(0.2).lineHeight,
-                      height: rhythm(0.2).height,
+                      height: rhythm(0.2).height
                     }}
                   >
                     {title}
@@ -69,19 +68,17 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
                     lineHeight: '17px',
                     height: rhythm(0).height,
                     marginBottom: 0,
-                    fontWeight: 500,
+                    fontWeight: 500
                   }}
                 >
                   {excerpt}
                 </p>
               </div>
             </article>
-          ))
-        }
+          )
+        )}
       </>
-      <Sidebar>
-        side
-      </Sidebar>
+      <Sidebar>side</Sidebar>
     </Layout>
   )
 }
@@ -89,23 +86,24 @@ const TagsTemplate: FC<Props> = ({ data, pageContext }) => {
 export default TagsTemplate
 
 export const ArticleListByTag = graphql`
-query ArticleListByTag($tag: String!) {
-  allMdx(
-    filter: {frontmatter: {tags: {eq: $tag}, wip: {}}},
-    sort: {fields: frontmatter___date, order: DESC}
-  ) {
-    edges {
-      node {
-        frontmatter {
-          slug
-          title
-          createdAt: date(formatString: "MMMM DD, YYYY")
-          tags
-          category
+  query ArticleListByTag($tag: String!) {
+    allMdx(
+      filter: { frontmatter: { tags: { eq: $tag }, wip: {} } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            slug
+            title
+            createdAt: date(formatString: "MMMM DD, YYYY")
+            tags
+            category
+          }
+          excerpt(pruneLength: 120)
         }
-        excerpt(pruneLength: 120)
       }
+      totalCount
     }
-    totalCount
   }
-}`
+`
