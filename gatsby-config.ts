@@ -12,7 +12,7 @@ const config: GatsbyConfig = {
     title: 'HaryoiroBlog',
     description: 'フロントエンドとか気になった技術とか',
     author: 'Haryoiro',
-    siteUrl: 'https://www.haryoiro.com/blog/',
+    siteUrl: 'https://www.haryoiro.com/',
     githubId: 'haryoiro',
     charset: 'utf-8'
   },
