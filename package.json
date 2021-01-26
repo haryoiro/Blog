@@ -6,12 +6,14 @@
   "author": "Haryoiro <mizusecocolte@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "dev": "gatsby develop -p 4000",
-    "lint": "eslint ./src/**/*.tsx --ext .js,.jsx,.ts,.tsx --fix",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
-    "serve": "gatsby serve -p 4000",
-    "clean": "gatsby clean",
+    "build": "ts-node ./node_modules/.bin/gatsby build",
+    "dev": "ts-node ./node_modules/.bin/gatsby develop -p 4000",
+    "serve": "ts-node ./node_modules/.bin/gatsby serve -p 4000",
+    "clean": "ts-node ./node_modules/.bin/gatsby clean",
+    "lint": "eslint './src/**/*.{ts,tsx}' gatsby-*.ts && tsc --noEmit",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}' gatsby-*.ts && tsc --noEmit",
+    "stylelint": "stylelint 'src/**/*.scss'",
+    "stylelint:fix": "stylelint --fix 'src/**/*.scss'",
     "text": "textlint ./contents/blog/*.md",
     "text:fix": "textlint --fix ./contents/blog/*.md"
   },
@@ -21,6 +23,7 @@
     "@svgr/webpack": "^5.5.0",
     "@types/mdx-js__react": "^1.5.3",
     "@types/node": "^14.14.14",
+    "@types/sass": "^1.16.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-helmet": "^6.1.0",
     "@types/typography": "^0.16.3",
@@ -71,18 +74,38 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.12.7",
-    "@typescript-eslint/eslint-plugin": "^4.11.1",
-    "@typescript-eslint/parser": "^4.11.1",
+    "@types/cssnano": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.15.0",
+    "eslint": "^7.18.0",
     "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "gatsby-cli": "^2.18.0",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-remark-prismjs-title": "^1.0.0",
-    "prettier": "2.1.2"
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.1.2",
+    "stylelint": "^13.9.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-scss": "^3.18.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && tsc --noEmit"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --fix",
+    "*.scss": "stylelint --fix"
   },
   "browserslist": {
     "development": [

@@ -3,17 +3,17 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { FC } from 'react'
 import { Link, graphql } from 'gatsby'
-
+// @ts-ignorec
 import Layout from '../../components/Layouts/TwoColumnsLayout'
 
-import Tags from '../../components/Atoms/Tags'
+import Tags from '../../components/Elements/Tags'
 import Sidebar from '../../components/Elements/Sidebar'
 import TagCloud from '../../components/Elements/TagCloud'
 
 import { ArticleListQuery } from '../../../types/graphql-types'
 
 export type Props = {
-  data: ArticleListQuery,
+  data: ArticleListQuery
 }
 
 const ArticleListTemplate: FC<Props> = ({ data }) => {
@@ -22,37 +22,30 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
   return (
     <Layout title="記事一覧" type="website">
       <>
-        {
-          articles.map(({
+        {articles.map(
+          ({
             node: {
-              frontmatter: {
-                slug, title, tags, createdAt,
-              },
-              excerpt,
-            },
+              frontmatter: { slug, title, tags, createdAt },
+              excerpt
+            }
           }: any) => (
             <article key={`post-${slug}`} className="l-card c-card">
               <div className="c-body">
                 <Link to={`/blog/${slug}`}>
-                  <h2 className="c-title">
-                    {title}
-                  </h2>
+                  <h2 className="c-title">{title}</h2>
                 </Link>
                 <div className="c-tags spacebetween">
                   <Tags tags={tags} />
                   <div className="c-createdAt">{createdAt}</div>
                 </div>
                 <Link to={`/blog/${slug}`}>
-                  <div className="c-description">
-                    {excerpt}
-                    <div className="c-detail">続きを読む</div>
-                  </div>
+                  <div className="c-description shadow">{excerpt}</div>
+                  <div className="c-detail">Read More &gt;&gt;</div>
                 </Link>
               </div>
-
             </article>
-          ))
-        }
+          )
+        )}
       </>
       <Sidebar>
         <TagCloud />
@@ -64,25 +57,25 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
 export default ArticleListTemplate
 
 export const articleListQuery = graphql`
-query ArticleList($skip: Int!, $limit: Int!) {
-  allMdx(
-    filter: {frontmatter: {wip: {nin: true}, title: {nin: ""}}},
-    skip: $skip,
-    limit: $limit,
-    sort: {fields: frontmatter___date, order: DESC}
-  ) {
-    edges {
-      node {
-        frontmatter {
-          slug
-          title
-          createdAt: date(formatString: "MMMM DD, YYYY")
-          tags
-          category
+  query ArticleList($skip: Int!, $limit: Int!) {
+    allMdx(
+      filter: { frontmatter: { wip: { nin: true }, title: { nin: "" } } }
+      skip: $skip
+      limit: $limit
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            slug
+            title
+            createdAt: date(formatString: "MMMM DD, YYYY")
+            tags
+            category
+          }
+          excerpt(pruneLength: 120)
         }
-        excerpt(pruneLength: 120)
       }
     }
   }
-}
 `

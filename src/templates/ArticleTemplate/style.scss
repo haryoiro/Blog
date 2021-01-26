@@ -12,60 +12,96 @@ hr {
 }
 
 .inner-toc {
-  padding-left: 0;
-  padding-top: 5.636rem;
+  margin-top: 5.636rem;
+  margin-right: 1rem;
+  main {
+    margin-top: -3px;
+  }
   .sidecontent-header {
-    font-size: 14px;
-    text-align: left;
+    font-size: 1.414rem;
+    padding-bottom: 0;
+    padding-right: calc(1.414rem + .8rem);
+    justify-content: center;
   }
   font-size: 14px;
+}
+
+.outer-toc {
+  box-shadow: none;
+  padding: 0;
+  .sidecontent-header {
+    font-size: 18px;
+  }
+  font-size: 13px;
 }
 .gatsby-highlight {
   max-width: 100%;
 }
-
 .mdx-wrapper{
+  padding: 16px;
+  padding-top: 1.414rem;
+  max-width: 100%;
   .mdx-header {
-    text-align: center;
-    letter-spacing: 0.05rem;
-    border: 3px solid $blue;
-    padding: 0 2rem;
-    .c-a-title {
-      color: $blue;
-      font-weight: 700;
-      font-size: 1.414rem;
-      line-height: 2.121rem;
-      padding-top: 1.414rem;
-      margin-bottom: 0.45rem;
+    background-color: $light;
+    border: 4px solid $blue;
+    box-shadow: 16px 16px 0px 1px $blue;
+    display: grid;
+    margin-right: 1.414rem;
+    padding: 1.414rem 2rem;
+    place-content: left;
+    width: auto;
+    // font-family: 'Fira Code','Courier New', Courier, monospace;
+    h2 {
+      margin-block-end: 0;
+      margin-block-start: 0;
     }
-    .c-a-desc {
-      line-height: 16px;
-      position: relative;
-      color: $blue;
-      top: 9px;
-      margin-right: auto;
-      margin-left: auto;
-      max-width: 200px;
-      background-color: white;
+    .title {
+      color: $grayish-dark;
+      font-size: calc(1.414rem * 1.5);
+      font-weight: 700;
+      line-height: 1.414;
+      margin: 0;
+      margin-bottom: 0.707rem;
+    }
+    .desc-wrapper {
+      color: $grayish-dark;
+      display: grid;
+      grid-template:
+        "icon desc" 48px /
+        -0px 1fr;
+      .icon{
+        background-color: $light;
+        grid-area: "icon";
+        // margin-top: 4px;
+      }
+      .desc {
+        grid-area: "desc";
+        font-size: 14px;
+        line-height: 1.414rem;
+        .category {
+          position: relative;
+          font-size: 14px;
+        }
+        .data {
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
     }
   }
 
 
-  article {
-    padding: 16px;
-    padding-top: 1.414rem;
-    max-width: 100%;
+  .mdx-body {
     h2, h3 {
-      color: $blue;
+      color: $dark;
       font-weight: 700;
       position: relative;
-      border-bottom: 3px solid $whitish-gray;
       &::after {
         position: absolute;
         display:block;
         content: " ";
-        border-bottom: solid 3px $blue;
-        bottom: -3px;
+        border-bottom: solid 2px $blue;
+        bottom: -14px;
         width: 5rem;
       }
     }

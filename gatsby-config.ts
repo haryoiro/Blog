@@ -1,28 +1,20 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path')
-const dotenv = require('dotenv')
-const sass = require('sass')
-// const autoprefixer = require('autoprefixer')
-const cssnano = require('cssnano')
+import dotenv from 'dotenv'
+import sass from 'sass'
+import cssnano from 'cssnano'
+import type { GatsbyConfig } from 'gatsby'
 
 if (process.env.ENVIRONMENT !== 'production') {
   dotenv.config()
 }
 
-module.exports = {
+const config: GatsbyConfig = {
   siteMetadata: {
     title: 'HaryoiroBlog',
     description: 'フロントエンドとか気になった技術とか',
     author: 'Haryoiro',
     siteUrl: 'https://www.haryoiro.com/blog/',
     githubId: 'haryoiro',
-    charset: 'utf-8',
-  },
-  flags: {
-    // PRESERVE_WEBPACK_CACHE: false,
-    // PRESERVE_FILE_DOWNLOAD_CACHE: false,
-    // FAST_REFRESH: true,
-    // LAZY_IMAGES: true,
+    charset: 'utf-8'
   },
   plugins: [
     {
@@ -33,21 +25,19 @@ module.exports = {
         sassRuleModulesTest: /\.module\.scss$/,
         postCssPlugins: [
           cssnano({
-            preset: [
-              'default',
-            ],
-          }),
-        ],
-      },
+            preset: 'default'
+          })
+        ]
+      }
     },
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.haryoiro.com',
+        host: 'https://www.haryoiro.com/',
         sitemap: 'https://www.haryoiro.com/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/blog/' }],
-      },
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript-checker',
@@ -57,28 +47,28 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'logos',
-        path: `${__dirname}/contents/logos`,
-      },
+        path: `${__dirname}/contents/logos`
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/images`
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'blog',
-        path: `${__dirname}/contents/blog`,
-      },
+        path: `${__dirname}/contents/blog`
+      }
     },
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: 'src/utils/typography',
-      },
+        pathToConfigModule: 'src/utils/typography'
+      }
     },
     {
       resolve: 'gatsby-plugin-mdx',
@@ -90,8 +80,8 @@ module.exports = {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
               icon: false,
-              elements: ['h2', 'h3'],
-            },
+              elements: ['h2', 'h3']
+            }
           },
           {
             resolve: 'gatsby-remark-prismjs',
@@ -103,12 +93,12 @@ module.exports = {
                 fish: 'bash',
                 sh: 'bash',
                 js: 'javascript',
-                ts: 'typescript',
-              },
-            },
-          },
-        ],
-      },
+                ts: 'typescript'
+              }
+            }
+          }
+        ]
+      }
     },
     {
       // CodeGenerator
@@ -120,11 +110,10 @@ module.exports = {
         //   - 新たなクエリを追加した。
         //   - 既存のクエリを編集した。
         codegen: false,
-        documentsPath: [
-          './src/**/*.{ts, tsx}',
-          './node_modules/gatsby-*/**/*.js',
-        ],
-      },
-    },
-  ],
+        documentsPath: ['./src/**/*.{ts, tsx}']
+      }
+    }
+  ]
 }
+
+module.exports = config

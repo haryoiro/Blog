@@ -1,6 +1,5 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import React, { FC } from 'react'
-import { Link } from 'gatsby'
 
 export type CopylightProps = {
   author: string
@@ -12,12 +11,10 @@ const Copylight: FC<CopylightProps> = ({ author }) => (
   </span>
 )
 interface FooterProps {
-  className?: string;
+  className?: string
 }
 
-const Footer: FC<FooterProps> = ({
-  className,
-}) => {
+const Footer: FC<FooterProps> = ({ className }) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -29,7 +26,7 @@ const Footer: FC<FooterProps> = ({
   `)
 
   return (
-    <div className={(className || '') + ' l-center'}>
+    <div className={className || ' '}>
       <Copylight author={site.siteMetadata.author} />
     </div>
   )

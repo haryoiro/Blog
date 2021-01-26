@@ -1,16 +1,16 @@
 {
+  "include": [
+    "./src/**/*",
+    "./gatsby-*.ts",
+  ],
   "compilerOptions": {
     "target": "ES2020",
     "module": "commonjs",
+    "lib": ["dom", "es2017"],
     "jsx": "react",
-    "declaration": false,
     "strict": true,
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "newLine": "lf",
-    "typeRoots": ["/types/"],
-    "types": [
-      "node",
-    ],
+    "baseUrl": "."
   },
 }

@@ -13,12 +13,11 @@
 }
 .sidecontent-header {
   width: 100%;
-  font-weight: 700;
-  margin-bottom: 0.707rem;
-  padding-left: 1rem;
-  font-size: 1rem;
-  line-height: 1.414rem;
-  color: $grayish-dark;
-  text-align: left;
-  text-transform: uppercase;
+  display: grid;
+  font-weight: 900;
+  padding-top: 1.414rem;
+  justify-content: center;
+  @include mq(MAX) { justify-content: left; }
+  @include mq(PC) { justify-content: left; }
+  @include mq(TABLET) { justify-content: left; }
 }
