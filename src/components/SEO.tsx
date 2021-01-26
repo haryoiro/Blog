@@ -44,7 +44,7 @@ export const SEO: FC<SEOProps> = ({
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', G-P8M3LHZ9WE');
+        gtag('config', 'G-P8M3LHZ9WE');
       `}
       </script>
       <link rel="canonical" href={siteUrl} />
