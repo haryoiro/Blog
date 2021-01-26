@@ -1,0 +1,15 @@
+@import "../../../styles/variable";
+
+.scroll-to-top {
+  position: fixed;
+  z-index: 999;
+  bottom: 2vh;
+  right: 2.7vw;
+  padding: .4rem;
+  width: 3rem;
+  height: 3rem;
+  outline: none;
+  border: 3px solid $dark;
+  background-color: #0000;
+  box-shadow: 5px 5px 0px 0px $dark;
+}

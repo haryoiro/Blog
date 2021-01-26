@@ -110,10 +110,7 @@ const config: GatsbyConfig = {
         //   - 新たなクエリを追加した。
         //   - 既存のクエリを編集した。
         codegen: false,
-        documentsPath: [
-          './src/**/*.{ts, tsx}',
-          './node_modules/gatsby-*/**/*.js'
-        ]
+        documentsPath: ['./src/**/*.{ts, tsx}']
       }
     }
   ]

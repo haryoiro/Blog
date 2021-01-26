@@ -1,31 +1,37 @@
 @import '../../../styles/variable';
+
 .siteLogo {
-    svg {
-        max-width: 414px;
-        height: 23.35px;
-        padding: 0 1rem;
-        margin: 2rem 0;
-    }
-    a {
-        margin: 0;
-        padding: 0;
-    }
+  position: relative;
+  top: 0;
+  display: grid;
+  grid-template-rows: 1fr 0;
+  align-items: center;
+  svg {
+    height: 23.35px;
+    max-width: 414px;
+    padding: 0 1rem;
+  }
+  a {
+    height:0;
+    margin: 0;
+    padding: 0;
+  }
 }
 .github {
-    svg {
-        width: 23.35px;
-        height: 23.35px;
-        margin: 2rem 1rem 2rem 0;
-    }
-    a {
-        margin: 0;
-        padding: 0;
-    }
+  svg {
+    width: 23.35px;
+    height: 23.35px;
+    margin: 2rem 1rem 2rem 0;
+  }
+  a {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    height: 87.34px;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 87.34px;
+  width: 100%;
 }

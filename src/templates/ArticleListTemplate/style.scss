@@ -9,7 +9,6 @@
   width: 100%;
   background-color: $light;
   box-sizing: border-box;
-  border-bottom: 1px solid $grayish-white;
 }
 .l-card {
   display:grid;
@@ -22,10 +21,6 @@
   align-self: center;
   margin: 1.414rem 0;
   padding: 0 1.414rem;
-  &:hover {
-    transform: scale(1.02);
-    transition: transform .2 ease;
-  }
 }
 .c-category {
   margin: 29.5px 21.75px;
@@ -34,51 +29,45 @@
   line-height: 24px;
   font-weight: 500;
   margin-bottom: 21.05px;
+  flex-wrap: wrap;
   .c-createdAt {
-    font-size: 14px;
-    color: $grayish-dark;
     margin-right: 8px;
+    @include mq(SM) {padding-top: .5em;}@include mq(MI) {padding-top: .5em;}
+    font-size: 14px;
+    font-weight: 500;
+    color: $grayish-dark;
   }
 }
 .tag {
-  line-height: 24px;
+  &::before {
+    content: "#";
+  }
   height: 24px;
-  color: $blue;
-
-  font-size: 12px;
+  color: $grayish-dark;
+  line-height: 24px;
+  font-size: 14px;
   font-weight: 500;
-
-  text-decoration: none;
   text-transform: capitalize;
-  border: solid 1px $blue;
   border-radius: 18px;
   margin-bottom: 21.05px;
   margin-right: 8px;
-  padding: 3px 7px;
-  @include mq(PHONE) {
-    padding: 5px 9px;
-    font-size: 14px;
-  }
-  @include mq(SM) {
-    padding: 5px 9px;
-    font-size: 14px;
-  }
-  @include mq(MI) {
-    padding: 5px 9px;
-    font-size: 14px;
-  }
-
+  padding: 12px 0px;
 }
 
 
 .c-title {
   text-overflow: ellipsis;
+  text-decoration: underline;
+  text-decoration-color: $blue;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 2px;
   overflow: hidden;
   font-size: 1.414rem;
   line-height: 2.121rem;
+  margin-left: auto;
   margin-bottom: 7px;
   font-weight: 700;
-  color: $blue;
+  color: $grayish-dark;
 }
 .c-description {
   text-overflow: ellipsis;
@@ -90,10 +79,21 @@
   margin: 0;
 }
 .c-detail {
-  background-image: linear-gradient(90deg,hsla(0,0%,0%,0), #fbfbfb, #fbfbfb);
   color: $blue;
-  text-align: end;
+  text-align: left;
   font-weight: 700;
-  margin-top: -17px;
   position: relative;
+  padding-top: 0.707rem;
+}
+
+.shadow {
+  position: relative;
+  &::before {
+    position: absolute;
+    background-image: linear-gradient(180deg,#0000,#fbfbfb);
+    height: 100%;
+    content: " ";
+    z-index: 3;
+    width: 100%;
+  }
 }

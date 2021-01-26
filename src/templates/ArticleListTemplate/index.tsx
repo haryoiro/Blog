@@ -39,10 +39,8 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
                   <div className="c-createdAt">{createdAt}</div>
                 </div>
                 <Link to={`/blog/${slug}`}>
-                  <div className="c-description">
-                    {excerpt}
-                    <div className="c-detail">続きを読む</div>
-                  </div>
+                  <div className="c-description shadow">{excerpt}</div>
+                  <div className="c-detail">Read More &gt;&gt;</div>
                 </Link>
               </div>
             </article>

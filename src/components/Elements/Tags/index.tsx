@@ -1,19 +1,19 @@
 import React, { FC } from 'react'
 import { Link } from 'gatsby'
 
-import { ArticleProps } from '../../../../types/article'
+import { MdxFrontmatter } from '../../../../types/graphql-types'
 
-const Tags: FC<ArticleProps> = ({ className, tags }) => (
-  <div className={className}>
+type TagsProps = Pick<MdxFrontmatter, 'tags'> & JSX.IntrinsicElements['span']
+
+const Tags: FC<TagsProps> = ({ className, tags }) => (
+  <span className={className}>
     {tags &&
       tags.map(tag => (
-        <span key={tag}>
-          <Link className="tag" to={`/tag/${tag}/`}>
-            {tag.charAt(0).toUpperCase() + tag.slice(1)}
-          </Link>
-        </span>
+        <Link className="tag" to={`/tag/${tag}/`} key={tag}>
+          {tag && tag.charAt(0).toUpperCase() + tag.slice(1)}
+        </Link>
       ))}
-  </div>
+  </span>
 )
 
 export { Tags as default }
