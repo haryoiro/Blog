@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup node
+      - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
@@ -23,20 +23,17 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: node-${{ hashFiles('**/package-lock.json') }}
+          key: npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            node-
+            npm-
       
-      - name: npm ci
+      - name: Install Dependencies
         run: npm ci
       
       - name: Build
         run: npm run build
-        env:
-          CF_SPACE_ID: ${{ secrets.CF_SPACE_ID }}
-          CF_ACCESS_TOKEN: ${{ secrets.CF_ACCESS_TOKEN }}
 
-      - name: Deploy to Netlify
+      - name: Deploy
         uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

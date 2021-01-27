@@ -74,7 +74,7 @@
   overflow: hidden;
   font-size: 14px;
   line-height: 17px;
-  height: #{17 * 3}px;
+  height: 51px;
   color: $grayish-dark;
   margin: 0;
 }
@@ -90,7 +90,6 @@
   position: relative;
   &::before {
     position: absolute;
-    // background-image: linear-gradient(to bottom,rgba(255,255,255,0),#fbfbfb);
     height: 100%;
     content: " ";
     z-index: 3;

@@ -38,13 +38,13 @@ export const SEO: FC<SEOProps> = ({
       {/* <meta property="og:url" content="/" /> */}
       <meta property="og:description" content={description || siteDescription} />
       <meta property="og:site_name" content={siteName} />
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-VMYZ7W9W96" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-P8M3LHZ9WE" />
       <script>
         {`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-VMYZ7W9W96');
+        gtag('config', 'G-P8M3LHZ9WE');
       `}
       </script>
       <link rel="canonical" href={siteUrl} />
