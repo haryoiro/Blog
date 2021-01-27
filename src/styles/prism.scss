@@ -1,13 +1,5 @@
 
 @import './mixin';
-/* PrismJS 1.23.0
-https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+asciidoc+aspnet+bash+basic+batch+c+csharp+cpp+clojure+cmake+css-extras+dart+diff+docker+elixir+elm+firestore-security-rules+gdscript+git+glsl+go+graphql+groovy+haskell+haxe+hlsl+http+hpkp+hsts+ignore+ini+java+javadoclike+jsdoc+js-extras+json+json5+jsstacktrace+js-templates+lisp+lua+makefile+mongodb+nginx+objectivec+opencl+perl+plsql+powershell+processing+prolog+pug+puppet+purescript+python+r+jsx+tsx+regex+ruby+rust+sass+scss+scala+scheme+shell-session+smalltalk+sql+stylus+swift+toml+typescript+typoscript+vbnet+vim+visual-basic+wasm+yaml&plugins=line-highlight+line-numbers+previewers+toolbar+copy-to-clipboard+diff-highlight+treeview */
-/**
- * okaidia theme for JavaScript, CSS and HTML
- * Loosely based on Monokai textmate theme by http://www.monokai.nl/
- * @author ocodia
- */
-
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #f8f8f2;
@@ -30,7 +22,8 @@ pre[class*="language-"] {
 	padding: 1em;
 	margin: .5em 0;
 	overflow: scroll;
-	border-radius: 0.3em;
+  border-radius: .3em;
+  max-width: calc(100% - 1.414rem);
 	@include mq(MAX) { max-width: #{map-get($maw, MAX)} }
   @include mq(PC) { max-width: #{map-get($maw, PC)} }
   @include mq(TABLET) { max-width: #{map-get($maw, TABLET)} }
@@ -39,11 +32,6 @@ pre[class*="language-"] {
   @include mq(MI) { max-width: #{map-get($maw, MI)} }
 }
 
-blockquote {
-	width: calc(100% - 2.828rem);
-	margin-left: auto;
-	margin-right: 0px;
-}
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {

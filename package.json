@@ -21,14 +21,16 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@svgr/webpack": "^5.5.0",
+    "@types/autoprefixer": "^10.2.0",
+    "@types/cssnano": "^4.0.0",
     "@types/mdx-js__react": "^1.5.3",
     "@types/node": "^14.14.14",
-    "@types/sass": "^1.16.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-helmet": "^6.1.0",
+    "@types/sass": "^1.16.0",
     "@types/typography": "^0.16.3",
-    "autoprefixer": "^8.6.5",
     "cssnano": "^4.1.10",
+    "cssnano-preset-advanced": "^4.0.7",
     "dotenv": "^8.2.0",
     "eslint-loader": "^4.0.2",
     "gatsby": "^2.30.2",
@@ -74,9 +76,9 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.12.7",
-    "@types/cssnano": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
+    "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.18.0",
     "eslint-config-airbnb-typescript": "^12.0.0",
@@ -109,14 +111,15 @@
   },
   "browserslist": {
     "development": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 2 versions",
+      "last 1 year",
+      "not ie <= 12",
+      "not safari 12.1"
     ],
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 2 versions",
+      "last 1 year",
+      "not safari 12.1"
     ]
   }
 }

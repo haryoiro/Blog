@@ -24,6 +24,10 @@ const config: GatsbyConfig = {
         sassRuleTest: /\.scss$/,
         sassRuleModulesTest: /\.module\.scss$/,
         postCssPlugins: [
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          // require('autoprefixer')({
+          //   cascade: false
+          // }),
           cssnano({
             preset: 'default'
           })

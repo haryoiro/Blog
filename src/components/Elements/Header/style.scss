@@ -18,10 +18,11 @@
   }
 }
 .github {
+  margin: auto 11.5px;
   svg {
+    place-content: center;
     width: 23.35px;
     height: 23.35px;
-    margin: 2rem 1rem 2rem 0;
   }
   a {
     margin: 0;
@@ -32,6 +33,6 @@
 .header {
   display: flex;
   justify-content: space-between;
-  height: 87.34px;
+  height: 60px;
   width: 100%;
 }
