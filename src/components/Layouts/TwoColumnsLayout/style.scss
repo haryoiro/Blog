@@ -6,7 +6,7 @@
   place-content: center;
   max-width: 100%;
   grid-template:
-  "head" 87.34px
+  "head" 60px
   "body" auto
   "foot" 5rem /
   auto;
@@ -45,7 +45,8 @@ auto;
   position: absolute;
   z-index: -1;
   top: 0;
-  height: 87.34px;
+  height: 60px;
   width: 100%;
   background-color: $blue;
+  box-shadow: 0 0 0 4px $dark;
 }

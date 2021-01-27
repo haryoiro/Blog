@@ -7,14 +7,9 @@ interface IGrid {
 }
 type GridProps = Partial<IGrid>
 
-const Grid: FC<GridProps> = ({
-  className,
-  children,
-}) => (
+const Grid: FC<GridProps> = ({ className, children }) => (
   <div className={className || ''}>
-    <div className="grid-center">
-      {children}
-    </div>
+    <div className="grid-center">{children}</div>
   </div>
 )
 

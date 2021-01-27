@@ -28,7 +28,7 @@ const TagCloud: FC<ITagCloud> = ({ className }) => {
         {tags &&
           tags.map(({ tag }: { tag: string }) => (
             <span className="item" key={tag}>
-              <a href={`/tag/${tag}/`} className="tag">
+              <a href={`/tag/${tag.toLowerCase()}/`} className="tag">
                 {tag.charAt(0).toUpperCase() + tag.slice(1)}
               </a>
             </span>

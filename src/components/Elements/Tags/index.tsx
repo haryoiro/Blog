@@ -9,7 +9,7 @@ const Tags: FC<TagsProps> = ({ className, tags }) => (
   <span className={className}>
     {tags &&
       tags.map(tag => (
-        <Link className="tag" to={`/tag/${tag}/`} key={tag}>
+        <Link className="tag" to={`/tag/${tag?.toLowerCase()}/`} key={tag}>
           {tag && tag.charAt(0).toUpperCase() + tag.slice(1)}
         </Link>
       ))}

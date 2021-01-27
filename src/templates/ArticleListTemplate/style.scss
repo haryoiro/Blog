@@ -59,11 +59,11 @@
   text-overflow: ellipsis;
   text-decoration: underline;
   text-decoration-color: $blue;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 2px;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 0.3rem;
   overflow: hidden;
   font-size: 1.414rem;
-  line-height: 2.121rem;
+  line-height: 2.421rem;
   margin-left: auto;
   margin-bottom: 7px;
   font-weight: 700;
@@ -90,7 +90,7 @@
   position: relative;
   &::before {
     position: absolute;
-    background-image: linear-gradient(180deg,#0000,#fbfbfb);
+    // background-image: linear-gradient(to bottom,rgba(255,255,255,0),#fbfbfb);
     height: 100%;
     content: " ";
     z-index: 3;
