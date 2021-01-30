@@ -1,11 +1,12 @@
 ---
-title: MacでGolangの開発環境を整える
+title: Macでgoenvを使ってGolangの開発環境を整える
 slug: setting-up-golang-environment-on-mac
 date: "2021-01-20"
 tags:
   - Mac
   - Golang
   - "fish shell"
+  - goenv
 wip: false
 ---
 
