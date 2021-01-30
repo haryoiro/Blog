@@ -5,7 +5,7 @@ date: "2021-01-30"
 tags:
   - git
   - Linux
-wip: true
+wip: false
 ---
 
 **Manjaro Linux**ユーザの場合はgitがデフォルトでインストールされています。
