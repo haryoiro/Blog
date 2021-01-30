@@ -4,13 +4,13 @@ slug: manjaro-linux-on-macbookpro-early-2015
 date: 2021-01-29
 wip: false
 tags: 
+    - Mac
+    - DualBoot
     - Manjaro
     - Arch
-    - Mac
-    - Linux
 ---
 
-この記事では、**MacBookPro early2015**で**MacOS**と**Manjaro Linux**をデュアルブートするための手順。MacbookPro特有の細かな設定まで一通り説明しています。
+この記事では、**MacBookPro early2015**に**MacOS**と**Manjaro Linux**をデュアルブートするまでの手順の他に、MacbookProにManjaroを導入した時必要な細かな設定まで大まかに説明しています。
 
 ## ダウンロードするもの
 
@@ -242,7 +242,7 @@ systemctl reboot
 
 ### バックライト設定
 
-バックライトを操作する**light**をインストール
+バックライトを操作する[light](https://github.com/haikarainen/light)をインストール
 
 ```
 yay -S light-git
@@ -266,7 +266,7 @@ bindsym XF86MonBrightnessDown exec light -U 5
 
 ### 色温度が時間で変わるように設定
 
-**redshift**をインストール
+[redshift](https://github.com/jonls/redshift)をインストール
 **redshift**は太陽の位置に応じて色温度を変えてくれます。
 
 ```
@@ -282,7 +282,7 @@ exec --no-startup-id redshift
 
 搭載しているSSDがTrimに対応しているかどうかは`nvme`コマンドで調べられます。
 
-`nvme`コマンドはpacmanでインストールできます
+[nvme](https://github.com/linux-nvme/nvme-cli)はpacmanでインストールできます
 
 ```
 sudo pacman -S nvme-cli
@@ -322,7 +322,7 @@ VSCodeは３種類のパッケージが存在します。
 - code
 - code-git
 
-基本は一番上の`visual-studio-code-bin`を入れておけば大丈夫。
+一番上の`visual-studio-code-bin`を入れます。
 
 ```
 yay -S visual-studio-code-bin
@@ -330,7 +330,7 @@ yay -S visual-studio-code-bin
 
 ### ターミナルエミュレータをインストール
 
-今回は**Alacritty**をインストールします。普段、MacOSやWindows内では**kitty**というターミナルエミュレータを使用していますが、**i3**とは機能がかぶったりキーバインドが面倒だったりするため、最小限の機能しか積んでないけど超高速な**Alacritty**を使うことにします。
+[Alacritty](https://github.com/alacritty/alacritty)をインストールします。普段、MacOSやWindows内では[kitty](https://github.com/kovidgoyal/kitty)を使用していますが、Tab機能やウィンドウ分割機能など**i3**で事足りる機能が多い上に、キーバインドも競合してしまいメリットが無くなってしまったため、採用を見送りました。
 
 ```
 sudo pacman -S alacritty
