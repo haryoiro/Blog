@@ -1,10 +1,11 @@
 ---
-title: "Gitの基本的な設定方法、そして少し応用的な設定をまとめた"
+title: "Gitの基本的な設定方法とすこし使いやすくする設定をまとめた"
 slug: "basic-git-configuration"
 date: "2021-01-30"
 tags:
   - git
-  - Linux
+  - Manjaro
+  - Ubuntu
 wip: false
 ---
 
