@@ -30,7 +30,7 @@ const ArticleHeader: FC<
     <div className="desc-wrapper">
       <div className="icon"> </div>
       <div className="desc">
-        <div className="data">{createdAt}</div>
+        <div className="data">Published on {createdAt}</div>
         <div className="category">
           <Tags tags={tags} />
         </div>
