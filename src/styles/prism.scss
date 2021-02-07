@@ -1,10 +1,9 @@
 
-@import './mixin';
+@import './mixin',
+        './variable';
 code[class*="language-"],
 pre[class*="language-"] {
-	color: #f8f8f2;
 	background: none;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 	font-family: "Fira Code", Consolas ,Menlo, Courier, monospace;
 	font-size: 14px;
 	text-align: left;
@@ -32,10 +31,15 @@ pre[class*="language-"] {
   @include mq(MI) { max-width: #{map-get($maw, MI)} }
 }
 
-
-:not(pre) > code[class*="language-"],
 pre[class*="language-"] {
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	color: #f8f8f2;
 	background: #272822;
+}
+:not(pre) > code[class*="language-"] {
+  color: $dark;
+  background: $whitish-light;
+  font-weight: 500;
 }
 
 /* Inline code */

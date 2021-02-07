@@ -57,12 +57,12 @@ const Toc: FC<IExpandTocProps> = ({ title, data, className }) => (
   <div className={`toc-container ${className || ''}`}>
     <div className="float-shadow">
       <div className="box-border">
-        <div className="text">
-          <header className="sidecontent-header">{title}</header>
-          <main className="">
+        <details className="text" open>
+          <summary className="sidecontent-header">{title}</summary>
+          <main>
             <Tocer data={data} />
           </main>
-        </div>
+        </details>
       </div>
     </div>
   </div>

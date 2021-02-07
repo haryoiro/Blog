@@ -64,7 +64,7 @@ const ArticleTemplate: FC<Props> = ({ data }) => {
           </article>
         </div>
         <Sidebar>
-          <Toc title="Contents" data={toc} className="is-pc outer-toc" />
+          <Toc title="Index" data={toc} className="is-pc outer-toc" />
           <TagCloud className="border" />
         </Sidebar>
       </Layout>

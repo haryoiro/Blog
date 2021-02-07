@@ -19,8 +19,12 @@ hr {
   }
   .sidecontent-header {
     font-size: 1.414rem;
+    padding: 0;
+    margin: 1em;
+    margin-top: 0.5em;
     padding-right: calc(1.414rem + .8rem);
-    justify-content: center;
+    width: 100%;
+    justify-content: left;
   }
   font-size: 14px;
 }
@@ -45,9 +49,9 @@ hr {
   .mdx-header {
     background-color: $light;
     border: 4px solid $dark;
-    box-shadow: 16px 16px 0px 1px $dark;
+    box-shadow: 8px 10px 0px 1px $dark;
     display: grid;
-    margin-right: 1.414rem;
+    margin-right: 0.707rem;
     margin-bottom: 4.242rem;
     padding: 1.414rem 2rem;
     place-content: left;
@@ -97,30 +101,27 @@ hr {
 
 
   .mdx-body {
-    h2, h3 {
-      color: $dark;
-      font-weight: 700;
-      position: relative;
-      z-index: 1;
+    color: $dark;
+    h2 {
+      font-size: 1.414rem;
+      margin-bottom: 2.121rem;
+      padding-top: 4.242rem;
+      font-weight: 800;
 
       text-decoration: underline  wavy;
       text-decoration-color: $blue;
-      text-decoration-thickness: 0.1rem;
-      text-underline-offset: 1rem;
-    }
-    h2 {
-      font-size: 1.414rem;
-      line-height: 2.121;
-      margin-bottom: 2.121rem;
-      padding-top: 4.242rem;
-      padding-bottom: 6px;
+      text-decoration-thickness: 0.1em;
+      text-underline-offset: 0.2rem;
     }
     h3{
       font-size: 1.212rem;
-      line-height: 2.121;
       margin-bottom: 1.414rem;
       padding-top: 2.828rem;
-      padding-bottom: 3px;
+
+      text-decoration: underline;
+      text-decoration-color: $blue;
+      text-decoration-thickness: 0.2em;
+      text-underline-offset: 0.2rem;
     }
     p {
       font-size: 1rem;
@@ -150,7 +151,10 @@ hr {
       margin-left: 1rem;
     }
     img {
-      box-shadow: 0px 0px 0px 8px $blue;
+      // box-shadow: 0px 0px 0px 8px $blue;
+      &:hover{
+
+      }
     }
     blockquote {
       position: relative;
