@@ -10,10 +10,11 @@ if (process.env.ENVIRONMENT !== 'production') {
 const config: GatsbyConfig = {
   siteMetadata: {
     title: 'HaryoiroBlog',
-    description: 'フロントエンドとか気になった技術とか',
+    description:
+      '日常生活でぶつかるぱそこんの壁。ぱそこんが動くようになったらこのブログに色々と書いていきます。きっと皆さんの助けになるでしょう。',
     author: 'Haryoiro',
-    siteUrl: 'https://www.haryoiro.com/',
-    githubId: 'haryoiro',
+    siteUrl: 'https://haryoiro.com',
+    githubId: 'Haryoiro',
     charset: 'utf-8'
   },
   plugins: [
@@ -38,8 +39,8 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.haryoiro.com/',
-        sitemap: 'https://www.haryoiro.com/sitemap.xml',
+        host: 'https://haryoiro.com',
+        sitemap: 'https://haryoiro.com/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
@@ -84,7 +85,7 @@ const config: GatsbyConfig = {
             resolve: 'gatsby-remark-prismjs',
             options: {
               classPrefix: 'language-',
-              showLineNumbers: false,
+              showLineNumbers: true,
               noInlineHighlight: false,
               aliases: {
                 fish: 'bash',

@@ -16,12 +16,25 @@ export type Props = {
   data: ArticleListQuery
 }
 
+export type HeadProps = {
+  title: string
+}
+
+const ArticleListHeader: FC<HeadProps> = ({ title }) => {
+  return (
+    <header className="ArticlesHeader c-body">
+      <main className="border"></main>
+    </header>
+  )
+}
+
 const ArticleListTemplate: FC<Props> = ({ data }) => {
   const articles = data.allMdx.edges
 
   return (
     <Layout title="記事一覧" type="website">
       <>
+        <ArticleListHeader title="Recent Posts" />
         {articles.map(
           ({
             node: {
@@ -64,6 +77,9 @@ export const articleListQuery = graphql`
       limit: $limit
       sort: { fields: frontmatter___date, order: DESC }
     ) {
+      nodes {
+        slug
+      }
       edges {
         node {
           frontmatter {

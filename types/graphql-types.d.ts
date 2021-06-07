@@ -3228,6 +3228,9 @@ export type ArticleListQueryVariables = Exact<{
 
 export type ArticleListQuery = {
   allMdx: {
+    nodes: Array<{
+      slug?: Maybe<Scalars['String']>;
+    }>
     edges: Array<{
       node: (
         Pick<Mdx, 'excerpt'>

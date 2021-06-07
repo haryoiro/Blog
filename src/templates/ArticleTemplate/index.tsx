@@ -57,7 +57,7 @@ const ArticleTemplate: FC<Props> = ({ data }) => {
                 tags={tags}
               />
             </div>
-            <Toc title="Contents" data={toc} className="is-mobile inner-toc" />
+            <Toc title="目次" data={toc} className="inner-toc" />
             <div className="mdx-body">
               <MDXRenderer>{body || ''}</MDXRenderer>
             </div>

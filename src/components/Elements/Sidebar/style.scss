@@ -16,6 +16,7 @@
   display: grid;
   font-weight: 900;
   padding-top: 1.414rem;
+  padding-bottom: 1.414rem;
   justify-content: center;
   @include mq(MAX) { justify-content: left; }
   @include mq(PC) { justify-content: left; }

@@ -47,6 +47,6 @@ auto;
   top: 0;
   height: 60px;
   width: 100%;
-  background-color: $blue;
-  box-shadow: 0 0 0 4px $dark;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,70,1) 0%, rgba(28,181,224,1) 100%);
 }

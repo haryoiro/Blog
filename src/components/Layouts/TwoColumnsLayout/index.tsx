@@ -23,6 +23,7 @@ const TwoColumnsLayout: FC<TwoColumnsLayoutProps> = ({
   <>
     <SEO title={title} type={type} />
     <div className="site-wrapper">
+      <div className="subhead"> </div>
       <Header className="head grid-center" />
       <div className="body grid-center body-wrapper">
         <main className="main" role="main">
