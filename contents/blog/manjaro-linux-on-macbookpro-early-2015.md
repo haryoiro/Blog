@@ -1,16 +1,19 @@
 ---
-title: "MacBook Pro early 2015にManjaro Linuxをインストールしたときのメモ"
+title: "Install Manjaro i3 Edition on MacBookPro early2015"
 slug: manjaro-linux-on-macbookpro-early-2015
 date: 2021-01-29
 wip: false
-tags:
-    - Mac
-    - DualBoot
+tags: 
     - Manjaro
     - Arch
+    - Mac
+    - Linux
 ---
 
-**MacBookPro early2015**に**Mac OS**と**Manjaro Linux**をデュアルブートした際必要だった設定などをメモ。
+追記：2021-06-09
+
+
+この記事では、**MacBookPro early2015**で**MacOS**と**Manjaro Linux**をデュアルブートするための手順。MacbookPro特有の細かな設定まで一通り説明しています。
 
 ## ダウンロードするもの
 
@@ -24,37 +27,79 @@ tags:
 
 ## 環境
 
-- MacBook Pro (13inch early 2015)
 - macOS Catalina 10.15.7（19H2）
 - Manjaro Linux i3 CommunityEdition
 
-## Macでの準備
+## Mac側での準備
 
-### ディスクユーティリティでパーティションを追加
+### Manjaroのイメージファイルをダウンロード
 
-ディスクユーティリティでFATフォーマットのパーティションを作成。とりあえず200GBをManjaro用のパーティションとして割り当てました。
+Manjaro-i3のイメージファイルは以下のサイトにあります。
+
+[Manjaro Linux i3 CommunityEdition](https://manjaro.org/downloads/community/i3/)
+
+URLにアクセスすると、`Download`と`Download Minimal`。２つの選択肢があります。
+
+2つの違いは、最初から入っているソフトウェアです。容量的な違いで言えば、無印は2.2GB、 Minimalは1.8GBでした。
+
+[![Download Manjaro](https://i.gyazo.com/a662c2028ac76834b6f5d89cc4ef0b76.png)](https://gyazo.com/a662c2028ac76834b6f5d89cc4ef0b76)
+
+どちらかをダウンロードして、次へ進んでください。
+
+### belenaEtcherをダウンロード
+
+Manjaro-i3をダウンロードしている間にLiveUSB作成の準備を行います。
+以下のサイトから、`Download for macOS`をクリックしてダウンロードしてください。
+
+**[belenaEtcher](https://www.balena.io/etcher/)**
+
+[![Image from Gyazo](https://i.gyazo.com/02c219c9718cc7c12fbb1a224f558163.png)](https://gyazo.com/02c219c9718cc7c12fbb1a224f558163)
+
+### LiveUSBを作成
+
+先ほどのManjaroイメージファイルがダウンロードし終わりましたら、USBをMacに差し込み、balenaEtcherを開きます。
+
+Flash from fileを選択し、Manjaro-i3-xxxx.isoを選択します。
+
+`Select target`を押すと、現在差し込まれているドライブが一覧表示されるので、先程差し込んだUSBを選択してください。
+
+消えては行けない外付けドライブなどありましたら、それらを外してからこの工程を行ってください。
+
+最後に、`Flash`を押すと、USBへのマウントが開始されます。
+
+### ディスクユーティリティでパーティションを分割
+
+**ディスクユーティリティでFATフォーマットのパーティションを作成**
+- OSインストール用 200GB
 
 ディスクユーティリティを開き、メインストレージにパーティションを作成。
 
 [![ディスクユーティリティからメインストレージにパーティションを作成](https://i.gyazo.com/63c0fa8eb97c171c50b5e025d23a1e2b.png)](https://gyazo.com/63c0fa8eb97c171c50b5e025d23a1e2b)
 
-```bash
+
+```
 $ diskutil list
 /dev/disk0 (internal, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      GUID_partition_scheme                        *500.1 GB   disk0
    1:                        EFI EFI                     209.7 MB   disk0s1
    2:                 Apple_APFS Container disk1         291.9 GB   disk0s2
-   3:       Microsoft Basic Data MANJARO                 200.0 GB   disk0s3
+   3:       Microsoft Basic Data MANJARO                 200.0 GB   disk0s4
 ```
 
-`disk0s3`が作成したパーティション。
+`disk0s4`が作成したパーティションです。
 
-### LiveUSBを作成
+### MacへManjaroをインストール
 
-1. [Manjaro i3](https://manjaro.org/downloads/community/i3/)のイメージをダウンロード
-2. [belenaEtcher](https://www.balena.io/etcher/)をインストール
-3. **blenaEtcher**でUSBにイメージを書き込み
+パーティションの分割とUSBへの書き込みが修了したら、Macを再起動します。
+
+このとき、`option`キーを押しながら起動すると、起動メディアの選択画面が出てくるので、`EFI Boot`を選択してください。
+
+うまく行けばmanjaroという文字とともに、オプション選択画面が出てきます。
+
+tzをAsia/Tokyo
+keytableをjpにして
+
 
 ## Manjaroでの設定
 
@@ -63,9 +108,9 @@ $ diskutil list
 
 ### pacmanのミラーサーバを変更
 
-pacmanが参照するミラーサーバーを変更。`--fasttrack`フラグは一番早いミラーサーバーを自動的に探して設定します。
+pacmanが参照するミラーサーバーを変更。`--fasttrack`フラグは一番早いミラーサーバーを自動的に探して設定してくれます。
 
-```bash
+```
 sudo pacman-mirrors --fasttrack
 ```
 
@@ -73,7 +118,7 @@ sudo pacman-mirrors --fasttrack
 
 yayはAURパッケージをpacmanと似た操作でインストールできるようにする`AURヘルパー`。
 
-```bash
+```
 sudo pacman -Syyu
 sudo pacman -S yay
 yay
@@ -83,28 +128,23 @@ yay
 
 ### ブラウザをインストール
 
-メモを残すためにブラウザが必要だったのでChromeを入れます。
+メモを残すためにブラウザが必要だったのでブラウザを入れます。FirefoxでもChromeでも何でも入れれます。
 
-```bash
+```
 yay -S google-chrome
 ```
 
-デフォルトブラウザを変更。
 
-```bash
-xdg-mime default google-chrome.desktop x-scheme-handler/http
-xdg-mime default google-chrome.desktop x-scheme-handler/https
+デフォルトブラウザを変更
+
+`.bashrc`に以下を追記
 ```
-
-`.bashrc`に以下を追加。
-
-```bash
 export BROWSER="/usr/bin/google-chrome-stable"
 ```
 
 ### ufsを有効化
 
-```bash
+```
 sudo ufw enable
 sudo systemctl enable --now ufw.service
 ```
@@ -113,17 +153,15 @@ sudo systemctl enable --now ufw.service
 
 ### fcitxをインストール
 
-Fcitxは言わずとしれた軽量のインプットメソッドフレームワーク。様々なIMEを組み合わせて使う。Google日本語入力のオープンソース実装であるMozcのfcitx版、`fcitx-mozc`を使用する。
+IMEです。Google日本語入力的な
 
-また、デフォルトでは**GTK+**や**Qt**プログラムでの動作が不安定になる場合があるため、専用のパッケージ`fcitx-im`をインストールする必要があります。
-
-```bash
+```
 sudo pacman -S fcitx fcitx-im fcitx-configtool fcitx-mozc
 ```
 
 `./xprofile`に以下の設定を追加します。
 
-```bash
+```
 export LANG='ja_JP.UTF-8'
 export XMODIFIERS='@im=fcitx'
 export XMODIFIER='@im=fcitx'
@@ -132,9 +170,9 @@ export QT_IM_MODULE=fcitx
 export DefaultIMModule=fcitx
 ```
 
-自動的にfcitxが起動するように`~/.i3/config`に設定を追加。
+自動的にfcitxが起動するように`~/.i3/config`に設定を追記
 
-```bash
+```
 exec --no-startup-id fcitx
 ```
 
@@ -146,14 +184,14 @@ exec --no-startup-id fcitx
 
 ここでは**Adobe**からリリースされている**SourceHanSansJP**を使いますが、**Noto Sans CJK**と同等です。
 
-```bash
+```
 sudo pacman -S adobe-source-han-sans-jp-fonts
 ```
 
 `~/.i3/config`に`font pango:`という行がありますので、それを書き換えます。
 フォントサイズも`8px`では小さいので、`12px`にしておきました。
 
-```bash
+```
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 
@@ -165,7 +203,7 @@ font pango:Source Han Sans JP Normal 12 # <-これ
 
 ### swapfileの設定
 
-```bash
+```
 sudo fallocate -l 8G /swapfile
 sudo chmod 0600 /swapfile
 sudo swapon /swapfile
@@ -175,63 +213,63 @@ sudo swapon /swapfile
 
 MacBookProにManjaroをインストールしてもファンは動作しません。ファンを動作させるために設定が必要です。`/etc/modules`に以下を追加。
 
-```bash
+```
 coretemp
 applesmc
 ```
 
-ARUから`mbpfan-git`をインストール。
+yayで`mbpfan-git`をインストール
 
-```bash
+```
 yay -S mbpfan-git
 ```
 
-インストールが終わったらファンをセンサーが検出できるようにコマンドを実行。
+インストールが終わったらファンをセンサーが検出できるようにコマンドを実行
 
-```bash
+```
 sudo sensors-detect
 ```
 
-`mbpfan`を有効にした後、起動。
+ファンを起動
 
-```bash
+```
 sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
 ```
 
-ファンの回転速度などは`/etc/mbpfan.conf`で設定可能。
+ファンの回転速度などは`/etc/mbpfan.conf`で設定可能です
 
-```bash
-min_fan1_speed = 1300
-max_fan1_speed = 6100
-low_temp = 60
-high_temp = 64
-max_temp = 80
+```
+min_fan1_speed = 1300 
+max_fan1_speed = 6100 
+low_temp = 60   
+high_temp = 64   
+max_temp = 80   
 polling_interval = 3
 ```
 
 ### サウンド設定
 
-**Manjaro i3 Edition**はデフォルトの環境で音が出ないバグに出会う可能性があります。その場合、次の設定をします。
+このディストリビュージョン、インストール時にサウンド設定が正常にされていないのか、音が出ないらしい？ので、音が出るように設定します。
 
-`/etc/modprobe.d/alsa-base.conf`に以下を追加。
+`/etc/modprobe.d/alsa-base.conf`に設定を追記。
 
-```bash
+```
 options snd_hda_intel enable=1 index=0
 options snd_hda_intel enable=1 index=1
 
 ```
 
-**pulseaudio**と**pavucontrol**をインストール。
+**pulseaudio**と**pavucontrol**をインストール
 
-```bash
+```
 sudo pacman -S pulseaudio pavucontrol
 ```
 
 メディアキーでボリューム操作ができるようにします。
-`~/.i3/config`に以下を追加。
+`~/.i3/config`に以下を追加
 
-```bash
+```
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
@@ -239,27 +277,29 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 
 終わったら再起動します。(後でもいい)
 
-```bash
+```
 systemctl reboot
 ```
 
 ### バックライト設定
 
-バックライトを操作する[light](https://github.com/haikarainen/light)をインストール。
+バックライトを操作する**light**をインストール
 
-```bash
+```
 yay -S light-git
 ```
 
-`light`を使うとコマンドラインからかんたんに輝度を変更できます。
+`light`はこんな感じで使います。
 
-- 輝度を5％上げる `light -A 5`
-- 輝度を5％下げる `light -U 5`
+- 輝度を5%上げる `light -A 5`
+- 輝度を5%下げる `light -U 5`
 
-これをi3 configからメディアキーに割り当てます。
-`~/.i3/config`に以下を追加。
+コマンドラインで実行してみると輝度が上下します。上下幅についてはお好みで設定してください。
 
-```bash
+これをまたメディアキーで操作できるようにします。
+`~/.i3/config`に以下を追加
+
+```
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
@@ -267,47 +307,41 @@ bindsym XF86MonBrightnessDown exec light -U 5
 
 ### 色温度が時間で変わるように設定
 
-[redshift](https://github.com/jonls/redshift)をインストール。
-
+**redshift**をインストール
 **redshift**は太陽の位置に応じて色温度を変えてくれます。
 
-```bash
-sudo pacman -S redshift
+```
+sudo pacman -S redshift geoclue2
 ```
 
-自動起動するため、`~/.i3/config`に以下を追加。
-
-```bash
-exec --no-startup-id redshift
+自動起動するために`~/.i3/config`に以下を追加します。
+```
+exec --no-startup-id redshift-gtk
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 ```
 
 ### 定期的なTrimを有効にする
 
-一昔前のSSDはTrimに対応していない場合があります。Trimに対応していないSSDでTrimを実行すると性能に悪影響を及ぼすことがあるため、注意が必要です。
+搭載しているSSDがTrimに対応しているかどうかは`nvme`コマンドで調べられます。
 
-MacBook ProデフォルトのSSDを使っている場合、全世代で対応しているためTrimに対応しているかどうかは考えなくて大丈夫です。
+`nvme`コマンドはpacmanでインストールできます
 
-この環境では、[Crucial P1](https://www.crucial.jp/products/ssd/p1-ssd)という**非純正のNVMe SSD**に換装しているため、一応対応しているかを調べました。
-
-搭載している**NVMe SSD**がTrimに対応しているかどうかは`nvme`コマンドで調べられます（AHCI SSDの場合は別）
-
-[nvme](https://github.com/linux-nvme/nvme-cli)コマンドをPacmanでインストールします。
-
-```bash
+```
 sudo pacman -S nvme-cli
 ```
 
 trimに対応しているかを調べます。
 
-```bash
+```
 sudo nvme id-ns /dev/nvme0n1 | grep nlbaf
 ```
 
-nlbafが0となっていればTrimに対応しています。systemctlでTrimを有効にします。
+nlbafが0となっていればtrimに対応しているので、次のコマンドを実行してください。
 
-```bash
+```
 sudo systemctl enable --now fstrim.timer
 ```
+
 
 ## 開発環境を構築
 
@@ -317,9 +351,10 @@ sudo systemctl enable --now fstrim.timer
 
 react-hot-reloadなどを使用していると、ファイル監視数上限エラーが出てくるので上限を上げておく。
 
-```bash
+```
 echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-watches.conf && sudo sysctl --system
 ```
+
 
 ### VSCodeをインストール
 
@@ -327,27 +362,27 @@ VSCodeは３種類のパッケージが存在します。
 
 - visual-studio-code-bin
 - code
-- code-Git
+- code-git
 
-一番上の`visual-studio-code-bin`を入れます。
+基本は一番上の`visual-studio-code-bin`を入れておけば大丈夫。
 
-```bash
+```
 yay -S visual-studio-code-bin
 ```
 
 ### ターミナルエミュレータをインストール
 
-[Alacritty](https://github.com/alacritty/alacritty)をインストールします。
+今回は**Alacritty**をインストールします。普段、MacOSやWindows内では**kitty**というターミナルエミュレータを使用していますが、**i3**とは機能がかぶったりキーバインドが面倒だったりするため、最小限の機能しか積んでないけど超高速な**Alacritty**を使うことにします。
 
-**Mac OS**や**Windows**では、[kitty](https://github.com/kovidgoyal/kitty)を使用していますが、タブ機能やウィンドウ分割機能など**kitty**に求める機能が**i3-wm**と機能が競合してしまいます。そのため、**kitty**と同様にGPUで描画機能が実装されているターミナルエミュレータである**Alacritty**を使うことにしました。
-
-```bash
+```
 sudo pacman -S alacritty
 ```
 
-**i3**と**Alacritty**のウィンドウサイズ設定が競合し、表示崩れが発生するため`alacritty.yml`の`window: dimensions`をコメントアウトしてください。
+i3でalacrittyを使用するときは、`window: dimensions`をコメントアウトしてください。i3とAlacrittyのウィンドウサイズが競合して表示が崩れます。
 
-## 参考
+
+
+## References
 
 - [Linux(Manjaro)をMac Book Pro(2016モデル)にinstallしたときの覚書](https://gist.github.com/atomita/61f5ddd24f8a7016f4e8cca6008f02ed)
 - [How to setup Manjaro Linux i3 on a Macbook Pro](https://lobotuerto.com/blog/how-to-setup-manjaro-linux-i3-on-a-macbook-pro/)
