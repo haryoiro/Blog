@@ -132,13 +132,15 @@ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 ```sh
 # 使用可能なバージョンを一覧
 asdf list-all nodejs
-asdf install nodejs 14.15.4
-asdf global nodejs 14.15.4
+asdf install nodejs 16.3.0
+asdf global nodejs 16.3.0
 
 # nodejsのバージョンを確認
 node -v
+#v16.3.0
 # npmのバージョン確認
 npm -v
+#7.15.1
 ```
 
 ### Golang
@@ -175,15 +177,10 @@ java --version
 
 ```sh
 asdf plugin add python
-asdf plugin list
+asdf list-all
 
 asdf install python 3.x.x
 asdf global python 3.x.x
-
-python --version
-
-asdf current
-
 ```
 
 ## 参考サイト
