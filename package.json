@@ -100,15 +100,6 @@
     "stylelint-prettier": "^1.1.2",
     "stylelint-scss": "^3.18.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && tsc --noEmit"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": "eslint --fix",
-    "*.scss": "stylelint --fix"
-  },
   "browserslist": {
     "development": [
       "last 2 versions",

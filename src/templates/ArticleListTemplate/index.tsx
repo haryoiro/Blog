@@ -23,7 +23,7 @@ export type HeadProps = {
 const ArticleListHeader: FC<HeadProps> = ({ title }) => {
   return (
     <header className="ArticlesHeader c-body">
-      <main className="border"></main>
+      <main className=""></main>
     </header>
   )
 }
