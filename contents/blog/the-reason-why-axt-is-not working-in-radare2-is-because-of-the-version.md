@@ -1,5 +1,5 @@
 ---
-title: "radare2でaxtが使えないのはバージョンが原因だった"
+title: "radare2でaxtが使えないのはapt-getのバージョンが原因だった"
 slug: "the-reason-why-axt-is-not working-in-radare2-is-because-of-the-version"
 date: "2021-06-12"
 tags:
@@ -10,20 +10,14 @@ tags:
 wip: false
 ---
 
-CTFの勉強でハリネズミ本を勧めていると、`radare2`で`axt`コマンドをつかうかしょがありました。
+CTFの勉強でハリネズミ本を勧めていると、`radare2`で`axt`コマンドを使用する箇所がありました。
 
 `radare2`は動くものの、`axt`コマンドが動かない。調べたところ、`apt`を使用してインストールした`radare2`はバージョンが古いため、推奨されないとのこと。
 
-
-
-一度入れてしまった方は、以下のコマンドでUbuntuをクリーンな状態に戻したのち、これから紹介する方法で再度インストールを行ってください。
+一度インストールした方は、以下のコマンドでUbuntuをクリーンな状態に戻したのち、これから紹介する方法で再度インストールを行ってください。
 
 
 ## radare2をアンインストール
-
-この方の記事を参考にさせていただきました。ありがとうございます。
-
-[radare2 でaxt が使えない。　新しいバージョンを入れたら　symbol lookup error](http://hsmtblue.hateblo.jp/entry/2019/11/10/032902)
 
 ```
 sudo apt-get remove --purge radare2
@@ -35,7 +29,7 @@ sudo apt autoclean
 
 こちらのやり方は公式リポジトリを見ると書かれています。
 
-そもそも何も確認せず`apt-get`を使って何でもかんでもインストールするのはだめですね、、、ということを改めて感じました。
+そもそも何も確認せず`apt-get`を使って何でもかんでもインストールするのは控えるべきということを改めて感じました。
 
 ```
 git clone https://github.com/radareorg/radare2
