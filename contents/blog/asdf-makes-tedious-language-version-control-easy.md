@@ -4,11 +4,6 @@ slug: "asdf-makes-tedious-language-version-control-easy"
 date: "2021-01-30"
 tags:
   - asdf
-  - Golang
-  - Java
-  - Python
-  - pyenv
-  - Node.js
 ---
 
 バージョン管理システムって何使ってますか？
