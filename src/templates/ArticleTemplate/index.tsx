@@ -64,8 +64,8 @@ const ArticleTemplate: FC<Props> = ({ data }) => {
           </article>
         </div>
         <Sidebar>
-          <Toc title="Index" data={toc} className="is-pc outer-toc" />
-          <TagCloud className="border" />
+          {/* <Toc title="Index" data={toc} className="is-pc outer-toc" /> */}
+          <TagCloud />
         </Sidebar>
       </Layout>
     </MDXProvider>

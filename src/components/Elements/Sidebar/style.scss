@@ -12,13 +12,14 @@
   }
 }
 .sidecontent-header {
-  width: 100%;
+  width: calc(30%);
   display: grid;
-  font-weight: 900;
-  padding-top: 1.414rem;
-  padding-bottom: 1.414rem;
-  justify-content: center;
-  @include mq(MAX) { justify-content: left; }
-  @include mq(PC) { justify-content: left; }
-  @include mq(TABLET) { justify-content: left; }
+  font-weight: 700;
+  margin: 1.414rem;
+  @include mq(MAX)    { margin-left: 0; }
+  @include mq(PC)     { margin-left: 0; }
+  @include mq(TABLET) { margin-left: 0; }
+  padding-bottom: 0.707rem;
+  justify-content: left;
+  border-bottom: 2px solid $blue;
 }

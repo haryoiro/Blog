@@ -6,8 +6,11 @@ export type CopylightProps = {
 }
 const Copylight: FC<CopylightProps> = ({ author }) => (
   <span className="footInfomation">
-    <Link to="/sitemap.xml">サイトマップ</Link>
     <span className="copylight">{` © ${author} 2020 - ${new Date().getFullYear()}`}</span>
+    {` | `}
+    <Link to="/PrivacyPolicy/">PrivacyPolicy</Link>
+    {` | `}
+    <Link to="/sitemap.xml">Sitemap</Link>
   </span>
 )
 interface FooterProps {

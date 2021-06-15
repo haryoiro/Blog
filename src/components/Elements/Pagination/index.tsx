@@ -14,7 +14,7 @@ export const Pagination: FC<PaginationProps> = ({ numPages, currentPage }) => {
     <div className="pagination-container">
       {!isFirst && (
         <Link className="pagination-button" to={`/blog/`} rel="prev">
-          ≪ Prev
+          &lt;
         </Link>
       )}
       {Array.from({ length: numPages }, (_, i) => (
@@ -24,13 +24,13 @@ export const Pagination: FC<PaginationProps> = ({ numPages, currentPage }) => {
             to={`/blog/${i === 0 ? '' : i + 1}`}
             className="pagination-button"
           >
-            <strong>{i + 1}</strong>
+            {i + 1}
           </Link>
         </>
       ))}
       {!isLast && (
         <Link className="pagination-button" to={`/blog/${numPages}`} rel="next">
-          Next ≫
+          &gt;
         </Link>
       )}
     </div>
