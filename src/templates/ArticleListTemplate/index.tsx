@@ -9,11 +9,16 @@ import Layout from '../../components/Layouts/TwoColumnsLayout'
 import Tags from '../../components/Elements/Tags'
 import Sidebar from '../../components/Elements/Sidebar'
 import TagCloud from '../../components/Elements/TagCloud'
+import {
+  Pagination,
+  PaginationProps
+} from '../../components/Elements/Pagination'
 
 import { ArticleListQuery } from '../../../types/graphql-types'
 
 export type Props = {
   data: ArticleListQuery
+  pageContext: PaginationProps
 }
 
 export type HeadProps = {
@@ -28,8 +33,9 @@ const ArticleListHeader: FC<HeadProps> = ({ title }) => {
   )
 }
 
-const ArticleListTemplate: FC<Props> = ({ data }) => {
+const ArticleListTemplate: FC<Props> = ({ data, pageContext }) => {
   const articles = data.allMdx.edges
+  const { numPages, currentPage } = pageContext
 
   return (
     <Layout title="記事一覧" type="website">
@@ -59,6 +65,7 @@ const ArticleListTemplate: FC<Props> = ({ data }) => {
             </article>
           )
         )}
+        <Pagination numPages={numPages} currentPage={currentPage} />
       </>
       <Sidebar>
         <TagCloud />

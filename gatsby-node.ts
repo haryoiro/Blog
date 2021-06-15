@@ -50,7 +50,7 @@ const createArticleListPages: GatsbyNode['createPages'] = async ({
 
       Array.from({ length: numPages }).forEach((_, i) => {
         // 配列のindexをもとにページ番号を割り当て。
-        const pagePath = i === 0 ? '/blog/' : `/blog/${i + 1}/`
+        const pagePath = '/blog' + (i === 0 ? '' : `/${i + 1}`)
         createPage({
           path: pagePath,
           component: path.resolve(

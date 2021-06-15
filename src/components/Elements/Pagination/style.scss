@@ -1,0 +1,17 @@
+@import '../../../styles/variable';
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  [aria-current="page"] {
+    color: black;
+  }
+}
+.pagination-button {
+  font-weight: 700;
+  font-size: 1.414rem/1.5;
+  color: $blue;
+  padding: 1rem 1.414rem;
+  margin: 0.31rem;
+}
