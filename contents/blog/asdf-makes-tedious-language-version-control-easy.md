@@ -4,16 +4,11 @@ slug: "asdf-makes-tedious-language-version-control-easy"
 date: "2021-01-30"
 tags:
   - asdf
-  - Golang
-  - Java
-  - Python
-  - pyenv
-  - Node.js
 ---
 
 バージョン管理システムって何使ってますか？
 
-プログラミングをしていると、言語バージョン毎に仕様が異なる場合が多く、いくつもの言語バージョンを切り替えるために、バージョン管理システムを使っている人も多いと思います。
+プログラミングをしていると言語バージョン毎に仕様が異なる場合も多く、いくつもの言語バージョンを切り替えるためにバージョン管理システムを使っている。という人も多いと思います。
 
 `nodejs`は`nvm`や`n`、`python`なら`pyenv`など、バージョン管理のためにそれぞれの言語向けに開発されたソフトウェアをインストールしていました。
 
@@ -36,12 +31,19 @@ Go言語に入門したいけど、環境構築で時間を取られてしまう
 
 インストール方法は、公式のチュートリアルに沿って勧めていきます。
 
-[asdf-vm](https://asdf-vm.com/#/core-manage-asdf)
+公式サイト：[asdf-vm](https://asdf-vm.com/#/core-manage-asdf)
 
-gitリポジトリから最新版をクローンします。
+環境によってインストール方法が異なるようですが、macOSとLinux。どちらでも実行可能な`git`からクローンしてインストールする方法を取ります。
+
+他の環境でのインストール方法は、公式サイトを見たほうが圧倒的にわかりやすいので、そちらを見ることをおすすめします。（この記事の意味・・・）
+
+
+GitHubリポジトリから最新版をクローンします。
 ```
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 ```
+
+バージョンは記事作成時の最新版です。適宜バージョンを記入してください。
 
 次のコマンドを実行します。
 ```
@@ -57,34 +59,83 @@ exec $SHELL
 
 ## asdfをアップデート
 
+asdf updateとするだけで`asdf`自体のアップデートができます。
+GitClone時に古いバージョンを入れてしまった場合はここでアップデートすれば大丈夫です。
+
 ```
 asdf update
 ```
 
+
 ## 必要な言語をインストール
 
-今回インストールする言語は以下です。
+言語環境は`asdf`のプラグインという形式で提供されています。
+提供されているプラグインは[このページ](https://asdf-vm.com/#/plugins-all?id=plugin-list)で一覧可能です
+
+必要に応じて言語をいんすとーるしてください。
+今回インストールする言語は以下のとおりです。
 
 - Node.js
 - Golang
 - Java
+- Python
 
-これ以外にも大抵の言語環境は揃っているので、各自調べてみてください。
+これ以外にも大抵の言語はインストールできますので、各自調べてみてください。
 なお、それぞれの言語のバージョンはこの記事を書いている時点での最新版なので、目的のバージョンとは異なる場合があります。
 
-バージョン番号だけはしっかり確認してから実行してください。
+バージョン番号を確認のうえ、実行してくださいね。
 
 ### Node.js
 
+[asdf-vm/asdf-nodejs](https://github.com/asdf-vm/asdf-nodejs)
+
+#### macOS
+
+macOSで使用する場合は、asdfの他に`gpg`をインストールする必要があります。
+
+```sh
+sudo brew install gpg
+```
+
+#### Linux
+
+Linuxの場合は以下のパッケージをインストールする必要があります。
+
+- dirmngr
+- gpg
+- curl (大抵入っているかも)
+
+以上の依存関係パッケージをインストール（debian）
+```sh
+sudo apt-get install -y dirmngr gpg curl
+```
+
+Node.jsプラグインをインストール
+
 ```sh
 asdf plugin-add nodejs
+```
+
+OpenGPGの署名に問題があり、実行できないことがあります。
+その場合は、以下のコマンドを実行してください。
+
+```sh
 export GNUPGHOME="${ASDF_DIR:-$HOME/.asdf}/keyrings/nodejs" && mkdir -p "$GNUPGHOME" && chmod 0700 "$GNUPGHOME"
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+```
 
+```sh
 # 使用可能なバージョンを一覧
 asdf list-all nodejs
-asdf install nodejs 14.15.4
-asdf global nodejs 14.15.4
+asdf install nodejs 16.3.0
+asdf global nodejs 16.3.0
+
+# nodejsのバージョンを確認
+node -v
+#v16.3.0
+# npmのバージョン確認
+npm -v
+#7.15.1
 ```
 
 ### Golang
@@ -121,15 +172,10 @@ java --version
 
 ```sh
 asdf plugin add python
-asdf plugin list
+asdf list-all
 
 asdf install python 3.x.x
 asdf global python 3.x.x
-
-python --version
-
-asdf current
-
 ```
 
 ## 参考サイト
